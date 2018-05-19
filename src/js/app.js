@@ -2,6 +2,46 @@
  * Create a list that holds all of your cards
  */
 
+const cardDeck = document.querySelector('.deck');
+const numberOfCards = 16;
+
+let imageName = "camera-retro";
+
+
+
+
+// Place cards inside "the deck"
+for (let i = 0; i < numberOfCards; i++) {
+
+  // Create a card (li) with a class of 'card'
+  let card = document.createElement('li');
+  card.classList.add('card');
+
+  // Insert image on card
+  let cardImage = document.createElement('i');
+  cardImage.classList.add('fas', 'fa-' + imageName);
+  card.appendChild(cardImage);
+
+  // Place card in deck
+  cardDeck.appendChild(card);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  * Display the cards on the page
@@ -10,20 +50,38 @@
  *   - add each card's HTML to the page
  */
 
+
+
+
+
+
+
+
+
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length,
+    temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
 
-    return array;
+  return array;
 }
+
+
+
+
+
+
+
+
 
 
 /*

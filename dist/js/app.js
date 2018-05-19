@@ -1,8 +1,29 @@
-"use strict";
+'use strict';
 
 /*
  * Create a list that holds all of your cards
  */
+
+var cardDeck = document.querySelector('.deck');
+var numberOfCards = 16;
+
+var imageName = "camera-retro";
+
+// Place cards inside "the deck"
+for (var i = 0; i < numberOfCards; i++) {
+
+  // Create a card (li) with a class of 'card'
+  var card = document.createElement('li');
+  card.classList.add('card');
+
+  // Insert image on card
+  var cardImage = document.createElement('i');
+  cardImage.classList.add('fas', 'fa-' + imageName);
+  card.appendChild(cardImage);
+
+  // Place card in deck
+  cardDeck.appendChild(card);
+}
 
 /*
  * Display the cards on the page
