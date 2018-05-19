@@ -34,7 +34,8 @@ function layoutCards() {
 
     // Create a card (li) with a class of 'card'
     var card = document.createElement('li');
-    card.classList.add('card', 'show');
+    card.setAttribute('data-image', shuffledImages[i]);
+    card.classList.add('card');
 
     // Insert shuffled image in card
     var cardImage = document.createElement('i');
