@@ -35,28 +35,26 @@ var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 
 var shuffledImages = shuffle(images);
 
-// Place cards inside "the deck"
-for (var i = 0; i < images.length; i++) {
+var cardSet = 1;
 
-  // Create a card (li) with a class of 'card'
-  var card = document.createElement('li');
-  card.classList.add('card', 'show');
+while (cardSet < 3) {
 
-  // Insert image on card
+  // Place cards inside "the deck"
+  for (var i = 0; i < images.length; i++) {
 
+    // Create a card (li) with a class of 'card'
+    var card = document.createElement('li');
+    card.classList.add('card', 'show');
 
-  // choose a random image, no more than twice and put on card
+    var cardImage = document.createElement('i');
+    cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
+    card.appendChild(cardImage);
 
-  // choose a random number from 0 - 8 for an images index number
-  // let randomIndex = Math.floor(Math.random() * images.length);
+    // Place card in deck
+    cardDeck.appendChild(card);
+  }
 
-
-  var cardImage = document.createElement('i');
-  cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
-  card.appendChild(cardImage);
-
-  // Place card in deck
-  cardDeck.appendChild(card);
+  cardSet++;
 }
 
 /*

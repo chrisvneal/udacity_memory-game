@@ -49,26 +49,31 @@ let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 
 let shuffledImages = shuffle(images);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let cardSet = 1;
+
+while (cardSet < 3) {
+
 // Place cards inside "the deck"
- for (let i = 0; i < images.length; i++) {
+for (let i = 0; i < images.length; i++) {
 
   // Create a card (li) with a class of 'card'
   let card = document.createElement('li');
   card.classList.add('card', 'show');
-
-
-
-
-
-
-  // Insert image on card
-
-
-
-  // choose a random image, no more than twice and put on card
-
-  // choose a random number from 0 - 8 for an images index number
-  // let randomIndex = Math.floor(Math.random() * images.length);
 
 
 
@@ -83,6 +88,19 @@ let shuffledImages = shuffle(images);
   // Place card in deck
   cardDeck.appendChild(card);
 } 
+
+
+
+
+
+
+
+
+
+
+
+  cardSet++;
+}
 
 
 
