@@ -35,27 +35,31 @@ var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 
 var shuffledImages = shuffle(images);
 
-var cardSet = 1;
+function layoutCards() {
+  var cardSet = 1;
 
-while (cardSet < 3) {
+  while (cardSet < 3) {
 
-  // Place cards inside "the deck"
-  for (var i = 0; i < images.length; i++) {
+    // Place cards inside "the deck"
+    for (var i = 0; i < images.length; i++) {
 
-    // Create a card (li) with a class of 'card'
-    var card = document.createElement('li');
-    card.classList.add('card', 'show');
+      // Create a card (li) with a class of 'card'
+      var card = document.createElement('li');
+      card.classList.add('card', 'show');
 
-    var cardImage = document.createElement('i');
-    cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
-    card.appendChild(cardImage);
+      var cardImage = document.createElement('i');
+      cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
+      card.appendChild(cardImage);
 
-    // Place card in deck
-    cardDeck.appendChild(card);
+      // Place card in deck
+      cardDeck.appendChild(card);
+    }
+
+    cardSet++;
   }
-
-  cardSet++;
 }
+
+layoutCards();
 
 /*
  * set up the event listener for a card. If a card is clicked:

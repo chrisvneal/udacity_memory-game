@@ -64,43 +64,44 @@ let shuffledImages = shuffle(images);
 
 
 
-let cardSet = 1;
-
-while (cardSet < 3) {
-
-// Place cards inside "the deck"
-for (let i = 0; i < images.length; i++) {
-
-  // Create a card (li) with a class of 'card'
-  let card = document.createElement('li');
-  card.classList.add('card', 'show');
 
 
+  
+
+  function layoutCards() {
+    let cardSet = 1;
+
+    while (cardSet < 3) {
+  
+      // Place cards inside "the deck"
+      for (let i = 0; i < images.length; i++) {
+  
+        // Create a card (li) with a class of 'card'
+        let card = document.createElement('li');
+        card.classList.add('card', 'show');
+  
+  
+  
+  
+  
+  
+  
+        let cardImage = document.createElement('i');
+        cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
+        card.appendChild(cardImage);
+  
+        // Place card in deck
+        cardDeck.appendChild(card);
+      }
+  
+  
+      cardSet++;
+    }
+  }
+
+  layoutCards();
 
 
-
-
-
-  let cardImage = document.createElement('i');
-  cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
-  card.appendChild(cardImage);
-
-  // Place card in deck
-  cardDeck.appendChild(card);
-} 
-
-
-
-
-
-
-
-
-
-
-
-  cardSet++;
-}
 
 
 
