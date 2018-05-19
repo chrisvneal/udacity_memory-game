@@ -19,36 +19,55 @@ function shuffle(array) {
 
 const cardDeck = document.querySelector('.deck');
 
+let card;
+
 // Array of 8 images for cards
 let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
+
+ // Shuffle images
+ let shuffledImages = shuffle(images);
+
+function createCard(i) {
+  // Create a card (li) with a class of 'card'
+  card = document.createElement('li');
+  card.setAttribute('data-image', shuffledImages[i]);
+  card.classList.add('card');
+
+  // Insert shuffled image in card
+  let cardImage = document.createElement('i');
+  cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
+  card.appendChild(cardImage);
+
+  card.addEventListener('click', function() {
+    alert('did you do it');
+  });
+}
+
+
 
 
 // Layout 16 cards in the deck
 function layoutCards() {
 
-  // Shuffle images
-  let shuffledImages = shuffle(images);
+ 
 
   // Place cards inside "the deck"
   for (let i = 0; i < images.length; i++) {
 
-    // Create a card (li) with a class of 'card'
-    let card = document.createElement('li');
-    card.setAttribute('data-image', shuffledImages[i]);
-    card.classList.add('card');
-
-    // Insert shuffled image in card
-    let cardImage = document.createElement('i');
-    cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
-    card.appendChild(cardImage);
+    createCard(i);
 
     // Place card in deck
     cardDeck.appendChild(card);
   }
+
+  return card;
 }
 
-
+// Start of Memory Game ***************
 window.onload = layoutCards;
+
+
+
 
 
 
