@@ -5,7 +5,7 @@
 const cardDeck = document.querySelector('.deck');
 const numberOfCards = 16;
 
-let imageName = ['bomb'];
+let imageName = [ 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
 
 
 
@@ -18,6 +18,13 @@ for (let i = 0; i < numberOfCards; i++) {
   card.classList.add('card', 'show');
 
   // Insert image on card
+
+
+
+    // choose a random image, no mnore than twice and put on card
+
+
+
   let cardImage = document.createElement('i');
   cardImage.classList.add('fas', 'fa-' + imageName[0]);
   card.appendChild(cardImage);
