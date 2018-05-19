@@ -43,9 +43,7 @@ function layoutCards() {
     cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
     card.appendChild(cardImage);
 
-    card.addEventListener('click', function(e) {
-      console.log('You clicked: ' + e.target.nodeName);
-    }, false);
+    
 
     // Place card in deck
     cardDeck.appendChild(card);
@@ -54,6 +52,10 @@ function layoutCards() {
 
 // Start of Memory Game ***************
 window.onload = layoutCards;
+
+card.addEventListener('click', function(e) {
+  console.log('You clicked: ' + e.target.nodeName);
+});
 
 
 

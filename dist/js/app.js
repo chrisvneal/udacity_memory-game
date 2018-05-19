@@ -33,26 +33,26 @@ function layoutCards() {
   for (var i = 0; i < images.length; i++) {
 
     // Create a card (li) with a class of 'card'
-    var card = document.createElement('li');
-    card.setAttribute('data-image', shuffledImages[i]);
-    card.classList.add('card');
+    var _card = document.createElement('li');
+    _card.setAttribute('data-image', shuffledImages[i]);
+    _card.classList.add('card');
 
     // Insert shuffled image in card
     var cardImage = document.createElement('i');
     cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
-    card.appendChild(cardImage);
-
-    card.addEventListener('click', function (e) {
-      console.log('You clicked: ' + e.target.nodeName);
-    }, false);
+    _card.appendChild(cardImage);
 
     // Place card in deck
-    cardDeck.appendChild(card);
+    cardDeck.appendChild(_card);
   }
 }
 
 // Start of Memory Game ***************
 window.onload = layoutCards;
+
+card.addEventListener('click', function (e) {
+  console.log('You clicked: ' + e.target.nodeName);
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
