@@ -90,6 +90,12 @@ function flipCard(evt) {
   let cardAttribute = card.getAttribute('data-image');
 
   selectedCards.push(cardAttribute);
+  console.log('selectedCards length: ' + selectedCards.length);
+  console.log(selectedCards);
+
+  if (selectedCards.length == 2) {
+    alert("Test the cards");
+  }
 
   // console.log(selectedCards);
 
