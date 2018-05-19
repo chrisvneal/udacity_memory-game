@@ -68,11 +68,20 @@ window.onload = layoutCards;
 
 var cardDeck = document.querySelector('.deck');
 
+// Initiate selected cards variable
+var selectedCards = [];
+
 // Function to flip card when clicked
 function flipCard(evt) {
   var card = findTarget(evt);
 
   card.classList.add('open', 'show'); // flip card and show symbol
+
+  var cardAttribute = card.getAttribute('data-image');
+
+  selectedCards.push(cardAttribute);
+
+  // console.log(selectedCards);
 
 }
 
