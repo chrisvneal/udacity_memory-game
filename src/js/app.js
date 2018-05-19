@@ -47,7 +47,8 @@ function layoutCards() {
   }
 }
 
-layoutCards();
+
+window.onload = layoutCards;
 
 
 
