@@ -15,7 +15,7 @@ for (let i = 0; i < numberOfCards; i++) {
 
   // Create a card (li) with a class of 'card'
   let card = document.createElement('li');
-  card.classList.add('card');
+  card.classList.add('card', 'show');
 
   // Insert image on card
   let cardImage = document.createElement('i');
