@@ -24,6 +24,24 @@ var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 // Shuffle images
 var shuffledImages = shuffle(images);
 
+// Return the correct target if 'svg' or 'path' node is clicked instead of their 'li' parent
+function findTarget(evt) {
+  var target = void 0;
+  var nodeName = evt.target.nodeName.toLowerCase();
+
+  switch (nodeName) {
+    case "svg":
+      target = evt.target.parentElement;
+      break;
+    case "path":
+      target = evt.target.parentElement.parentElement;
+      break;
+    default:
+      target = evt.target;
+  }
+  return target;
+}
+
 // Layout 16 cards in the deck
 function layoutCards() {
 
@@ -52,14 +70,10 @@ var cardDeck = document.querySelector('.deck');
 
 function respondToTheClick(evt) {
 
-  // add the show and open class to display card, if not the li (card) element, find it and place classes
-  if (evt.target.nodeName.toLowerCase() === 'li') {
+  var target = findTarget(evt);
 
-    evt.target.classList.add('open', 'show');
-  } else {
-
-    evt.target.closest('.card').classList.add('open', 'show');
-  }
+  // console.log(target.nodeName);
+  target.classList.add('open', 'show');
 }
 
 cardDeck.addEventListener('click', respondToTheClick);

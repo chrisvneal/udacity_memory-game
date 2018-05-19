@@ -22,6 +22,24 @@ let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 // Shuffle images
 let shuffledImages = shuffle(images);
 
+// Return the correct target if 'svg' or 'path' node is clicked instead of their 'li' parent
+function findTarget(evt) {
+  let target;
+  let nodeName = evt.target.nodeName.toLowerCase();
+
+  switch (nodeName) {
+    case "svg":
+      target = evt.target.parentElement;
+      break;
+    case "path":
+      target = evt.target.parentElement.parentElement;
+      break;
+    default:
+      target = evt.target;
+  }
+  return target;
+}
+
 
 
 
@@ -37,14 +55,14 @@ function layoutCards() {
     const card = document.createElement('li');
     card.setAttribute('data-image', shuffledImages[i]);
     card.classList.add('card');
-  
+
     // Insert shuffled image in card
     let cardImage = document.createElement('i');
     cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
     card.appendChild(cardImage);
-  
-    
-  
+
+
+
     // Place card in deck
     cardDeck.appendChild(card);
   }
@@ -62,17 +80,28 @@ const cardDeck = document.querySelector('.deck');
 
 
 function respondToTheClick(evt) {
-  
-  // add the show and open class to display card, if not the li (card) element, find it and place classes
-  if (evt.target.nodeName.toLowerCase() === 'li') {
-    
-    evt.target.classList.add('open', 'show');
-  } else {
 
 
-    evt.target.closest('.card').classList.add('open', 'show');
-  }
+
+  let target = findTarget(evt);
+
+
+
+
+
+
+
+
+
+
+
+
+  // console.log(target.nodeName);
+  target.classList.add('open', 'show');
+
 }
+
+
 
 
 
