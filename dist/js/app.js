@@ -7,7 +7,7 @@
 var cardDeck = document.querySelector('.deck');
 var numberOfCards = 16;
 
-var imageName = "camera-retro";
+var imageName = ['bomb'];
 
 // Place cards inside "the deck"
 for (var i = 0; i < numberOfCards; i++) {
@@ -18,7 +18,7 @@ for (var i = 0; i < numberOfCards; i++) {
 
   // Insert image on card
   var cardImage = document.createElement('i');
-  cardImage.classList.add('fas', 'fa-' + imageName);
+  cardImage.classList.add('fas', 'fa-' + imageName[0]);
   card.appendChild(cardImage);
 
   // Place card in deck

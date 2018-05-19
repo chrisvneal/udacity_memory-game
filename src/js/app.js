@@ -5,7 +5,7 @@
 const cardDeck = document.querySelector('.deck');
 const numberOfCards = 16;
 
-let imageName = "camera-retro";
+let imageName = ['bomb'];
 
 
 
@@ -19,7 +19,7 @@ for (let i = 0; i < numberOfCards; i++) {
 
   // Insert image on card
   let cardImage = document.createElement('i');
-  cardImage.classList.add('fas', 'fa-' + imageName);
+  cardImage.classList.add('fas', 'fa-' + imageName[0]);
   card.appendChild(cardImage);
 
   // Place card in deck
