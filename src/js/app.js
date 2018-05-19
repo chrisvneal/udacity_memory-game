@@ -16,16 +16,21 @@ function shuffle(array) {
   return array;
 }
 
+// Array of 8 images for cards
+let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
+
+// Shuffle images
+let shuffledImages = shuffle(images);
+
 
 const cardDeck = document.querySelector('.deck');
 
 let card;
 
-// Array of 8 images for cards
-let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
 
- // Shuffle images
- let shuffledImages = shuffle(images);
+
+
+
 
 function createCard(i) {
   // Create a card (li) with a class of 'card'
@@ -49,7 +54,7 @@ function createCard(i) {
 // Layout 16 cards in the deck
 function layoutCards() {
 
- 
+
 
   // Place cards inside "the deck"
   for (let i = 0; i < images.length; i++) {

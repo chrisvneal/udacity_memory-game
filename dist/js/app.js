@@ -18,15 +18,15 @@ function shuffle(array) {
   return array;
 }
 
-var cardDeck = document.querySelector('.deck');
-
-var card = void 0;
-
 // Array of 8 images for cards
 var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
 
 // Shuffle images
 var shuffledImages = shuffle(images);
+
+var cardDeck = document.querySelector('.deck');
+
+var card = void 0;
 
 function createCard(i) {
   // Create a card (li) with a class of 'card'
