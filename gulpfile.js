@@ -4,6 +4,8 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
+        require('babel-core');
+        require('babel-preset-env');
 var browserSync = require('browser-sync').create();
 
 // Directories
