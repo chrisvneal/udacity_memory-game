@@ -26,37 +26,29 @@ var shuffledImages = shuffle(images);
 
 var cardDeck = document.querySelector('.deck');
 
-var card = void 0;
-
-function createCard(i) {
-  // Create a card (li) with a class of 'card'
-  card = document.createElement('li');
-  card.setAttribute('data-image', shuffledImages[i]);
-  card.classList.add('card');
-
-  // Insert shuffled image in card
-  var cardImage = document.createElement('i');
-  cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
-  card.appendChild(cardImage);
-
-  card.addEventListener('click', function () {
-    alert('did you do it');
-  });
-}
-
 // Layout 16 cards in the deck
 function layoutCards() {
 
   // Place cards inside "the deck"
   for (var i = 0; i < images.length; i++) {
 
-    createCard(i);
+    // Create a card (li) with a class of 'card'
+    var card = document.createElement('li');
+    card.setAttribute('data-image', shuffledImages[i]);
+    card.classList.add('card');
+
+    // Insert shuffled image in card
+    var cardImage = document.createElement('i');
+    cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
+    card.appendChild(cardImage);
+
+    card.addEventListener('click', function (e) {
+      console.log(e.target.classList);
+    });
 
     // Place card in deck
     cardDeck.appendChild(card);
   }
-
-  return card;
 }
 
 // Start of Memory Game ***************
