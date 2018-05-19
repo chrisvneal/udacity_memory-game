@@ -1,56 +1,4 @@
 /*
- * Create a list that holds all of your cards
- */
-
-const cardDeck = document.querySelector('.deck');
-const numberOfCards = 16;
-
-let imageName = [ 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
-
-
-
-
-// Place cards inside "the deck"
-for (let i = 0; i < numberOfCards; i++) {
-
-  // Create a card (li) with a class of 'card'
-  let card = document.createElement('li');
-  card.classList.add('card', 'show');
-
-  // Insert image on card
-
-
-
-    // choose a random image, no mnore than twice and put on card
-
-
-
-  let cardImage = document.createElement('i');
-  cardImage.classList.add('fas', 'fa-' + imageName[0]);
-  card.appendChild(cardImage);
-
-  // Place card in deck
-  cardDeck.appendChild(card);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
@@ -81,6 +29,79 @@ function shuffle(array) {
 
   return array;
 }
+
+
+
+
+
+
+
+
+/*
+ * Create a list that holds all of your cards
+ */
+
+const cardDeck = document.querySelector('.deck');
+const numberOfCards = 16;
+
+let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
+
+
+let shuffledImages = shuffle(images);
+
+// Place cards inside "the deck"
+ for (let i = 0; i < images.length; i++) {
+
+  // Create a card (li) with a class of 'card'
+  let card = document.createElement('li');
+  card.classList.add('card', 'show');
+
+
+
+
+
+
+  // Insert image on card
+
+
+
+  // choose a random image, no more than twice and put on card
+
+  // choose a random number from 0 - 8 for an images index number
+  // let randomIndex = Math.floor(Math.random() * images.length);
+
+
+
+
+
+
+
+  let cardImage = document.createElement('i');
+  cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
+  card.appendChild(cardImage);
+
+  // Place card in deck
+  cardDeck.appendChild(card);
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
