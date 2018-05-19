@@ -1,13 +1,7 @@
-'use strict';
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+"use strict";
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+
 function shuffle(array) {
   var currentIndex = array.length,
       temporaryValue,
@@ -24,38 +18,31 @@ function shuffle(array) {
   return array;
 }
 
-/*
- * Create a list that holds all of your cards
- */
-
 var cardDeck = document.querySelector('.deck');
-var numberOfCards = 16;
 
-var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
+// Array of 8 images for cards
+var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
 
-var shuffledImages = shuffle(images);
-
+// Layout 16 cards in the deck
 function layoutCards() {
-  var cardSet = 1;
 
-  while (cardSet < 3) {
+  // Shuffle images
+  var shuffledImages = shuffle(images);
 
-    // Place cards inside "the deck"
-    for (var i = 0; i < images.length; i++) {
+  // Place cards inside "the deck"
+  for (var i = 0; i < images.length; i++) {
 
-      // Create a card (li) with a class of 'card'
-      var card = document.createElement('li');
-      card.classList.add('card', 'show');
+    // Create a card (li) with a class of 'card'
+    var card = document.createElement('li');
+    card.classList.add('card', 'show');
 
-      var cardImage = document.createElement('i');
-      cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
-      card.appendChild(cardImage);
+    // Insert shuffled image in card
+    var cardImage = document.createElement('i');
+    cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
+    card.appendChild(cardImage);
 
-      // Place card in deck
-      cardDeck.appendChild(card);
-    }
-
-    cardSet++;
+    // Place card in deck
+    cardDeck.appendChild(card);
   }
 }
 
