@@ -68,15 +68,16 @@ window.onload = layoutCards;
 
 var cardDeck = document.querySelector('.deck');
 
-function respondToTheClick(evt) {
+// Function to flip card when clicked
+function flipCard(evt) {
+  var card = findTarget(evt);
 
-  var target = findTarget(evt);
+  card.classList.add('open', 'show'); // flip card and show symbol
 
-  // console.log(target.nodeName);
-  target.classList.add('open', 'show');
 }
 
-cardDeck.addEventListener('click', respondToTheClick);
+// Add 'click' event to make selected card "flip over"
+cardDeck.addEventListener('click', flipCard);
 
 /*
  * set up the event listener for a card. If a card is clicked:

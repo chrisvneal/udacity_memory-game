@@ -78,13 +78,11 @@ window.onload = layoutCards;
 const cardDeck = document.querySelector('.deck');
 
 
+// Function to flip card when clicked
+function flipCard(evt) {
+  let card = findTarget(evt);
 
-function respondToTheClick(evt) {
-
-
-
-  let target = findTarget(evt);
-
+  card.classList.add('open', 'show'); // flip card and show symbol
 
 
 
@@ -96,59 +94,15 @@ function respondToTheClick(evt) {
 
 
 
-  // console.log(target.nodeName);
-  target.classList.add('open', 'show');
+
+
+
+
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-cardDeck.addEventListener('click', respondToTheClick);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Add 'click' event to make selected card "flip over"
+cardDeck.addEventListener('click', flipCard);
 
 
 
