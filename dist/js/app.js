@@ -24,8 +24,6 @@ var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 // Shuffle images
 var shuffledImages = shuffle(images);
 
-var cardDeck = document.querySelector('.deck');
-
 // Layout 16 cards in the deck
 function layoutCards() {
 
@@ -33,26 +31,38 @@ function layoutCards() {
   for (var i = 0; i < images.length; i++) {
 
     // Create a card (li) with a class of 'card'
-    var _card = document.createElement('li');
-    _card.setAttribute('data-image', shuffledImages[i]);
-    _card.classList.add('card');
+    var card = document.createElement('li');
+    card.setAttribute('data-image', shuffledImages[i]);
+    card.classList.add('card');
 
     // Insert shuffled image in card
     var cardImage = document.createElement('i');
     cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
-    _card.appendChild(cardImage);
+    card.appendChild(cardImage);
 
     // Place card in deck
-    cardDeck.appendChild(_card);
+    cardDeck.appendChild(card);
   }
 }
 
 // Start of Memory Game ***************
 window.onload = layoutCards;
 
-card.addEventListener('click', function (e) {
-  console.log('You clicked: ' + e.target.nodeName);
-});
+var cardDeck = document.querySelector('.deck');
+
+function respondToTheClick(evt) {
+
+  // add the show and open class to display card, if not the li (card) element, find it and place classes
+  if (evt.target.nodeName.toLowerCase() === 'li') {
+
+    evt.target.classList.add('open', 'show');
+  } else {
+
+    evt.target.closest('.card').classList.add('open', 'show');
+  }
+}
+
+cardDeck.addEventListener('click', respondToTheClick);
 
 /*
  * set up the event listener for a card. If a card is clicked:

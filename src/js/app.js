@@ -23,7 +23,7 @@ let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 let shuffledImages = shuffle(images);
 
 
-const cardDeck = document.querySelector('.deck');
+
 
 
 
@@ -34,17 +34,17 @@ function layoutCards() {
   for (let i = 0; i < images.length; i++) {
 
     // Create a card (li) with a class of 'card'
-    let card = document.createElement('li');
+    const card = document.createElement('li');
     card.setAttribute('data-image', shuffledImages[i]);
     card.classList.add('card');
-
+  
     // Insert shuffled image in card
     let cardImage = document.createElement('i');
     cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
     card.appendChild(cardImage);
-
+  
     
-
+  
     // Place card in deck
     cardDeck.appendChild(card);
   }
@@ -53,9 +53,73 @@ function layoutCards() {
 // Start of Memory Game ***************
 window.onload = layoutCards;
 
-card.addEventListener('click', function(e) {
-  console.log('You clicked: ' + e.target.nodeName);
-});
+
+
+
+
+const cardDeck = document.querySelector('.deck');
+
+
+
+function respondToTheClick(evt) {
+  
+  // add the show and open class to display card, if not the li (card) element, find it and place classes
+  if (evt.target.nodeName.toLowerCase() === 'li') {
+    
+    evt.target.classList.add('open', 'show');
+  } else {
+
+
+    evt.target.closest('.card').classList.add('open', 'show');
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cardDeck.addEventListener('click', respondToTheClick);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
