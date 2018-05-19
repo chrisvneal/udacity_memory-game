@@ -35,7 +35,7 @@ function layoutCards() {
     // Create a card (li) with a class of 'card'
     var card = document.createElement('li');
     card.setAttribute('data-image', shuffledImages[i]);
-    card.classList.add('card');
+    card.classList.add('card', 'show');
 
     // Insert shuffled image in card
     var cardImage = document.createElement('i');
@@ -43,8 +43,8 @@ function layoutCards() {
     card.appendChild(cardImage);
 
     card.addEventListener('click', function (e) {
-      console.log(e.target.classList);
-    });
+      console.log('You clicked: ' + e.target.nodeName);
+    }, false);
 
     // Place card in deck
     cardDeck.appendChild(card);
