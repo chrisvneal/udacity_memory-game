@@ -61,8 +61,11 @@ function compareCards(cards) {
 }
 
 // Invoke when match is good
-function goodMatch() {
+function goodMatch(cards) {
   console.log("Good Match!");
+
+  var cardValue1 = cards[0];
+  var cardValue2 = cards[1];
 
   setTimeout(function () {
 
@@ -72,11 +75,19 @@ function goodMatch() {
 }
 
 // Invooke when match is bad
-function badMatch() {
+function badMatch(cards) {
   console.log("Bad Match!");
+
+  var cardValue1 = cards[0];
+  var cardValue2 = cards[1];
+
+  var flippedCards = cardDeck.querySelectorAll('.flipped');
+  // console.log(flippedCards);
+
 
   setTimeout(function () {
     // alert('bad match');
+    console.log(cardValue1 + ' and ' + cardValue2 + ' do not match!');
   }, 800);
 }
 
@@ -87,7 +98,7 @@ function flipCard(evt) {
   if (clickedCard.nodeName.toLowerCase() == 'li') {
 
     // Flip card and show symbol
-    clickedCard.classList.add('open', 'show');
+    clickedCard.classList.add('open', 'show', 'flipped');
 
     // Put the card's value in the selected card's array
     var cardAttribute = clickedCard.getAttribute('data-image');
