@@ -70,7 +70,7 @@ window.onload = layoutCards;
 var cardDeck = document.querySelector('.deck');
 
 function goodMatch() {
-  // console.log("Good Match!");
+  console.log("Good Match!");
 
   setTimeout(function () {
 
@@ -80,7 +80,7 @@ function goodMatch() {
 }
 
 function badMatch() {
-  // console.log("Bad Match!");
+  console.log("Bad Match!");
 
   setTimeout(function () {
     // alert('bad match');
@@ -124,7 +124,7 @@ function flipCard(evt) {
 }
 
 // Add 'click' event to make selected card "flip over"
-cardDeck.addEventListener('mousedown', flipCard, true);
+cardDeck.addEventListener('mousedown', flipCard);
 
 /*
  * set up the event listener for a card. If a card is clicked:
