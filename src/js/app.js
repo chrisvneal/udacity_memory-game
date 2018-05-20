@@ -109,7 +109,7 @@ function compareCards(cards) {
   let cardValue1 = cards[0];
   let cardValue2 = cards[1];
 
-  cardValue1 == cardValue2 ? goodMatch() : badMatch();
+  cardValue1 == cardValue2 ? goodMatch(cards) : badMatch(cards);
   selectedCards.length = 0;
 }
 
