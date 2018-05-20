@@ -66,14 +66,44 @@ function lockCards() {
 
 // Invoke when match is good
 function goodMatch(cards) {
-  console.log("Good Match!");
+  // console.log("Good Match!");
 
-  var cardValue1 = cards[0];
-  var cardValue2 = cards[1];
+  var cardValue = cards[0];
+  // console.log(cardValue);
+  var flippedCards = cardDeck.querySelectorAll('.flipped');
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = flippedCards[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var card = _step.value;
+
+      if (card.getAttribute('data-image') == cardValue) {
+        card.classList.remove('flipped');
+        card.classList.add('matched');
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
 
   setTimeout(function () {
 
     // alert('good match');
+
 
   }, 800);
 }
@@ -88,29 +118,29 @@ function badMatch(cards) {
   setTimeout(function () {
     var flippedCards = cardDeck.querySelectorAll('.flipped');
 
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
 
     try {
-      for (var _iterator = flippedCards[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var card = _step.value;
+      for (var _iterator2 = flippedCards[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var card = _step2.value;
 
         if (card.getAttribute('data-image') == cardValue1 || card.getAttribute('data-image') == cardValue2) {
           card.classList.remove('open', 'show', 'flipped');
         }
       }
     } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
+        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+          _iterator2.return();
         }
       } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
+        if (_didIteratorError2) {
+          throw _iteratorError2;
         }
       }
     }
@@ -133,9 +163,9 @@ function flipCard(evt) {
     var cardAttribute = clickedCard.getAttribute('data-image');
     selectedCards.push(cardAttribute);
 
-    // If the selectedCard 's array length hits 2, compare the 2 values
+    // If the selectedCard 's array length hits 2, lock clicking functionality and compare the 2 values
     if (selectedCards.length == 2) {
-      lockCards();
+      // lockCards();            
 
       compareCards(selectedCards);
     }

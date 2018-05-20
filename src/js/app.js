@@ -81,14 +81,25 @@ function lockCards() {
 
 // Invoke when match is good
 function goodMatch(cards) {
-  console.log("Good Match!");
+  // console.log("Good Match!");
 
-  let cardValue1 = cards[0];
-  let cardValue2 = cards[1];
+  let cardValue = cards[0];
+  // console.log(cardValue);
+  let flippedCards = cardDeck.querySelectorAll('.flipped');
+
+  for (let card of flippedCards) {
+    if (card.getAttribute('data-image') == cardValue) {
+      card.classList.remove('flipped');
+      card.classList.add('matched');
+    }
+  }
+
+  
 
   setTimeout(function() {
 
     // alert('good match');
+    
 
   }, 800);
 }
@@ -127,9 +138,9 @@ function flipCard(evt) {
     let cardAttribute = clickedCard.getAttribute('data-image');
     selectedCards.push(cardAttribute);
 
-    // If the selectedCard 's array length hits 2, compare the 2 values
+    // If the selectedCard 's array length hits 2, lock clicking functionality and compare the 2 values
     if (selectedCards.length == 2) {
-      lockCards();            
+      // lockCards();            
 
       compareCards(selectedCards);      
     }
