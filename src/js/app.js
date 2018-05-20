@@ -88,28 +88,21 @@ function goodMatch(cards) {
   }, 800);
 }
 
-// Invooke when match is bad
+// Invoke when match is bad
 function badMatch(cards) {
-  console.log("Bad Match!");
 
   let cardValue1 = cards[0];
   let cardValue2 = cards[1];
 
-  let flippedCards = cardDeck.querySelectorAll('.flipped');
-  // console.log(flippedCards);
-
-  
-  
-
-
-
-  
-
+  // Turn the card around if the values do not match
   setTimeout(function() {
-    // alert('bad match');
-    console.log(cardValue1 + ' and ' + cardValue2 + ' do not match!');
-
-
+    let flippedCards = cardDeck.querySelectorAll('.flipped');
+    
+    for (let card of flippedCards) {
+      if (card.getAttribute('data-image') == cardValue1 || card.getAttribute('data-image') == cardValue2) {
+        card.classList.remove('open', 'show', 'flipped');
+      }
+    }
   }, 800);
 }
 
@@ -129,9 +122,8 @@ function flipCard(evt) {
     // If the selectedCard 's array length hits 2, compare the 2 values
     if (selectedCards.length == 2) {
       let allCards = document.querySelectorAll('.deck li');      
-      
-      compareCards(selectedCards);
 
+      compareCards(selectedCards);
     }
   }
 }

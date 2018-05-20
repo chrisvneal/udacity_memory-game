@@ -74,20 +74,42 @@ function goodMatch(cards) {
   }, 800);
 }
 
-// Invooke when match is bad
+// Invoke when match is bad
 function badMatch(cards) {
-  console.log("Bad Match!");
 
   var cardValue1 = cards[0];
   var cardValue2 = cards[1];
 
-  var flippedCards = cardDeck.querySelectorAll('.flipped');
-  // console.log(flippedCards);
-
-
+  // Turn the card around if the values do not match
   setTimeout(function () {
-    // alert('bad match');
-    console.log(cardValue1 + ' and ' + cardValue2 + ' do not match!');
+    var flippedCards = cardDeck.querySelectorAll('.flipped');
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = flippedCards[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var card = _step.value;
+
+        if (card.getAttribute('data-image') == cardValue1 || card.getAttribute('data-image') == cardValue2) {
+          card.classList.remove('open', 'show', 'flipped');
+        }
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
   }, 800);
 }
 
