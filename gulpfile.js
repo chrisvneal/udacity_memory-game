@@ -1,6 +1,7 @@
 // Dependencies
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
@@ -42,6 +43,7 @@ gulp.task('copy-html', function() {
 // copy all javascript files to 'dist' once file saved
 gulp.task('copy-js', function() {
   return gulp.src(jsSource)
+  .pipe(plumber())
     .pipe(babel({
       presets: ['env']
     }))
