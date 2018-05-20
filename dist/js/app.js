@@ -60,6 +60,10 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
+function lockCards() {
+  cardDeck.removeEventListener('mousedown', flipCard);
+}
+
 // Invoke when match is good
 function goodMatch(cards) {
   console.log("Good Match!");
@@ -111,6 +115,9 @@ function badMatch(cards) {
       }
     }
   }, 800);
+
+  // Givev click functionality back after disabling
+  // cardDeck.addEventListener('mousedown', flipCard);
 }
 
 // Function to flip card when clicked
@@ -128,7 +135,7 @@ function flipCard(evt) {
 
     // If the selectedCard 's array length hits 2, compare the 2 values
     if (selectedCards.length == 2) {
-      var allCards = document.querySelectorAll('.deck li');
+      lockCards();
 
       compareCards(selectedCards);
     }
