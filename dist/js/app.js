@@ -67,24 +67,36 @@ function layoutCards() {
 // Start of Memory Game ***************
 window.onload = layoutCards;
 
+var delayTime = 700;
+
 var cardDeck = document.querySelector('.deck');
 
 // TODO: Create functions for goodMatch() and badMatch()
 
 function goodMatch() {
-  console.log("Good Match!");
+  // console.log("Good Match!");
+
+  setTimeout(function () {
+
+    alert('good match');
+  }, delayTime);
 }
 
 function badMatch() {
-  console.log("Bad Match!");
+  // console.log("Bad Match!");
+
+  setTimeout(function () {
+    alert('bad match');
+  }, delayTime);
 }
 
 function compareCards(cards) {
-  console.log('Compare ' + cards[0] + ' and ' + cards[1]); //
+  console.log('Compare ' + cards[0] + ' and ' + cards[1]);
   var cardValue1 = cards[0];
   var cardValue2 = cards[1];
 
   cardValue1 == cardValue2 ? goodMatch() : badMatch();
+  selectedCards.length = 0;
 }
 
 // Initiate selected cards variable
