@@ -116,39 +116,43 @@ function compareCards(cards) {
 
 
 
-// Initiate selected cards variable
+// Initiate variable for selected cards
 let selectedCards = [];
 
 
 // Function to flip card when clicked
 function flipCard(evt) {
-  let card = evt.target;
+  let clickedCard = evt.target;
 
- 
-  
-  
+  if (clickedCard.nodeName.toLowerCase() == 'li') {
 
-  if (card.nodeName.toLowerCase() == 'li') {
-    // console.log(evt.target.nodeName);
+    // Flip card and show symbol
+    clickedCard.classList.add('open', 'show');
 
-    card.classList.add('open', 'show'); // flip card and show symbol
-
-    let cardAttribute = card.getAttribute('data-image');
-
+    // Put the card's value in the selected card's array
+    let cardAttribute = clickedCard.getAttribute('data-image');
     selectedCards.push(cardAttribute);
-    // console.log('selectedCards length: ' + selectedCards.length);
-    // console.log(selectedCards);
 
+    // If the selectedCard 's array length hits 2, compare the 2 values
     if (selectedCards.length == 2) {
-      // alert("Test the cards");
-
-      // compare the cards
       compareCards(selectedCards);
     }
   }
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Add 'click' event to make selected card "flip over"
 cardDeck.addEventListener('mousedown', flipCard);

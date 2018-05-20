@@ -96,28 +96,24 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
-// Initiate selected cards variable
+// Initiate variable for selected cards
 var selectedCards = [];
 
 // Function to flip card when clicked
 function flipCard(evt) {
-  var card = evt.target;
+  var clickedCard = evt.target;
 
-  if (card.nodeName.toLowerCase() == 'li') {
-    // console.log(evt.target.nodeName);
+  if (clickedCard.nodeName.toLowerCase() == 'li') {
 
-    card.classList.add('open', 'show'); // flip card and show symbol
+    // Flip card and show symbol
+    clickedCard.classList.add('open', 'show');
 
-    var cardAttribute = card.getAttribute('data-image');
-
+    // Put the card's value in the selected card's array
+    var cardAttribute = clickedCard.getAttribute('data-image');
     selectedCards.push(cardAttribute);
-    // console.log('selectedCards length: ' + selectedCards.length);
-    // console.log(selectedCards);
 
+    // If the selectedCard 's array length hits 2, compare the 2 values
     if (selectedCards.length == 2) {
-      // alert("Test the cards");
-
-      // compare the cards
       compareCards(selectedCards);
     }
   }
