@@ -22,6 +22,7 @@ let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 // Shuffle images
 let shuffledImages = shuffle(images);
 
+// TODO: Fix finding the correct target
 // Return the correct target if 'svg' or 'path' node is clicked instead of their 'li' parent
 function findTarget(evt) {
   let target;
@@ -79,20 +80,33 @@ const cardDeck = document.querySelector('.deck');
 
 // TODO: Create functions for goodMatch() and badMatch()
 
+function goodMatch() {
+  console.log("Good Match!");
+  
+  
+
+}
+
+function badMatch() {
+  console.log("Bad Match!");
+
+
+
+
+}
+
+
+
 function compareCards(cards) {
   console.log('Compare ' + cards[0] + ' and ' + cards[1]); //
-  let cardvalue1 = cards[0];
+  let cardValue1 = cards[0];
   let cardValue2 = cards[1];
 
-  if (cardValue1 == cardValue2) {
-    console.log("Good match");
-    // goodMatch();
-  } else {
-    // wrongMatch();
-    console.log("Bad match");
-    
-  }
+  cardValue1 == cardValue2 ? goodMatch() : badMatch();
 }
+
+
+
 
 // Initiate selected cards variable
 let selectedCards = [];
