@@ -74,7 +74,6 @@ window.onload = layoutCards;
 
 
 
-let delayTime = 700;
 
 const cardDeck = document.querySelector('.deck');
 
@@ -87,7 +86,7 @@ function goodMatch() {
 
 alert('good match');
 
-  }, delayTime);
+  }, 800);
   
   
 
@@ -98,7 +97,7 @@ function badMatch() {
 
   setTimeout(function() {
     alert('bad match');
-  }, delayTime);
+  }, 800);
 
 
 

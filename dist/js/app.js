@@ -67,8 +67,6 @@ function layoutCards() {
 // Start of Memory Game ***************
 window.onload = layoutCards;
 
-var delayTime = 700;
-
 var cardDeck = document.querySelector('.deck');
 
 // TODO: Create functions for goodMatch() and badMatch()
@@ -79,7 +77,7 @@ function goodMatch() {
   setTimeout(function () {
 
     alert('good match');
-  }, delayTime);
+  }, 800);
 }
 
 function badMatch() {
@@ -87,7 +85,7 @@ function badMatch() {
 
   setTimeout(function () {
     alert('bad match');
-  }, delayTime);
+  }, 800);
 }
 
 function compareCards(cards) {
