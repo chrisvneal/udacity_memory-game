@@ -68,6 +68,22 @@ window.onload = layoutCards;
 
 var cardDeck = document.querySelector('.deck');
 
+// TODO: Create functions for goodMatch() and badMatch()
+
+function compareCards(cards) {
+  console.log('Compare ' + cards[0] + ' and ' + cards[1]); //
+  var cardvalue1 = cards[0];
+  var cardValue2 = cards[1];
+
+  if (cardValue1 == cardValue2) {
+    console.log("Good match");
+    // goodMatch();
+  } else {
+    // wrongMatch();
+    console.log("Bad match");
+  }
+}
+
 // Initiate selected cards variable
 var selectedCards = [];
 
@@ -80,11 +96,14 @@ function flipCard(evt) {
   var cardAttribute = card.getAttribute('data-image');
 
   selectedCards.push(cardAttribute);
-  console.log('selectedCards length: ' + selectedCards.length);
-  console.log(selectedCards);
+  // console.log('selectedCards length: ' + selectedCards.length);
+  // console.log(selectedCards);
 
   if (selectedCards.length == 2) {
-    alert("Test the cards");
+    // alert("Test the cards");
+
+    // compare the cards
+    compareCards(selectedCards);
   }
 
   // console.log(selectedCards);
