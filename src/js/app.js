@@ -22,24 +22,10 @@ let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 // Shuffle images
 let shuffledImages = shuffle(images);
 
+// Initiate variable for selected cards
+let selectedCards = [];
 
-// // Return the correct target if 'svg' or 'path' node is clicked instead of their 'li' parent
-// function findTarget(evt) {
-//   let target;
-//   let nodeName = evt.target.nodeName.toLowerCase();
-
-//   switch (nodeName) {
-//     case "svg":
-//       target = evt.target.parentElement;
-//       break;
-//     case "path":
-//       target = evt.target.parentElement.parentElement;
-//       break;
-//     default:
-//       target = evt.target;
-//   }
-//   return target;
-// }
+const cardDeck = document.querySelector('.deck');
 
 
 
@@ -69,41 +55,6 @@ function layoutCards() {
   }
 }
 
-// Start of Memory Game ***************
-window.onload = layoutCards;
-
-
-
-
-const cardDeck = document.querySelector('.deck');
-
-function goodMatch() {
-  console.log("Good Match!");
-
-  setTimeout(function() {
-
-    // alert('good match');
-
-  }, 800);
-
-
-
-}
-
-function badMatch() {
-  console.log("Bad Match!");
-
-  setTimeout(function() {
-    // alert('bad match');
-  }, 800);
-
-
-
-
-}
-
-
-
 // compare the selected cards
 function compareCards(cards) {
   let cardValue1 = cards[0];
@@ -116,9 +67,28 @@ function compareCards(cards) {
 
 
 
-// Initiate variable for selected cards
-let selectedCards = [];
 
+
+
+// Invoke when match is good
+function goodMatch() {
+  console.log("Good Match!");
+
+  setTimeout(function() {
+
+    // alert('good match');
+
+  }, 800);
+}
+
+// Invooke when match is bad
+function badMatch() {
+  console.log("Bad Match!");
+
+  setTimeout(function() {
+    // alert('bad match');
+  }, 800);
+}
 
 // Function to flip card when clicked
 function flipCard(evt) {
@@ -140,14 +110,8 @@ function flipCard(evt) {
   }
 }
 
-
-
-
-
-
-
-
-
+// Start of Memory Game ***************
+window.onload = layoutCards;
 
 
 

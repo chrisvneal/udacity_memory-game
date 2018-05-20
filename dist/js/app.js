@@ -24,24 +24,10 @@ var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 // Shuffle images
 var shuffledImages = shuffle(images);
 
-// // Return the correct target if 'svg' or 'path' node is clicked instead of their 'li' parent
-// function findTarget(evt) {
-//   let target;
-//   let nodeName = evt.target.nodeName.toLowerCase();
+// Initiate variable for selected cards
+var selectedCards = [];
 
-//   switch (nodeName) {
-//     case "svg":
-//       target = evt.target.parentElement;
-//       break;
-//     case "path":
-//       target = evt.target.parentElement.parentElement;
-//       break;
-//     default:
-//       target = evt.target;
-//   }
-//   return target;
-// }
-
+var cardDeck = document.querySelector('.deck');
 
 // Layout 16 cards in the deck
 function layoutCards() {
@@ -64,11 +50,16 @@ function layoutCards() {
   }
 }
 
-// Start of Memory Game ***************
-window.onload = layoutCards;
+// compare the selected cards
+function compareCards(cards) {
+  var cardValue1 = cards[0];
+  var cardValue2 = cards[1];
 
-var cardDeck = document.querySelector('.deck');
+  cardValue1 == cardValue2 ? goodMatch(cards) : badMatch(cards);
+  selectedCards.length = 0;
+}
 
+// Invoke when match is good
 function goodMatch() {
   console.log("Good Match!");
 
@@ -79,6 +70,7 @@ function goodMatch() {
   }, 800);
 }
 
+// Invooke when match is bad
 function badMatch() {
   console.log("Bad Match!");
 
@@ -86,18 +78,6 @@ function badMatch() {
     // alert('bad match');
   }, 800);
 }
-
-// compare the selected cards
-function compareCards(cards) {
-  var cardValue1 = cards[0];
-  var cardValue2 = cards[1];
-
-  cardValue1 == cardValue2 ? goodMatch(cards) : badMatch(cards);
-  selectedCards.length = 0;
-}
-
-// Initiate variable for selected cards
-var selectedCards = [];
 
 // Function to flip card when clicked
 function flipCard(evt) {
@@ -118,6 +98,9 @@ function flipCard(evt) {
     }
   }
 }
+
+// Start of Memory Game ***************
+window.onload = layoutCards;
 
 // Add 'click' event to make selected card "flip over"
 cardDeck.addEventListener('mousedown', flipCard);
