@@ -58,9 +58,23 @@ function layoutCards() {
 }
 
 
+// Establish initial moves made message
+let movesMade = 0;
+document.querySelector('span.moves').innerHTML = movesMade + " Moves";
+
 
 // compare the selected cards
 function compareCards(cards) {
+
+  movesMade++;
+  
+
+  if (movesMade > 1) {
+    document.querySelector('span.moves').innerHTML = movesMade + " Moves";
+  } else {
+    document.querySelector('span.moves').innerHTML = movesMade + " Move";
+  }
+
   let cardValue1 = cards[0];
   let cardValue2 = cards[1];
 
@@ -72,7 +86,7 @@ function compareCards(cards) {
 function lockCards() {
   cardDeck.removeEventListener('mousedown', flipCard);
 }
- 
+
 
 
 
@@ -94,12 +108,12 @@ function goodMatch(cards) {
     }
   }
 
-  
+
 
   setTimeout(function() {
 
     // alert('good match');
-    
+
 
   }, 800);
 }
@@ -113,7 +127,7 @@ function badMatch(cards) {
   // Turn the card around if the values do not match
   setTimeout(function() {
     let flippedCards = cardDeck.querySelectorAll('.flipped');
-    
+
     for (let card of flippedCards) {
       if (card.getAttribute('data-image') == cardValue1 || card.getAttribute('data-image') == cardValue2) {
         card.classList.remove('open', 'show', 'flipped');
@@ -142,7 +156,7 @@ function flipCard(evt) {
     if (selectedCards.length == 2) {
       // lockCards();            
 
-      compareCards(selectedCards);      
+      compareCards(selectedCards);
     }
   }
 }

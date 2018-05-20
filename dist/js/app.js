@@ -50,8 +50,21 @@ function layoutCards() {
   }
 }
 
+// Establish initial moves made message
+var movesMade = 0;
+document.querySelector('span.moves').innerHTML = movesMade + " Moves";
+
 // compare the selected cards
 function compareCards(cards) {
+
+  movesMade++;
+
+  if (movesMade > 1) {
+    document.querySelector('span.moves').innerHTML = movesMade + " Moves";
+  } else {
+    document.querySelector('span.moves').innerHTML = movesMade + " Move";
+  }
+
   var cardValue1 = cards[0];
   var cardValue2 = cards[1];
 
