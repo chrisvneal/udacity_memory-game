@@ -69,14 +69,13 @@ window.onload = layoutCards;
 
 var cardDeck = document.querySelector('.deck');
 
-// TODO: Create functions for goodMatch() and badMatch()
-
 function goodMatch() {
   // console.log("Good Match!");
 
   setTimeout(function () {
 
-    alert('good match');
+    // alert('good match');
+
   }, 800);
 }
 
@@ -84,12 +83,12 @@ function badMatch() {
   // console.log("Bad Match!");
 
   setTimeout(function () {
-    alert('bad match');
+    // alert('bad match');
   }, 800);
 }
 
+// compare the selected cards
 function compareCards(cards) {
-  console.log('Compare ' + cards[0] + ' and ' + cards[1]);
   var cardValue1 = cards[0];
   var cardValue2 = cards[1];
 
@@ -103,28 +102,30 @@ var selectedCards = [];
 // Function to flip card when clicked
 function flipCard(evt) {
   var card = findTarget(evt);
+  evt.stopPropagation();
 
-  card.classList.add('open', 'show'); // flip card and show symbol
+  if (card.nodeName.toLowerCase() == 'li') {
+    console.log(evt.target.nodeName);
 
-  var cardAttribute = card.getAttribute('data-image');
+    card.classList.add('open', 'show'); // flip card and show symbol
 
-  selectedCards.push(cardAttribute);
-  // console.log('selectedCards length: ' + selectedCards.length);
-  // console.log(selectedCards);
+    var cardAttribute = card.getAttribute('data-image');
 
-  if (selectedCards.length == 2) {
-    // alert("Test the cards");
+    selectedCards.push(cardAttribute);
+    // console.log('selectedCards length: ' + selectedCards.length);
+    // console.log(selectedCards);
 
-    // compare the cards
-    compareCards(selectedCards);
+    if (selectedCards.length == 2) {
+      // alert("Test the cards");
+
+      // compare the cards
+      compareCards(selectedCards);
+    }
   }
-
-  // console.log(selectedCards);
-
 }
 
 // Add 'click' event to make selected card "flip over"
-cardDeck.addEventListener('click', flipCard);
+cardDeck.addEventListener('click', flipCard, true);
 
 /*
  * set up the event listener for a card. If a card is clicked:
