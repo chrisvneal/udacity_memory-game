@@ -103,10 +103,8 @@ var selectedCards = [];
 function flipCard(evt) {
   var card = evt.target;
 
-  evt.stopPropagation();
-
   if (card.nodeName.toLowerCase() == 'li') {
-    console.log(evt.target.nodeName);
+    // console.log(evt.target.nodeName);
 
     card.classList.add('open', 'show'); // flip card and show symbol
 
