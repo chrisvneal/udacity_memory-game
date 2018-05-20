@@ -22,24 +22,24 @@ let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 // Shuffle images
 let shuffledImages = shuffle(images);
 
-// TODO: Fix finding the correct target
-// Return the correct target if 'svg' or 'path' node is clicked instead of their 'li' parent
-function findTarget(evt) {
-  let target;
-  let nodeName = evt.target.nodeName.toLowerCase();
 
-  switch (nodeName) {
-    case "svg":
-      target = evt.target.parentElement;
-      break;
-    case "path":
-      target = evt.target.parentElement.parentElement;
-      break;
-    default:
-      target = evt.target;
-  }
-  return target;
-}
+// // Return the correct target if 'svg' or 'path' node is clicked instead of their 'li' parent
+// function findTarget(evt) {
+//   let target;
+//   let nodeName = evt.target.nodeName.toLowerCase();
+
+//   switch (nodeName) {
+//     case "svg":
+//       target = evt.target.parentElement;
+//       break;
+//     case "path":
+//       target = evt.target.parentElement.parentElement;
+//       break;
+//     default:
+//       target = evt.target;
+//   }
+//   return target;
+// }
 
 
 
@@ -122,7 +122,9 @@ let selectedCards = [];
 
 // Function to flip card when clicked
 function flipCard(evt) {
-  let card = findTarget(evt);
+  let card = evt.target;
+  
+  
   evt.stopPropagation();
 
   if (card.nodeName.toLowerCase() == 'li') {
@@ -148,7 +150,7 @@ function flipCard(evt) {
 }
 
 // Add 'click' event to make selected card "flip over"
-cardDeck.addEventListener('click', flipCard, true);
+cardDeck.addEventListener('mousedown', flipCard, true);
 
 
 
