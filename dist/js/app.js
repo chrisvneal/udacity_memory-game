@@ -1,7 +1,23 @@
 "use strict";
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+var cardDeck = document.querySelector('.deck');
 
+// Array of 8 images for cards
+var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
+
+// Shuffle images
+var shuffledImages = shuffle(images);
+
+// Initiate variable for selected cards
+var selectedCards = [];
+
+// Establish initial moves made message
+var movesMade = 0;
+document.querySelector('span.moves').innerHTML = movesMade + " Moves";
+
+/**************************** Functions ****************************/
+
+// Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
   var currentIndex = array.length,
       temporaryValue,
@@ -17,17 +33,6 @@ function shuffle(array) {
 
   return array;
 }
-
-// Array of 8 images for cards
-var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
-
-// Shuffle images
-var shuffledImages = shuffle(images);
-
-// Initiate variable for selected cards
-var selectedCards = [];
-
-var cardDeck = document.querySelector('.deck');
 
 // Layout 16 cards in the deck
 function layoutCards() {
@@ -49,10 +54,6 @@ function layoutCards() {
     cardDeck.appendChild(card);
   }
 }
-
-// Establish initial moves made message
-var movesMade = 0;
-document.querySelector('span.moves').innerHTML = movesMade + " Moves";
 
 // compare the selected cards
 function compareCards(cards) {
@@ -117,7 +118,6 @@ function goodMatch(cards) {
 
     // alert('good match');
 
-
   }, 800);
 }
 
@@ -158,9 +158,6 @@ function badMatch(cards) {
       }
     }
   }, 800);
-
-  // Givev click functionality back after disabling
-  // cardDeck.addEventListener('mousedown', flipCard);
 }
 
 // Function to flip card when clicked

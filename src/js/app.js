@@ -1,5 +1,24 @@
 "use strict";
 
+const cardDeck = document.querySelector('.deck');
+
+// Array of 8 images for cards
+let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
+
+// Shuffle images
+let shuffledImages = shuffle(images);
+
+// Initiate variable for selected cards
+let selectedCards = [];
+
+// Establish initial moves made message
+let movesMade = 0;
+document.querySelector('span.moves').innerHTML = movesMade + " Moves";
+
+
+/**************************** Functions ****************************/
+
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
   var currentIndex = array.length,
@@ -15,24 +34,6 @@ function shuffle(array) {
 
   return array;
 }
-
-// Array of 8 images for cards
-let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
-
-// Shuffle images
-let shuffledImages = shuffle(images);
-
-
-
-// Initiate variable for selected cards
-let selectedCards = [];
-
-const cardDeck = document.querySelector('.deck');
-
-
-
-
-
 
 // Layout 16 cards in the deck
 function layoutCards() {
@@ -50,18 +51,10 @@ function layoutCards() {
     cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
     card.appendChild(cardImage);
 
-
-
     // Place card in deck
     cardDeck.appendChild(card);
   }
 }
-
-
-// Establish initial moves made message
-let movesMade = 0;
-document.querySelector('span.moves').innerHTML = movesMade + " Moves";
-
 
 // compare the selected cards
 function compareCards(cards) {
@@ -87,12 +80,6 @@ function lockCards() {
   cardDeck.removeEventListener('mousedown', flipCard);
 }
 
-
-
-
-
-
-
 // Invoke when match is good
 function goodMatch(cards) {
   // console.log("Good Match!");
@@ -108,12 +95,9 @@ function goodMatch(cards) {
     }
   }
 
-
-
   setTimeout(function() {
 
     // alert('good match');
-
 
   }, 800);
 }
@@ -134,9 +118,6 @@ function badMatch(cards) {
       }
     }
   }, 800);
-
-  // Givev click functionality back after disabling
-  // cardDeck.addEventListener('mousedown', flipCard);
 }
 
 // Function to flip card when clicked
@@ -163,10 +144,6 @@ function flipCard(evt) {
 
 // Start of Memory Game ***************
 window.onload = layoutCards;
-
-
-
-
 
 
 // Add 'click' event to make selected card "flip over"
