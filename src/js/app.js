@@ -22,6 +22,8 @@ let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'che
 // Shuffle images
 let shuffledImages = shuffle(images);
 
+
+
 // Initiate variable for selected cards
 let selectedCards = [];
 
@@ -55,15 +57,17 @@ function layoutCards() {
   }
 }
 
+
+
 // compare the selected cards
 function compareCards(cards) {
   let cardValue1 = cards[0];
   let cardValue2 = cards[1];
 
   cardValue1 == cardValue2 ? goodMatch(cards) : badMatch(cards);
+
   selectedCards.length = 0;
 }
-
 
 
 
@@ -85,6 +89,8 @@ function goodMatch() {
 function badMatch() {
   console.log("Bad Match!");
 
+  
+
   setTimeout(function() {
     // alert('bad match');
   }, 800);
@@ -105,7 +111,10 @@ function flipCard(evt) {
 
     // If the selectedCard 's array length hits 2, compare the 2 values
     if (selectedCards.length == 2) {
+      let allCards = document.querySelectorAll('.deck li');      
+      
       compareCards(selectedCards);
+
     }
   }
 }
@@ -120,6 +129,7 @@ window.onload = layoutCards;
 
 // Add 'click' event to make selected card "flip over"
 cardDeck.addEventListener('mousedown', flipCard);
+
 
 
 

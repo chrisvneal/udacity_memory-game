@@ -56,6 +56,7 @@ function compareCards(cards) {
   var cardValue2 = cards[1];
 
   cardValue1 == cardValue2 ? goodMatch(cards) : badMatch(cards);
+
   selectedCards.length = 0;
 }
 
@@ -94,6 +95,8 @@ function flipCard(evt) {
 
     // If the selectedCard 's array length hits 2, compare the 2 values
     if (selectedCards.length == 2) {
+      var allCards = document.querySelectorAll('.deck li');
+
       compareCards(selectedCards);
     }
   }
