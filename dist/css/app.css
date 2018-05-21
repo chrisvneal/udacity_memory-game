@@ -114,7 +114,13 @@ h1 {
 .score-panel {
   text-align: left;
   width: 345px;
-  margin-bottom: 10px;
+  margin: 1em 0 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .score-panel .stars {
@@ -130,7 +136,6 @@ h1 {
 }
 
 .score-panel .reset {
-  float: right;
   cursor: pointer;
 }
 
