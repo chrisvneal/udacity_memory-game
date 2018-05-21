@@ -111,10 +111,15 @@ function resetGame() {
   document.querySelector('span.moves').innerHTML = "0 Moves";
 
   //reset score
+  gameScore = 0;
+  scoreOutput.innerHTML = gameScore;
 }
 
 var resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetGame);
+
+// change score
+function changeScore() {}
 
 function gameWon() {
   stopTimer();
@@ -135,8 +140,13 @@ function checkIfWon() {
   }
 }
 
+var scoreOutput = document.querySelector('.scoreOutput');
+var gameScore = 0;
+
 // Invoke when match is good
 function goodMatch(cards) {
+  gameScore++;
+  scoreOutput.innerHTML = gameScore;
 
   var cardValue = cards[0];
 

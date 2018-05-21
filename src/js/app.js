@@ -115,10 +115,17 @@ function resetGame() {
   document.querySelector('span.moves').innerHTML = "0 Moves";
 
   //reset score
+  gameScore = 0;
+  scoreOutput.innerHTML = gameScore;
 }
 
 let resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetGame);
+
+// change score
+function changeScore() {
+
+}
 
 
 
@@ -141,8 +148,14 @@ function checkIfWon() {
   }
 }
 
+const scoreOutput = document.querySelector('.scoreOutput');
+let gameScore = 0;
+
+
 // Invoke when match is good
 function goodMatch(cards) {
+  gameScore++;
+  scoreOutput.innerHTML = gameScore;
 
   let cardValue = cards[0];
 
