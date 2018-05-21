@@ -151,12 +151,53 @@ function checkIfWon() {
 const scoreOutput = document.querySelector('.scoreOutput');
 let gameScore = 0;
 
+const unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
+// console.log('Unshaded stars: ' + unshadedStars.length);
+
+
+// TODO: program number of stars to shade
+function shadeStars(numberToShade) {
+  // for (let star of unshadedStars) {
+  //   star.classList.add('shaded');
+  // }
+
+  for (let i = 0; i < numberToShade; i++) {
+    unshadedStars[i].classList.add('shaded');
+  }
+
+  // grab list of unshaded stars
+
+
+  //if there is less stars shaded than supposed to provide, provide up to the rest
+
+
+
+
+
+
+
+
+}
+
 
 // Invoke when match is good
 function goodMatch(cards) {
   // Gain 10 points for a good match
-  gameScore+=10;
+  gameScore += 10;
   scoreOutput.innerHTML = gameScore;
+
+  if (movesMade == 1) {
+    shadeStars(1);
+  }
+
+
+
+
+
+
+
+
+
 
   let cardValue = cards[0];
 
