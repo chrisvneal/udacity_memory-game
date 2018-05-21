@@ -35,13 +35,12 @@ function shuffle(array) {
   return array;
 }
 
-function lockCards() {
+function disableCardClicking() {
   cardDeck.removeEventListener('mousedown', flipCard);
-  console.log('locked');
 }
-function unlockCards() {
+
+function enableCardClicks() {
   cardDeck.addEventListener('mousedown', flipCard);
-  console.log('unlocked');  
 }
 
 // Layout 16 cards in the deck
@@ -64,14 +63,14 @@ function layoutCards() {
     cardDeck.appendChild(card);
   }
 
-  unlockCards();
+  enableCardClicks();
 }
 
 // compare the selected cards
 function compareCards(cards) {
 
   movesMade++;
-  
+
 
   if (movesMade > 1) {
     document.querySelector('span.moves').innerHTML = movesMade + " Moves";
@@ -90,11 +89,10 @@ function compareCards(cards) {
 
 
 // Invoke when match is good
-function goodMatch(cards, unlockCards) {
-  // console.log("Good Match!");
+function goodMatch(cards) {
 
   let cardValue = cards[0];
-  // console.log(cardValue);
+
   let flippedCards = cardDeck.querySelectorAll('.flipped');
 
   for (let card of flippedCards) {
@@ -104,15 +102,12 @@ function goodMatch(cards, unlockCards) {
     }
   }
 
-  setTimeout(function() {
-
-    // alert('good match');
-
-  }, 800);
+  // enable clicking on cards
+  setTimeout(function() { enableCardClicks(); }, 800);
 }
 
 // Invoke when match is bad
-function badMatch(cards, unlockCards) {
+function badMatch(cards) {
 
   let cardValue1 = cards[0];
   let cardValue2 = cards[1];
@@ -126,6 +121,9 @@ function badMatch(cards, unlockCards) {
         card.classList.remove('open', 'show', 'flipped');
       }
     }
+
+    // enable clicking on cards
+    enableCardClicks();
   }, 800);
 }
 
@@ -144,15 +142,9 @@ function flipCard(evt) {
 
     // If the selectedCard 's array length hits 2, lock clicking functionality and compare the 2 values
     if (selectedCards.length == 2) {
-      //TODO: Insert function to lock all cards here
-      lockCards(); 
-
-               
+      disableCardClicking();
 
       compareCards(selectedCards);
-
-      // unlockCards();
-        
     }
   }
 }
