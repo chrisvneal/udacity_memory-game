@@ -85,14 +85,20 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
+function gameWon() {
+  stopTimer();
+    cardsClicked = 0;
+    alert('You won!');
+
+    // TODO: Create a modal for winner
+}
+
 // check if won game
 function checkIfWon() {
   let matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
 
   if (matchedCardsLength == 16) {
-    stopTimer();
-    cardsClicked = 0;
-    alert('you won');
+    gameWon();
   } else {
     enableCardClicks();
   }
