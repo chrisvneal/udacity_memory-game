@@ -148,4 +148,12 @@ h1 {
   margin-left: .90em;
 }
 
+.fa-star {
+  font-weight: normal;
+}
+
+.fa-star.shaded {
+  font-weight: 700;
+}
+
 /*# sourceMappingURL=maps/app.css.map */
