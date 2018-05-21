@@ -91,11 +91,16 @@ function compareCards(cards) {
 //   console.log(card.classList);
 //     }
 
-  // console.log(shadedStars);
+// console.log(shadedStars);
+
+// reset timer
+function resetTimer() {
+  stopTimer();
+  timeOutput.innerHTML = "00:00";
+}
 
 // reset the game
 function resetGame() {
-  // console.log('the game has been reset');
   let shadedStars = document.querySelectorAll('.shaded');
 
   // reset board
@@ -111,8 +116,8 @@ function resetGame() {
   layoutCards(shuffledImages);
 
   // reset timer
-  stopTimer();
-  timeOutput.innerHTML = "00:00";
+  resetTimer();
+  
 
   // reset stars
   for (let card of shadedStars) {
