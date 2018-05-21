@@ -154,7 +154,8 @@ let gameScore = 0;
 
 // Invoke when match is good
 function goodMatch(cards) {
-  gameScore++;
+  // Gain 10 points for a good match
+  gameScore+=10;
   scoreOutput.innerHTML = gameScore;
 
   let cardValue = cards[0];
