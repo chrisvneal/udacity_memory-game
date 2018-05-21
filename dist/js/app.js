@@ -34,13 +34,12 @@ function shuffle(array) {
   return array;
 }
 
-function lockCards() {
+function disableCardClicking() {
   cardDeck.removeEventListener('mousedown', flipCard);
-  console.log('locked');
 }
-function unlockCards() {
+
+function enableCardClicks() {
   cardDeck.addEventListener('mousedown', flipCard);
-  console.log('unlocked');
 }
 
 // Layout 16 cards in the deck
@@ -63,7 +62,7 @@ function layoutCards() {
     cardDeck.appendChild(card);
   }
 
-  unlockCards();
+  enableCardClicks();
 }
 
 // compare the selected cards
@@ -86,11 +85,10 @@ function compareCards(cards) {
 }
 
 // Invoke when match is good
-function goodMatch(cards, unlockCards) {
-  // console.log("Good Match!");
+function goodMatch(cards) {
 
   var cardValue = cards[0];
-  // console.log(cardValue);
+
   var flippedCards = cardDeck.querySelectorAll('.flipped');
 
   var _iteratorNormalCompletion = true;
@@ -106,6 +104,8 @@ function goodMatch(cards, unlockCards) {
         card.classList.add('matched');
       }
     }
+
+    // enable clicking on cards
   } catch (err) {
     _didIteratorError = true;
     _iteratorError = err;
@@ -122,14 +122,12 @@ function goodMatch(cards, unlockCards) {
   }
 
   setTimeout(function () {
-
-    // alert('good match');
-
+    enableCardClicks();
   }, 800);
 }
 
 // Invoke when match is bad
-function badMatch(cards, unlockCards) {
+function badMatch(cards) {
 
   var cardValue1 = cards[0];
   var cardValue2 = cards[1];
@@ -150,6 +148,8 @@ function badMatch(cards, unlockCards) {
           card.classList.remove('open', 'show', 'flipped');
         }
       }
+
+      // enable clicking on cards
     } catch (err) {
       _didIteratorError2 = true;
       _iteratorError2 = err;
@@ -164,6 +164,8 @@ function badMatch(cards, unlockCards) {
         }
       }
     }
+
+    enableCardClicks();
   }, 800);
 }
 
@@ -182,12 +184,9 @@ function flipCard(evt) {
 
     // If the selectedCard 's array length hits 2, lock clicking functionality and compare the 2 values
     if (selectedCards.length == 2) {
-      //TODO: Insert function to lock all cards here
-      lockCards();
+      disableCardClicking();
 
       compareCards(selectedCards);
-
-      // unlockCards();
     }
   }
 }
@@ -195,17 +194,31 @@ function flipCard(evt) {
 // Start of Memory Game ***************
 window.onload = layoutCards;
 
-// Add 'click' event to make selected card "flip over"
-// cardDeck.addEventListener('mousedown', flipCard);
-
-
 /*
  * set up the event listener for a card. If a card is clicked:
+ * 
+ * Done
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ * 
+ * 
+ * 
+ * 
+ *  
+ * 
+ * Done   
+ * + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ * 
+ * Done
+ * + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ * 
+ * Done
+ * + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ * 
+ * 
+ * 
+ * 
+ * 
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
