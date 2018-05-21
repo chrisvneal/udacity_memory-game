@@ -85,21 +85,21 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
-// restart the game
-function restartGame() {
-  alert('the game is restarted');
+// reset the game
+function resetGame() {
+  console.log('the game has been reset');
 
   // clear board & insert new, shuffled cards
 
-  // restart timer
+  // reset timer
 
   // reset stars
 
   //reset score
 }
 
-let restartButton = document.querySelector('.restart');
-restartButton.addEventListener('click', restartGame);
+let resetButton = document.querySelector('.reset');
+resetButton.addEventListener('click', resetGame);
 
 
 
