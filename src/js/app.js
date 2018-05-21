@@ -37,9 +37,11 @@ function shuffle(array) {
 
 function lockCards() {
   cardDeck.removeEventListener('mousedown', flipCard);
+  console.log('locked');
 }
 function unlockCards() {
   cardDeck.addEventListener('mousedown', flipCard);
+  console.log('unlocked');  
 }
 
 // Layout 16 cards in the deck
