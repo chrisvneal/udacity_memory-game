@@ -204,8 +204,36 @@ function flipCard(evt) {
 }
 
 // Timer *********************
-var timerOutput = document.querySelector('.timer');
-timerOutput.innerHTML = "timer";
+var seconds = 0;
+var minutes = 0;
+var timeOutput = document.querySelector(".timeOutput");
+
+// insert time in timer output
+function insertTime() {
+  seconds++;
+
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+
+  if (seconds >= 60) {
+    minutes++;
+    seconds = "00";
+  }
+
+  // output the time
+  timeOutput.innerHTML = '0' + minutes + ':' + seconds;
+}
+
+// startTimer()
+function startTimer() {
+  var gameTimer = setInterval(insertTime, 1000);
+}
+
+// stopTimer()
+function stopTimer() {
+  clearInterval(gameTimer);
+}
 
 // Start of Memory Game ***************
 window.onload = layoutCards;

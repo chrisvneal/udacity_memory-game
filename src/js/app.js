@@ -160,8 +160,36 @@ function flipCard(evt) {
 
 
 // Timer *********************
-let timerOutput = document.querySelector('.timer');
-timerOutput.innerHTML = "timer";
+let seconds = 0;
+let minutes = 0;
+const timeOutput = document.querySelector(".timeOutput");
+
+// insert time in timer output
+function insertTime() {
+  seconds++;
+
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+
+  if (seconds >= 60) {
+    minutes++;
+    seconds = "00";
+  }
+
+  // output the time
+  timeOutput.innerHTML = `0${minutes}:${seconds}`;
+}
+
+// startTimer()
+function startTimer() {
+  let gameTimer = setInterval(insertTime, 1000);
+}
+
+// stopTimer()
+function stopTimer() {
+  clearInterval(gameTimer);
+}
 
 // Start of Memory Game ***************
 window.onload = layoutCards;
