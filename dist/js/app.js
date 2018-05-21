@@ -84,11 +84,18 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
+// for (let card of shadedStars) {
+//   console.log(card.classList);
+//     }
+
+// console.log(shadedStars);
+
 // reset the game
 function resetGame() {
-  console.log('the game has been reset');
+  // console.log('the game has been reset');
+  var shadedStars = document.querySelectorAll('.shaded');
 
-  // clear board
+  // reset board
   cardDeck.innerHTML = "";
 
   // shuffle cards
@@ -105,8 +112,33 @@ function resetGame() {
   timeOutput.innerHTML = "00:00";
 
   // reset stars
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-  // reset moves made
+  try {
+    for (var _iterator = shadedStars[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var card = _step.value;
+
+      card.classList.remove('shaded');
+    }
+
+    // reset moves made
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
   movesMade = 0;
   document.querySelector('span.moves').innerHTML = "0 Moves";
 
@@ -146,16 +178,20 @@ var gameScore = 0;
 var unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
 // console.log('Unshaded stars: ' + unshadedStars.length);
 
+// console.log(unshadedStars[0]);
+
 
 // TODO: program number of stars to shade
-function shadeStars(numberToShade) {
+function shadeStar() {
   // for (let star of unshadedStars) {
   //   star.classList.add('shaded');
   // }
 
-  for (var i = 0; i < numberToShade; i++) {
-    unshadedStars[i].classList.add('shaded');
-  }
+  // for (let i = 0; i < numberToShade; i++) {
+
+  // }
+
+  unshadedStars[0].classList.add('shaded');
 
   // grab list of unshaded stars
 
@@ -168,23 +204,28 @@ function shadeStars(numberToShade) {
 function goodMatch(cards) {
   // Gain 10 points for a good match
   gameScore += 10;
-  scoreOutput.innerHTML = gameScore;
+  // console.log(gameScore);
+
 
   if (movesMade == 1) {
-    shadeStars(1);
+    shadeStar();
+    gameScore += 10;
+    // console.log('with an extra 10 points: ' + gameScore);
   }
+
+  scoreOutput.innerHTML = gameScore;
 
   var cardValue = cards[0];
 
   var flippedCards = cardDeck.querySelectorAll('.flipped');
 
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
 
   try {
-    for (var _iterator = flippedCards[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var card = _step.value;
+    for (var _iterator2 = flippedCards[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var card = _step2.value;
 
       if (card.getAttribute('data-image') == cardValue) {
         card.classList.remove('flipped');
@@ -194,16 +235,16 @@ function goodMatch(cards) {
 
     //enable clicking on cards again
   } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion && _iterator.return) {
-        _iterator.return();
+      if (!_iteratorNormalCompletion2 && _iterator2.return) {
+        _iterator2.return();
       }
     } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
+      if (_didIteratorError2) {
+        throw _iteratorError2;
       }
     }
   }
@@ -223,13 +264,13 @@ function badMatch(cards) {
   setTimeout(function () {
     var flippedCards = cardDeck.querySelectorAll('.flipped');
 
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
+    var _iteratorNormalCompletion3 = true;
+    var _didIteratorError3 = false;
+    var _iteratorError3 = undefined;
 
     try {
-      for (var _iterator2 = flippedCards[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var card = _step2.value;
+      for (var _iterator3 = flippedCards[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+        var card = _step3.value;
 
         if (card.getAttribute('data-image') == cardValue1 || card.getAttribute('data-image') == cardValue2) {
           card.classList.remove('open', 'show', 'flipped');
@@ -238,16 +279,16 @@ function badMatch(cards) {
 
       // enable clicking on cards
     } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
+      _didIteratorError3 = true;
+      _iteratorError3 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion2 && _iterator2.return) {
-          _iterator2.return();
+        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+          _iterator3.return();
         }
       } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
+        if (_didIteratorError3) {
+          throw _iteratorError3;
         }
       }
     }

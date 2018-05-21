@@ -87,12 +87,18 @@ function compareCards(cards) {
 
 
 
+// for (let card of shadedStars) {
+//   console.log(card.classList);
+//     }
+
+  // console.log(shadedStars);
 
 // reset the game
 function resetGame() {
-  console.log('the game has been reset');
+  // console.log('the game has been reset');
+  let shadedStars = document.querySelectorAll('.shaded');
 
-  // clear board
+  // reset board
   cardDeck.innerHTML = "";
 
   // shuffle cards
@@ -109,6 +115,10 @@ function resetGame() {
   timeOutput.innerHTML = "00:00";
 
   // reset stars
+  for (let card of shadedStars) {
+    card.classList.remove('shaded');
+  }
+
 
   // reset moves made
   movesMade = 0;
@@ -154,16 +164,20 @@ let gameScore = 0;
 const unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
 // console.log('Unshaded stars: ' + unshadedStars.length);
 
+// console.log(unshadedStars[0]);
+
 
 // TODO: program number of stars to shade
-function shadeStars(numberToShade) {
+function shadeStar() {
   // for (let star of unshadedStars) {
   //   star.classList.add('shaded');
   // }
 
-  for (let i = 0; i < numberToShade; i++) {
-    unshadedStars[i].classList.add('shaded');
-  }
+  // for (let i = 0; i < numberToShade; i++) {
+
+  // }
+
+  unshadedStars[0].classList.add('shaded');
 
   // grab list of unshaded stars
 
@@ -184,11 +198,16 @@ function shadeStars(numberToShade) {
 function goodMatch(cards) {
   // Gain 10 points for a good match
   gameScore += 10;
-  scoreOutput.innerHTML = gameScore;
+  // console.log(gameScore);
+
 
   if (movesMade == 1) {
-    shadeStars(1);
+    shadeStar();
+    gameScore += 10;
+    // console.log('with an extra 10 points: ' + gameScore);
   }
+
+  scoreOutput.innerHTML = gameScore;
 
 
 
