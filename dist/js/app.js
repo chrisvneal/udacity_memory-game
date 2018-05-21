@@ -84,6 +84,18 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
+// check if won game
+function checkIfWon() {
+  var matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
+
+  if (matchedCardsLength == 16) {
+    alert('you won');
+  } else {
+    console.log('Only ' + matchedCardsLength + ' matched!');
+    enableCardClicks();
+  }
+}
+
 // Invoke when match is good
 function goodMatch(cards) {
 
@@ -105,7 +117,7 @@ function goodMatch(cards) {
       }
     }
 
-    // enable clicking on cards
+    //enable clicking on cards again
   } catch (err) {
     _didIteratorError = true;
     _iteratorError = err;
@@ -122,8 +134,8 @@ function goodMatch(cards) {
   }
 
   setTimeout(function () {
-    enableCardClicks();
-  }, 800);
+    checkIfWon();
+  }, 100);
 }
 
 // Invoke when match is bad
