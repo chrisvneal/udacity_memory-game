@@ -88,7 +88,7 @@ h1 {
 .game-panel {
   text-align: left;
   width: 345px;
-  margin: 1em 0 2em;
+  margin: 1em 0;
   // border: 1px solid red;
   display: flex;
   justify-content: space-between;
@@ -111,6 +111,11 @@ h1 {
   cursor: pointer;
 }
 
-.score .number {
+.score-panel {
+  margin-bottom: 2em;
+}
+
+.score {
   font-size: 2em;
+  margin-left: .90em;
 }
