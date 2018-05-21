@@ -85,14 +85,21 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
+function gameWon() {
+  stopTimer();
+    cardsClicked = 0;
+    alert('You won!');
+
+    // TODO: Create a modal for winner
+}
+
 // check if won game
 function checkIfWon() {
   let matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
 
   if (matchedCardsLength == 16) {
-    alert('you won');
+    gameWon();
   } else {
-    console.log('Only ' + matchedCardsLength + ' matched!');
     enableCardClicks();
   }
 }
@@ -136,9 +143,18 @@ function badMatch(cards) {
   }, 800);
 }
 
+
+let cardsClicked = 0;
 // Function to flip card when clicked
 function flipCard(evt) {
   let clickedCard = evt.target;
+
+  cardsClicked++;
+
+  if (cardsClicked == 1) {
+    startTimer();
+  }
+
 
   if (clickedCard.nodeName.toLowerCase() == 'li') {
 
@@ -181,9 +197,11 @@ function insertTime() {
   timeOutput.innerHTML = `0${minutes}:${seconds}`;
 }
 
+let gameTimer;
+
 // startTimer()
 function startTimer() {
-  let gameTimer = setInterval(insertTime, 1000);
+  gameTimer = setInterval(insertTime, 1000);
 }
 
 // stopTimer()
