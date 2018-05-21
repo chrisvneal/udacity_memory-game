@@ -90,7 +90,16 @@ function resetGame() {
 
   // clear board & insert new, shuffled cards
 
+  // reset cards clicked
+  cardsClicked = 0;
+
   // reset timer
+  stopTimer();
+
+  timeOutput.innerHTML = "00:00";
+
+  // console.log(timeOutput);
+
 
   // reset stars
 
@@ -265,6 +274,8 @@ function startTimer() {
 // stopTimer()
 function stopTimer() {
   clearInterval(gameTimer);
+  seconds = 0;
+  minutes = 0;
 }
 
 // Start of Memory Game ***************
