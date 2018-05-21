@@ -103,6 +103,10 @@ function resetGame() {
 
   // reset stars
 
+  // reset moves made
+  movesMade = 0;
+  document.querySelector('span.moves').innerHTML = "0 Moves";
+
   //reset score
 }
 
