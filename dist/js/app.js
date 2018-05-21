@@ -203,6 +203,10 @@ function flipCard(evt) {
   }
 }
 
+// Timer *********************
+var timerOutput = document.querySelector('.timer');
+timerOutput.innerHTML = "timer";
+
 // Start of Memory Game ***************
 window.onload = layoutCards;
 

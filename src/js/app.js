@@ -158,6 +158,11 @@ function flipCard(evt) {
   }
 }
 
+
+// Timer *********************
+let timerOutput = document.querySelector('.timer');
+timerOutput.innerHTML = "timer";
+
 // Start of Memory Game ***************
 window.onload = layoutCards;
 
