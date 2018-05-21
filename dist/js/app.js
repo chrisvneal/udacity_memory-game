@@ -43,19 +43,19 @@ function enableCardClicks() {
 }
 
 // Layout 16 cards in the deck
-function layoutCards() {
+function layoutCards(cards) {
 
   // Place cards inside "the deck"
   for (var i = 0; i < images.length; i++) {
 
     // Create a card (li) with a class of 'card'
     var card = document.createElement('li');
-    card.setAttribute('data-image', shuffledImages[i]);
+    card.setAttribute('data-image', cards[i]);
     card.classList.add('card');
 
     // Insert shuffled image in card
     var cardImage = document.createElement('i');
-    cardImage.classList.add('fas', 'fa-' + shuffledImages[i]);
+    cardImage.classList.add('fas', 'fa-' + cards[i]);
     card.appendChild(cardImage);
 
     // Place card in deck
@@ -88,18 +88,21 @@ function compareCards(cards) {
 function resetGame() {
   console.log('the game has been reset');
 
-  // clear board & insert new, shuffled cards
+  // clear board
+  cardDeck.innerHTML = "";
+
+  // shuffle cards
+  shuffledImages = shuffle(shuffledImages);
 
   // reset cards clicked
   cardsClicked = 0;
 
+  // layout cards
+  layoutCards(shuffledImages);
+
   // reset timer
   stopTimer();
-
   timeOutput.innerHTML = "00:00";
-
-  // console.log(timeOutput);
-
 
   // reset stars
 
@@ -283,7 +286,7 @@ function stopTimer() {
 }
 
 // Start of Memory Game ***************
-window.onload = layoutCards;
+window.onload = layoutCards(shuffledImages);
 
 /*
  * set up the event listener for a card. If a card is clicked:
