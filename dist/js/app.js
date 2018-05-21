@@ -34,6 +34,13 @@ function shuffle(array) {
   return array;
 }
 
+function lockCards() {
+  cardDeck.removeEventListener('mousedown', flipCard);
+}
+function unlockCards() {
+  cardDeck.addEventListener('mousedown', flipCard);
+}
+
 // Layout 16 cards in the deck
 function layoutCards() {
 
@@ -53,6 +60,8 @@ function layoutCards() {
     // Place card in deck
     cardDeck.appendChild(card);
   }
+
+  unlockCards();
 }
 
 // compare the selected cards
@@ -74,12 +83,8 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
-function lockCards() {
-  cardDeck.removeEventListener('mousedown', flipCard);
-}
-
 // Invoke when match is good
-function goodMatch(cards) {
+function goodMatch(cards, unlockCards) {
   // console.log("Good Match!");
 
   var cardValue = cards[0];
@@ -122,7 +127,7 @@ function goodMatch(cards) {
 }
 
 // Invoke when match is bad
-function badMatch(cards) {
+function badMatch(cards, unlockCards) {
 
   var cardValue1 = cards[0];
   var cardValue2 = cards[1];
@@ -175,9 +180,12 @@ function flipCard(evt) {
 
     // If the selectedCard 's array length hits 2, lock clicking functionality and compare the 2 values
     if (selectedCards.length == 2) {
-      // lockCards();            
+      //TODO: Insert function to lock all cards here
+      lockCards();
 
       compareCards(selectedCards);
+
+      // unlockCards();
     }
   }
 }
@@ -186,7 +194,8 @@ function flipCard(evt) {
 window.onload = layoutCards;
 
 // Add 'click' event to make selected card "flip over"
-cardDeck.addEventListener('mousedown', flipCard);
+// cardDeck.addEventListener('mousedown', flipCard);
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
