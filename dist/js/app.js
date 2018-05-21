@@ -84,6 +84,13 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
+function restartGame() {
+  alert('the game is restarted');
+}
+
+var restartButton = document.querySelector('.restart');
+restartButton.addEventListener('click', restartGame);
+
 function gameWon() {
   stopTimer();
   cardsClicked = 0;
