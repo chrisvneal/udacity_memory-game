@@ -145,8 +145,9 @@ function changeScore() {
 
 }
 
-function displayModal(finalScoreOutput, numStarsOutput, gameTimeOutput) {
+function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTimeOutput) {
   document.querySelector('.final-score').innerHTML = finalScoreOutput;
+  document.querySelector('.total-moves').innerHTML = totalMovesMade;
   document.querySelector('.num-stars').innerHTML = numStarsOutput;
   document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
 
@@ -160,7 +161,10 @@ function gameWon() {
   stopTimer();
   cardsClicked = 0;
 
-  displayModal(3, 4, 5);
+
+let time = document.querySelector('.timeOutput').textContent;
+
+  displayModal(gameScore, starCount, time, movesMade );
   
 
 
@@ -254,7 +258,8 @@ function addScore() {
   // Add 10 points
   gameScore += 10;
 
-  displayModal(3, 4, 5); // testing purposes, delete this when ready!
+  let time = document.querySelector('.timeOutput').textContent;
+
 
   
 
