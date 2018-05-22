@@ -26,6 +26,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 h1 {
@@ -126,4 +127,12 @@ h1 {
 
 .fa-star.shaded {
   font-weight: 700;
+}
+
+
+/* modal styles */
+.modal {
+  position: absolute;
+  top: 50%;
+  // background: #fff;
 }

@@ -38,6 +38,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
 }
 
 h1 {
@@ -154,6 +155,12 @@ h1 {
 
 .fa-star.shaded {
   font-weight: 700;
+}
+
+/* modal styles */
+.modal {
+  position: absolute;
+  top: 50%;
 }
 
 /*# sourceMappingURL=maps/app.css.map */
