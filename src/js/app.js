@@ -164,7 +164,7 @@ function gameWon() {
 
 let time = document.querySelector('.timeOutput').textContent;
 
-  displayModal(gameScore, starCount, time, movesMade );
+  displayModal(gameScore, movesMade, starCount, time);
   
 
 

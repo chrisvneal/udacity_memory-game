@@ -175,7 +175,7 @@ function gameWon() {
 
   var time = document.querySelector('.timeOutput').textContent;
 
-  displayModal(gameScore, starCount, time, movesMade);
+  displayModal(gameScore, movesMade, starCount, time);
 }
 
 // check if won game
