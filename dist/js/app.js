@@ -186,8 +186,9 @@ var gameScore = 0;
 
 // shade a star
 function shadeStar(next) {
+  console.log("The variable 'next' read: " + next + ", your next should be: " + (next + 1));
   var stars = document.querySelectorAll('.fa-star');
-  console.log('parameter is ' + next);
+  // console.log('parameter is ' + next);
 
   stars[next].classList.add('shaded');
 }
@@ -198,30 +199,44 @@ function unshadeStar() {}
 /********************* Score functionality *********************/
 
 var starCount = 0;
+
 function addScore() {
 
-  if (starCount < 4) {
-    shadeStar(starCount);
-  }
-
-  starCount++;
-  // Gain 10 points for a good match
+  // Add 10 points
   gameScore += 10;
-  // console.log(gameScore);
 
+  console.log("Moves made so far: " + movesMade);
+  console.log("Current score: " + gameScore);
+  console.log("Number of stars achieved so far: " + starCount);
+  console.log("");
+
+  if (starCount < 4) {
+
+    if (movesMade == 1) {
+      gameScore += 10;
+      console.log("");
+      console.log("First move: Yes!");
+      shadeStar(starCount);
+    } else {
+      console.log("");
+      console.log("First move: No!");
+    }
+
+    if (gameScore % 20 == 0) {
+
+      console.log("");
+      console.log("You hit a modulus of 20! Have a star!!");
+      console.log("Your star count WAS: " + starCount);
+      console.log("Current score: " + gameScore);
+      shadeStar(starCount);
+      starCount++;
+    }
+
+    // console.log(starCount);
+  }
 
   // delete; for testing!!
 
-
-  if (movesMade == 1) {
-    gameScore += 10;
-    shadeStar();
-  }
-
-  if (gameScore % 20 == 0) {
-    // console.log('add a star');
-    shadeStar();
-  }
 
   scoreOutput.innerHTML = gameScore;
 }
