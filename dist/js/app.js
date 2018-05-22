@@ -157,8 +157,7 @@ function resetGame() {
 var resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetGame);
 
-// change score
-function changeScore() {}
+// console.log(document.querySelector('.modal-message-header__title').classList);
 
 function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTimeOutput) {
   document.querySelector('.final-score').innerHTML = finalScoreOutput;
@@ -167,6 +166,10 @@ function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTime
   document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
 
   modal.classList.add('show');
+  var modalheader = document.querySelector('.modal-message-header__title');
+  // console.log(document.querySelector('.modal-message-header__title'));
+  modalheader.classList.add('bounceInLeft');
+  // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
 }
 
 function gameWon() {
@@ -175,7 +178,7 @@ function gameWon() {
 
   var time = document.querySelector('.timeOutput').textContent;
 
-  displayModal(gameScore, starCount, time, movesMade);
+  displayModal(gameScore, movesMade, starCount, time);
 }
 
 // check if won game

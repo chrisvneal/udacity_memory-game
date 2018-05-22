@@ -1,3 +1,5 @@
+$modal-header-color: lighten(green, 10%);
+
 html {
   box-sizing: border-box;
 }
@@ -30,10 +32,13 @@ body {
 }
 
 header h1 {
-  font-family: 'Luckiest Guy', sans-serif;
   font-weight: 300;
   font-size: 3em;
   margin-bottom: 20px;
+}
+
+header h1, .modal-message .modal-message-header__title {
+  font-family: "Luckiest Guy", Arial, sans-serif;
 }
 
 .smiley {
@@ -158,12 +163,15 @@ header h1 {
     margin: 0;
   }
 
-  h3 {
-    margin-bottom: 1rem;
+  .modal-message-header__title {
+    margin-bottom: -.20em;
+    font-weight: normal;
+    font-size: 2em;
+    color: $modal-header-color;
   }
 
   .modal-header {
-    background: lighten(green, 10%);
+    background: $modal-header-color;
     color: white;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;   
@@ -174,6 +182,22 @@ header h1 {
    .modal-header, .modal-message {
     padding: 8px 8px 15px 10px;
   }
+ }
+
+ .modal-game-details {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   font-size: 1.6em;
+
+   span {
+     float: right;
+     margin-right: 1em;
+   }
+
+   li {
+     margin: 2rem 0;
+   }
  }
 
  .show {
