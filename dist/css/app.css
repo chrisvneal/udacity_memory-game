@@ -161,6 +161,14 @@ h1 {
 .modal {
   position: absolute;
   top: 50%;
+  background: #fff;
+  border-radius: 3px;
+  padding: 2rem;
+}
+
+.modal p {
+  font-size: 3em;
+  margin: 0;
 }
 
 /*# sourceMappingURL=maps/app.css.map */

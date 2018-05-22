@@ -134,5 +134,12 @@ h1 {
 .modal {
   position: absolute;
   top: 50%;
-  // background: #fff;
+  background: #fff;
+  border-radius: 3px;
+  padding: 2rem;
+
+  p {
+    font-size: 3em;
+    margin: 0;
+  }
 }
