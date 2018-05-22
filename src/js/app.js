@@ -86,13 +86,6 @@ function compareCards(cards) {
 }
 
 
-
-// for (let card of shadedStars) {
-//   console.log(card.classList);
-//     }
-
-// console.log(shadedStars);
-
 // reset timer
 function resetTimer() {
   stopTimer();
@@ -127,8 +120,8 @@ function resetGame() {
   
 
   // reset stars
-  for (let card of shadedStars) {
-    card.classList.remove('shaded');
+  for (let star of shadedStars) {
+    star.classList.remove('shaded');
   }
 
 
@@ -173,61 +166,65 @@ function checkIfWon() {
 const scoreOutput = document.querySelector('.scoreOutput');
 let gameScore = 0;
 
-const unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
-// console.log('Unshaded stars: ' + unshadedStars.length);
-
-// console.log(unshadedStars[0]);
-
-
-// TODO: program number of stars to shade
-function shadeStar() {
-  for (let star of unshadedStars) {
-    star.classList.add('shaded');
-  }
-
-  for (let i = 0; i < numberToShade; i++) {
-
-  }
-
-  function unshadeStar() {
-
-  }
-
-  unshadedStars[0].classList.add('shaded');
-
-  // grab list of unshaded stars
-
-
-  //if there is less stars shaded than supposed to provide, provide up to the rest
 
 
 
 
+/********************* Stars functionality *********************/
 
 
+  
 
+// shade a star
+function shadeStar() {  
+
+  
 
 }
 
 
-// Invoke when match is good
-function goodMatch(cards) {
+
+
+
+
+
+// unshade a star
+function unshadeStar() {
+
+}
+
+/********************* Score functionality *********************/
+
+
+function addScore() {
   // Gain 10 points for a good match
   gameScore += 10;
   // console.log(gameScore);
 
 
   if (movesMade == 1) {
-    shadeStar();
     gameScore += 10;
-    // console.log('with an extra 10 points: ' + gameScore);
+    shadeStar();
+    
+  }
+
+  if (gameScore % 20 == 0) {
+    // console.log('add a star');
+    shadeStar();
+
   }
 
   scoreOutput.innerHTML = gameScore;
+}
+
+
+// Invoke when match is good
+function goodMatch(cards) {
+  
 
 
 
-
+addScore();
 
 
 

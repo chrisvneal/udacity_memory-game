@@ -84,12 +84,6 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
-// for (let card of shadedStars) {
-//   console.log(card.classList);
-//     }
-
-// console.log(shadedStars);
-
 // reset timer
 function resetTimer() {
   stopTimer();
@@ -128,9 +122,9 @@ function resetGame() {
 
   try {
     for (var _iterator = shadedStars[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var card = _step.value;
+      var star = _step.value;
 
-      card.classList.remove('shaded');
+      star.classList.remove('shaded');
     }
 
     // reset moves made
@@ -185,24 +179,59 @@ function checkIfWon() {
 var scoreOutput = document.querySelector('.scoreOutput');
 var gameScore = 0;
 
-var unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
-// console.log('Unshaded stars: ' + unshadedStars.length);
+/********************* Stars functionality *********************/
 
-// console.log(unshadedStars[0]);
+// shade a star
+function shadeStar() {}
+
+// unshade a star
+function unshadeStar() {}
+
+/********************* Score functionality *********************/
+
+function addScore() {
+  // Gain 10 points for a good match
+  gameScore += 10;
+  // console.log(gameScore);
 
 
-// TODO: program number of stars to shade
-function shadeStar() {
+  if (movesMade == 1) {
+    gameScore += 10;
+    shadeStar();
+  }
+
+  if (gameScore % 20 == 0) {
+    // console.log('add a star');
+    shadeStar();
+  }
+
+  scoreOutput.innerHTML = gameScore;
+}
+
+// Invoke when match is good
+function goodMatch(cards) {
+
+  addScore();
+
+  var cardValue = cards[0];
+
+  var flippedCards = cardDeck.querySelectorAll('.flipped');
+
   var _iteratorNormalCompletion2 = true;
   var _didIteratorError2 = false;
   var _iteratorError2 = undefined;
 
   try {
-    for (var _iterator2 = unshadedStars[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      var star = _step2.value;
+    for (var _iterator2 = flippedCards[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var card = _step2.value;
 
-      star.classList.add('shaded');
+      if (card.getAttribute('data-image') == cardValue) {
+        card.classList.remove('flipped');
+        card.classList.add('matched');
+      }
     }
+
+    //enable clicking on cards again
   } catch (err) {
     _didIteratorError2 = true;
     _iteratorError2 = err;
@@ -214,68 +243,6 @@ function shadeStar() {
     } finally {
       if (_didIteratorError2) {
         throw _iteratorError2;
-      }
-    }
-  }
-
-  for (var i = 0; i < numberToShade; i++) {}
-
-  function unshadeStar() {}
-
-  unshadedStars[0].classList.add('shaded');
-
-  // grab list of unshaded stars
-
-
-  //if there is less stars shaded than supposed to provide, provide up to the rest
-
-}
-
-// Invoke when match is good
-function goodMatch(cards) {
-  // Gain 10 points for a good match
-  gameScore += 10;
-  // console.log(gameScore);
-
-
-  if (movesMade == 1) {
-    shadeStar();
-    gameScore += 10;
-    // console.log('with an extra 10 points: ' + gameScore);
-  }
-
-  scoreOutput.innerHTML = gameScore;
-
-  var cardValue = cards[0];
-
-  var flippedCards = cardDeck.querySelectorAll('.flipped');
-
-  var _iteratorNormalCompletion3 = true;
-  var _didIteratorError3 = false;
-  var _iteratorError3 = undefined;
-
-  try {
-    for (var _iterator3 = flippedCards[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-      var card = _step3.value;
-
-      if (card.getAttribute('data-image') == cardValue) {
-        card.classList.remove('flipped');
-        card.classList.add('matched');
-      }
-    }
-
-    //enable clicking on cards again
-  } catch (err) {
-    _didIteratorError3 = true;
-    _iteratorError3 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion3 && _iterator3.return) {
-        _iterator3.return();
-      }
-    } finally {
-      if (_didIteratorError3) {
-        throw _iteratorError3;
       }
     }
   }
@@ -295,13 +262,13 @@ function badMatch(cards) {
   setTimeout(function () {
     var flippedCards = cardDeck.querySelectorAll('.flipped');
 
-    var _iteratorNormalCompletion4 = true;
-    var _didIteratorError4 = false;
-    var _iteratorError4 = undefined;
+    var _iteratorNormalCompletion3 = true;
+    var _didIteratorError3 = false;
+    var _iteratorError3 = undefined;
 
     try {
-      for (var _iterator4 = flippedCards[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-        var card = _step4.value;
+      for (var _iterator3 = flippedCards[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+        var card = _step3.value;
 
         if (card.getAttribute('data-image') == cardValue1 || card.getAttribute('data-image') == cardValue2) {
           card.classList.remove('open', 'show', 'flipped');
@@ -310,16 +277,16 @@ function badMatch(cards) {
 
       // enable clicking on cards
     } catch (err) {
-      _didIteratorError4 = true;
-      _iteratorError4 = err;
+      _didIteratorError3 = true;
+      _iteratorError3 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion4 && _iterator4.return) {
-          _iterator4.return();
+        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+          _iterator3.return();
         }
       } finally {
-        if (_didIteratorError4) {
-          throw _iteratorError4;
+        if (_didIteratorError3) {
+          throw _iteratorError3;
         }
       }
     }
