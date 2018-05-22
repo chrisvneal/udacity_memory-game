@@ -160,17 +160,28 @@ h1 {
 /* modal styles */
 .modal {
   position: absolute;
+  width: 450px;
   top: 50%;
   background: #fff;
-  border-radius: 3px;
-  padding: 2rem;
+  border-radius: 18px;
   -webkit-box-shadow: 0 2px 10px 10px rgba(58, 58, 58, 0.6);
           box-shadow: 0 2px 10px 10px rgba(58, 58, 58, 0.6);
 }
 
-.modal p {
-  font-size: 3em;
+.modal-content p {
+  line-height: 2;
+}
+
+.modal-content .modal-header {
+  background: #00cd00;
+}
+
+.modal-content .modal-header h2, .modal-content .modal-message p {
   margin: 0;
+}
+
+.modal-content .modal-header, .modal-content .modal-message {
+  padding: 8px 8px 15px;
 }
 
 /*# sourceMappingURL=maps/app.css.map */
