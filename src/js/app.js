@@ -177,10 +177,11 @@ let gameScore = 0;
 
 
 // shade a star
-function shadeStar() {  
+function shadeStar(next) {  
   let stars = document.querySelectorAll('.fa-star');
+  console.log('parameter is ' + next);
 
-  stars[].classList.add('shaded');
+  stars[next].classList.add('shaded');
 
 
 
@@ -202,12 +203,28 @@ function unshadeStar() {
 
 /********************* Score functionality *********************/
 
-
+let starCount = 0;
 function addScore() {
+
+  if (starCount < 4) {
+    shadeStar(starCount); 
+  }
+
+
+
+
+
+
+
+  
+  starCount++;
   // Gain 10 points for a good match
   gameScore += 10;
   // console.log(gameScore);
-  shadeStar(); // delete; for testing!!
+
+
+ 
+  // delete; for testing!!
 
 
   if (movesMade == 1) {

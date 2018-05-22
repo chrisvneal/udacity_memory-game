@@ -185,18 +185,11 @@ var gameScore = 0;
 
 
 // shade a star
-function shadeStar() {
+function shadeStar(next) {
   var stars = document.querySelectorAll('.fa-star');
+  console.log('parameter is ' + next);
 
-  stars[1].classList.add('shaded');
-
-  // unshadedStars[0].classList.add('shaded');
-
-  // let unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
-
-
-  // console.log(unshadedStars.length);
-
+  stars[next].classList.add('shaded');
 }
 
 // unshade a star
@@ -204,11 +197,20 @@ function unshadeStar() {}
 
 /********************* Score functionality *********************/
 
+var starCount = 0;
 function addScore() {
+
+  if (starCount < 4) {
+    shadeStar(starCount);
+  }
+
+  starCount++;
   // Gain 10 points for a good match
   gameScore += 10;
   // console.log(gameScore);
-  shadeStar(); // delete; for testing!!
+
+
+  // delete; for testing!!
 
 
   if (movesMade == 1) {
