@@ -181,6 +181,8 @@ var gameScore = 0;
 
 /********************* Stars functionality *********************/
 
+var unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
+
 // shade a star
 function shadeStar() {}
 

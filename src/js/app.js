@@ -172,12 +172,13 @@ let gameScore = 0;
 
 /********************* Stars functionality *********************/
 
-
+let unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
   
 
 // shade a star
 function shadeStar() {  
 
+  
   
 
 }
