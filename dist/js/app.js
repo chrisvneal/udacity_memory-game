@@ -106,14 +106,20 @@ function resetGame() {
   // shuffle cards
   shuffledImages = shuffle(shuffledImages);
 
-  // reset cards clicked
-  cardsClicked = 0;
-
   // layout cards
   layoutCards(shuffledImages);
 
   // reset timer
   resetTimer();
+
+  // reset clicked cards
+  cardsClicked = 0;
+
+  // reset selected cards array
+
+  selectedCards.length = 0;
+  // console.log(selectedCards);
+
 
   // reset stars
   var _iteratorNormalCompletion = true;
