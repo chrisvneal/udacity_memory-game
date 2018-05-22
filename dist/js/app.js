@@ -186,15 +186,29 @@ var gameScore = 0;
 
 // shade a star
 function shadeStar(next) {
-  console.log("The variable 'next' read: " + next + ", your next should be: " + (next + 1));
+  // console.log("The variable 'next' read: " + next + ", your next should be: " + (next + 1));
   var stars = document.querySelectorAll('.fa-star');
   // console.log('parameter is ' + next);
 
   stars[next].classList.add('shaded');
+
+  starCount++;
+
+  console.log("star count is: " + starCount);
 }
 
 // unshade a star
-function unshadeStar() {}
+function unshadeStar() {
+  console.log("unshade a star");
+
+  var shadedStars = document.querySelectorAll('.fa-star.shaded');
+
+  shadedStars[starCount - 1].classList.remove('shaded');
+
+  // lower starCount
+  starCount--;
+  console.log("star count is " + starCount);
+}
 
 /********************* Score functionality *********************/
 
@@ -212,10 +226,9 @@ function addScore() {
       shadeStar(starCount);
     }
 
-    if (gameScore % 20 == 0) {
+    if (gameScore % 20 == 0 && movesMade > 1) {
 
       shadeStar(starCount);
-      starCount++;
     }
 
     // console.log(starCount);
@@ -229,6 +242,8 @@ function addScore() {
 
 // Invoke when match is good
 function goodMatch(cards) {
+  badMatchesInARow = 0;
+  console.log("Number of bad matches: " + badMatchesInARow);
 
   addScore();
 
@@ -271,11 +286,21 @@ function goodMatch(cards) {
   }, 100);
 }
 
-var numberOfBadMatches = 0;
+var badMatchesInARow = 0;
 // Invoke when match is bad
 function badMatch(cards) {
-  numberOfBadMatches++;
-  console.log("Nnumber of bad matches: " + numberOfBadMatches);
+  if (gameScore % 5 == 0 && gameScore >= 5) {
+    gameScore -= 5;
+    scoreOutput.innerHTML = gameScore;
+    // console.log("your score is now " + gameScore);
+  }
+  badMatchesInARow++;
+  // console.log("Number of bad matches: " + badMatchesInARow);
+
+  if (badMatchesInARow == 3 && starCount > 0) {
+    unshadeStar();
+    badMatchesInARow = 0;
+  }
 
   var cardValue1 = cards[0];
   var cardValue2 = cards[1];
