@@ -416,6 +416,32 @@ function stopTimer() {
 window.onload = layoutCards(shuffledImages);
 
 
+
+
+
+
+
+// Modal ***************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  * set up the event listener for a card. If a card is clicked:
  * 
