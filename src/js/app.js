@@ -172,13 +172,19 @@ let gameScore = 0;
 
 /********************* Stars functionality *********************/
 
-let unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
+// let unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
   
+
 
 // shade a star
 function shadeStar() {  
+  let stars = document.querySelectorAll('.fa-star');
 
-  
+  stars[].classList.add('shaded');
+
+
+
+
   
 
 }
@@ -201,6 +207,7 @@ function addScore() {
   // Gain 10 points for a good match
   gameScore += 10;
   // console.log(gameScore);
+  shadeStar(); // delete; for testing!!
 
 
   if (movesMade == 1) {
