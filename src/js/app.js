@@ -211,11 +211,6 @@ function addScore() {
   // Add 10 points
   gameScore += 10;
 
-  console.log("Moves made so far: " + movesMade);
-  console.log("Current score: " + gameScore);
-  console.log("Number of stars achieved so far: " + starCount);
-  console.log("");
-
 
 
 
@@ -227,20 +222,11 @@ function addScore() {
 
     if (movesMade == 1) {
       gameScore += 10;
-      console.log("");
-      console.log("First move: Yes!");
       shadeStar(starCount);
-    } else {
-      console.log("");
-      console.log("First move: No!");      
     }
 
     if (gameScore % 20 == 0) {
       
-      console.log("");
-      console.log("You hit a modulus of 20! Have a star!!");
-      console.log("Your star count WAS: " + starCount);
-      console.log("Current score: " + gameScore);
       shadeStar(starCount);
       starCount++;
     }
@@ -296,8 +282,11 @@ function goodMatch(cards) {
   setTimeout(function() { checkIfWon(); }, 100);
 }
 
+let numberOfBadMatches = 0;
 // Invoke when match is bad
 function badMatch(cards) {
+  numberOfBadMatches++;
+  console.log("Nnumber of bad matches: " + numberOfBadMatches);
 
   let cardValue1 = cards[0];
   let cardValue2 = cards[1];
