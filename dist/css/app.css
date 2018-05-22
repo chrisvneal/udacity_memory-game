@@ -48,6 +48,10 @@ header h1 {
   margin-bottom: 20px;
 }
 
+.smiley {
+  height: 400px;
+}
+
 /*
 * Styles for the deck of cards
 */
