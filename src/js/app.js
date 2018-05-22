@@ -11,6 +11,9 @@ let shuffledImages = shuffle(images);
 // Initiate variable for selected cards
 let selectedCards = [];
 
+// modal
+const modal = document.querySelector('.modal');
+
 // Establish initial moves made message
 let movesMade = 0;
 document.querySelector('span.moves').innerHTML = movesMade + " Moves";
@@ -147,9 +150,11 @@ function changeScore() {
 function gameWon() {
   stopTimer();
   cardsClicked = 0;
-  alert('You won!');
 
-  // TODO: Create a modal for winner
+  displayModal();
+  
+
+
 }
 
 // check if won game
@@ -165,6 +170,17 @@ function checkIfWon() {
 
 const scoreOutput = document.querySelector('.scoreOutput');
 let gameScore = 0;
+
+// Modal ***************
+
+function displayModal(finalScoreOutput, numStarsOutput, gameTimeOutput) {
+  document.querySelector('.final-score').innerHTML = finalScoreOuput;
+  document.querySelector('.num-stars').innerHTML = numStarsOuput;
+  document.querySelector('.final-game-time').innerHTML = gameTimeOuput;
+
+
+  modal.classList.add('show', 'animated', 'flipInX');
+}
 
 
 
@@ -184,7 +200,7 @@ function shadeStar(next) {
 
   stars[next].classList.add('shaded');
 
-  
+
 
   starCount++;
 
@@ -209,9 +225,9 @@ function unshadeStar() {
 
   let shadedStars = document.querySelectorAll('.fa-star.shaded');
 
-  shadedStars[(starCount-1)].classList.remove('shaded');
+  shadedStars[(starCount - 1)].classList.remove('shaded');
 
-  
+
 
 
 
@@ -224,7 +240,7 @@ function unshadeStar() {
   starCount--;
   console.log("star count is " + starCount);
 
- 
+
 }
 
 /********************* Score functionality *********************/
@@ -251,19 +267,19 @@ function addScore() {
     }
 
     if (gameScore % 20 == 0 && movesMade > 1) {
-      
+
       shadeStar(starCount);
-      
+
     }
 
     // console.log(starCount);
-    
+
   }
 
 
 
 
-  
+
 
 
 
@@ -283,7 +299,7 @@ function addScore() {
 function goodMatch(cards) {
   badMatchesInARow = 0;
   console.log("Number of bad matches: " + badMatchesInARow);
-  
+
 
 
 
@@ -314,9 +330,9 @@ let badMatchesInARow = 0;
 // Invoke when match is bad
 function badMatch(cards) {
   if (gameScore % 5 == 0 && gameScore >= 5) {
-gameScore-=5;
-scoreOutput.innerHTML = gameScore;
-// console.log("your score is now " + gameScore);
+    gameScore -= 5;
+    scoreOutput.innerHTML = gameScore;
+    // console.log("your score is now " + gameScore);
   }
   badMatchesInARow++;
   // console.log("Number of bad matches: " + badMatchesInARow);
@@ -421,7 +437,9 @@ window.onload = layoutCards(shuffledImages);
 
 
 
-// Modal ***************
+
+
+
 
 
 

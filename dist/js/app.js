@@ -11,6 +11,9 @@ var shuffledImages = shuffle(images);
 // Initiate variable for selected cards
 var selectedCards = [];
 
+// modal
+var modal = document.querySelector('.modal');
+
 // Establish initial moves made message
 var movesMade = 0;
 document.querySelector('span.moves').innerHTML = movesMade + " Moves";
@@ -160,9 +163,8 @@ function changeScore() {}
 function gameWon() {
   stopTimer();
   cardsClicked = 0;
-  alert('You won!');
 
-  // TODO: Create a modal for winner
+  displayModal();
 }
 
 // check if won game
@@ -178,6 +180,16 @@ function checkIfWon() {
 
 var scoreOutput = document.querySelector('.scoreOutput');
 var gameScore = 0;
+
+// Modal ***************
+
+function displayModal(finalScoreOutput, numStarsOutput, gameTimeOutput) {
+  document.querySelector('.final-score').innerHTML = finalScoreOuput;
+  document.querySelector('.num-stars').innerHTML = numStarsOuput;
+  document.querySelector('.final-game-time').innerHTML = gameTimeOuput;
+
+  modal.classList.add('show', 'animated', 'flipInX');
+}
 
 /********************* Stars functionality *********************/
 
@@ -409,9 +421,6 @@ function stopTimer() {
 
 // Start of Memory Game ***************
 window.onload = layoutCards(shuffledImages);
-
-// Modal ***************
-
 
 /*
  * set up the event listener for a card. If a card is clicked:
