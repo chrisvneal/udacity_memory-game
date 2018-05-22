@@ -173,6 +173,7 @@ header h1 {
   -webkit-box-shadow: 0 2px 10px 10px rgba(58, 58, 58, 0.6);
           box-shadow: 0 2px 10px 10px rgba(58, 58, 58, 0.6);
   display: none;
+  z-index: 100;
 }
 
 .modal-content p {

@@ -145,13 +145,22 @@ function changeScore() {
 
 }
 
+function displayModal(finalScoreOutput, numStarsOutput, gameTimeOutput) {
+  document.querySelector('.final-score').innerHTML = finalScoreOutput;
+  document.querySelector('.num-stars').innerHTML = numStarsOutput;
+  document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
+
+
+  modal.classList.add('show');
+}
+
 
 
 function gameWon() {
   stopTimer();
   cardsClicked = 0;
 
-  displayModal();
+  displayModal(3, 4, 5);
   
 
 
@@ -173,14 +182,7 @@ let gameScore = 0;
 
 // Modal ***************
 
-function displayModal(finalScoreOutput, numStarsOutput, gameTimeOutput) {
-  document.querySelector('.final-score').innerHTML = finalScoreOuput;
-  document.querySelector('.num-stars').innerHTML = numStarsOuput;
-  document.querySelector('.final-game-time').innerHTML = gameTimeOuput;
 
-
-  modal.classList.add('show', 'animated', 'flipInX');
-}
 
 
 
@@ -251,6 +253,10 @@ function addScore() {
 
   // Add 10 points
   gameScore += 10;
+
+  displayModal(3, 4, 5); // testing purposes, delete this when ready!
+
+  
 
 
 

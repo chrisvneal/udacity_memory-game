@@ -160,11 +160,19 @@ resetButton.addEventListener('click', resetGame);
 // change score
 function changeScore() {}
 
+function displayModal(finalScoreOutput, numStarsOutput, gameTimeOutput) {
+  document.querySelector('.final-score').innerHTML = finalScoreOutput;
+  document.querySelector('.num-stars').innerHTML = numStarsOutput;
+  document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
+
+  modal.classList.add('show');
+}
+
 function gameWon() {
   stopTimer();
   cardsClicked = 0;
 
-  displayModal();
+  displayModal(3, 4, 5);
 }
 
 // check if won game
@@ -183,13 +191,6 @@ var gameScore = 0;
 
 // Modal ***************
 
-function displayModal(finalScoreOutput, numStarsOutput, gameTimeOutput) {
-  document.querySelector('.final-score').innerHTML = finalScoreOuput;
-  document.querySelector('.num-stars').innerHTML = numStarsOuput;
-  document.querySelector('.final-game-time').innerHTML = gameTimeOuput;
-
-  modal.classList.add('show', 'animated', 'flipInX');
-}
 
 /********************* Stars functionality *********************/
 
@@ -230,6 +231,9 @@ function addScore() {
 
   // Add 10 points
   gameScore += 10;
+
+  displayModal(3, 4, 5); // testing purposes, delete this when ready!
+
 
   if (starCount < 4) {
 
