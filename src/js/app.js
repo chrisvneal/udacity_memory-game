@@ -181,13 +181,17 @@ const unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
 
 // TODO: program number of stars to shade
 function shadeStar() {
-  // for (let star of unshadedStars) {
-  //   star.classList.add('shaded');
-  // }
+  for (let star of unshadedStars) {
+    star.classList.add('shaded');
+  }
 
-  // for (let i = 0; i < numberToShade; i++) {
+  for (let i = 0; i < numberToShade; i++) {
 
-  // }
+  }
+
+  function unshadeStar() {
+
+  }
 
   unshadedStars[0].classList.add('shaded');
 
