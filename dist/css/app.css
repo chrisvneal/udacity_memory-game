@@ -164,7 +164,7 @@ header h1, .modal-message .modal-message-header__title {
   margin-left: .90em;
 }
 
-.fa-star {
+.fa-star.rating {
   font-weight: normal;
 }
 
@@ -251,7 +251,7 @@ header h1, .modal-message .modal-message-header__title {
 }
 
 .modal-game-details li {
-  margin: 2rem 0;
+  margin-bottom: 2rem;
 }
 
 .show {
@@ -265,7 +265,36 @@ header h1, .modal-message .modal-message-header__title {
 }
 
 .game-bottom .rules {
-  margin-right: 2em;
+  margin-right: 5rem;
+}
+
+.game-bottom .rules ul {
+  margin-bottom: 4em;
+  list-style-type: disc;
+  padding-left: 15px;
+}
+
+.game-bottom .rules .highlight {
+  background: yellow;
+  padding: 4px;
+  font-weight: bold;
+}
+
+.game-bottom .rules li {
+  margin-bottom: 2em;
+}
+
+.rule-heading {
+  background: skyblue;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding: 7px 0 7px 5px;
+  border-radius: 4px;
+}
+
+.rules .rule-heading:nth-child(2) {
+  margin-top: 5em;
+  border: 1px solid red;
 }
 
 /*# sourceMappingURL=maps/app.css.map */

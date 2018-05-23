@@ -22,6 +22,10 @@ ul {
   list-style: none;
    padding: 0;
    margin: 0;
+
+  //  li {
+  //   margin: 2rem 0;
+  // }
 }
 
 body {
@@ -138,7 +142,7 @@ header h1, .modal-message .modal-message-header__title {
   margin-left: .90em;
 }
 
-.fa-star {
+.fa-star.rating {
   font-weight: normal;
 }
 
@@ -231,23 +235,62 @@ header h1, .modal-message .modal-message-header__title {
    }
 
    li {
-     margin: 2rem 0;
-   }
+    margin-bottom: 2rem;
+  }
+
+   
  }
 
  .show {
    display:block;
  }
 
+
+
+
  .game-bottom {
    display: flex;
 
    .rules {
-     margin-right: 2em;
+     margin-right: 5rem;
+
+     ul {
+       margin-bottom: 4em;
+       list-style-type: disc;
+       padding-left: 15px;
+     }
+
+     .highlight {
+       background: yellow;
+       padding: 4px;
+       font-weight: bold;
+      //  opacity: .30;
+     }
+
+     li {
+       margin-bottom: 2em;
+     }
 
    }
 
    
  }
+
+ .rule-heading {
+   background: skyblue;
+  //  margin-top: 0;
+   padding-top: 7px;
+   padding-bottom: 7px;
+   padding: 7px 0 7px 5px;
+   border-radius: 4px;
+
+   
+
+ }
+
+ .rules .rule-heading:nth-child(2) {
+  margin-top: 5em;
+  border: 1px solid red;
+}
 
  

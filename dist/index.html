@@ -29,13 +29,13 @@
         </div>
         <div class="modal-message">
           <img src="img/smiley_thumb.png" alt="smiley thumbs up" class="smiley">
-        <h3 class="modal-message-header__title animated">Congratulations!</h3>
-        <ul class="modal-game-details">
-          <li class="game-detail">Total moves: <span class="total-moves">4</span></li>
-          <li class="game-detail">Your final score is <span class="final-score">6</span></li>
-          <li class="game-detail">You won <span class="num-stars">7</span> stars</li>
-          <li class="game-detail">Game time: <span class="final-game-time">10:90</span></li>
-        </ul>
+          <h3 class="modal-message-header__title animated">Congratulations!</h3>
+          <ul class="modal-game-details">
+            <li class="game-detail">Total moves: <span class="total-moves">4</span></li>
+            <li class="game-detail">Your final score is <span class="final-score">6</span></li>
+            <li class="game-detail">You won <span class="num-stars">7</span> stars</li>
+            <li class="game-detail">Game time: <span class="final-game-time">10:90</span></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -46,10 +46,10 @@
 
 
       <ul class="stars">
-        <li><i class="fas fa-star"></i></li>
-        <li><i class="fas fa-star"></i></li>
-        <li><i class="fas fa-star"></i></li>
-        <li><i class="fas fa-star"></i></li>
+        <li><i class="fas fa-star rating"></i></li>
+        <li><i class="fas fa-star rating"></i></li>
+        <li><i class="fas fa-star rating"></i></li>
+        <li><i class="fas fa-star rating"></i></li>
       </ul>
 
 
@@ -65,7 +65,7 @@
       <span class="timeOutput">0:00</span>
 
 
-      
+
 
       <div class="reset">
         <i class="fas fa-redo"></i>
@@ -82,19 +82,26 @@
     </section>
 
     <section class="game-bottom">
-    	<div class="rules">
-    	  <h2>Rules</h2>
-    	  <ul>
-    	    <li>Rule #1</li>
-    	    <li>Rule #2</li>
-    	    <li>Rule #3</li>
-    	  </ul>
-    	
-    	
-    	</div>
-    
-    	<ul class="deck">
-    	</ul>
+      <div class="rules">
+        <h2 class="rule-heading">Stars</h2>
+        <ul>
+          <li>1 <span class="fas fa-star fa-fw"></span>: Hit a match on the first go</li>
+          <li>1 <span class="fas fa-star fa-fw"></span>: Every <b>20</b> points</li>
+          <li>Lose a <span class="fas fa-star fa-fw"></span>: for <span class="highlight">3 bad matches</span> in a row</li>
+        </ul>
+
+        <h2 class="rule-heading">Points</h2>
+        <ul>
+          <li><b>10 points</b> for a good match</li>
+          <li>Lose 5 points for a bad match</li>
+          <li>For every <span class="highlight">20 points</span>, win a <span class="fas fa-star fa-fw"></span></li>
+        </ul>
+
+
+      </div>
+
+      <ul class="deck">
+      </ul>
     </section>
   </div>
 

@@ -208,7 +208,7 @@ document.querySelector('.closeout').addEventListener("click", function() {
 // shade a star
 function shadeStar(next) {
   // console.log("The variable 'next' read: " + next + ", your next should be: " + (next + 1));
-  let stars = document.querySelectorAll('.fa-star');
+  let stars = document.querySelectorAll('.fa-star.rating');
   // console.log('parameter is ' + next);
 
   stars[next].classList.add('shaded');
@@ -236,7 +236,7 @@ function shadeStar(next) {
 function unshadeStar() {
   console.log("unshade a star");
 
-  let shadedStars = document.querySelectorAll('.fa-star.shaded');
+  let shadedStars = document.querySelectorAll('.fa-star.rating.shaded');
 
   shadedStars[(starCount - 1)].classList.remove('shaded');
 
