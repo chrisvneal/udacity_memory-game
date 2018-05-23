@@ -175,7 +175,6 @@ header h1, .modal-message .modal-message-header__title {
   border-radius: 8px;
   -webkit-box-shadow: 0 2px 10px 10px rgba(58, 58, 58, 0.6);
           box-shadow: 0 2px 10px 10px rgba(58, 58, 58, 0.6);
-  display: none;
   z-index: 100;
 }
 
@@ -201,10 +200,36 @@ header h1, .modal-message .modal-message-header__title {
   color: white;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
+.modal-content .modal-header h2 {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.modal-content .modal-header .closeout {
+  float: right;
+  font-size: 1.4em;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: -10px;
+  margin-top: -3px;
+}
+
+.modal-content .modal-header .closeout:hover {
+  opacity: .65;
 }
 
 .modal-content .modal-header, .modal-content .modal-message {
-  padding: 8px 8px 15px 10px;
+  padding: 8px 1.2em 15px 10px;
 }
 
 .modal-game-details {
@@ -217,7 +242,6 @@ header h1, .modal-message .modal-message-header__title {
 
 .modal-game-details span {
   float: right;
-  margin-right: 1em;
   font-weight: bold;
   font-size: 1.3em;
 }

@@ -149,7 +149,7 @@ header h1, .modal-message .modal-message-header__title {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 10px 10px lighten(rgba(20, 20, 20, 0.600), 15%);  
-  display: none;
+  // display: none;
   z-index: 100;
 }
 
@@ -176,13 +176,39 @@ header h1, .modal-message .modal-message-header__title {
     background: $modal-header-color;
     color: white;
     border-top-left-radius: 8px;
-    border-top-right-radius: 8px;   
+    border-top-right-radius: 8px;  
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    
+    h2 {
+      width: max-content;
+      
+
+    }
+
+    .closeout {
+      float: right;
+      font-size: 1.4em;
+      cursor: pointer;
+      // border: 1px solid blue;
+      padding: 10px;
+      margin-right: -10px;
+      margin-top: -3px;
+
+
+      &:hover {
+        opacity: .65;
+      }
+    }
   }
 
   
 
+  
+
    .modal-header, .modal-message {
-    padding: 8px 8px 15px 10px;
+    padding: 8px 1.2em 15px 10px;
   }
  }
 
@@ -195,7 +221,7 @@ header h1, .modal-message .modal-message-header__title {
 
    span {
      float: right;
-     margin-right: 1em;
+    //  margin-right: 1em;
      font-weight: bold;
      font-size: 1.3em;
    }
@@ -208,3 +234,5 @@ header h1, .modal-message .modal-message-header__title {
  .show {
    display:block;
  }
+
+ 
