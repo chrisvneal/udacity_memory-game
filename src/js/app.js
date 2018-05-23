@@ -156,6 +156,8 @@ function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTime
   // console.log(document.querySelector('.modal-message-header__title'));
   modalheader.classList.add('bounceInLeft');
   // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
+
+  disableCardClicking();
 }
 
 
@@ -320,6 +322,8 @@ function addScore() {
 }
 
 
+
+
 // Invoke when match is good
 function goodMatch(cards) {
   badMatchesInARow = 0;
@@ -392,6 +396,14 @@ function flipCard(evt) {
   let clickedCard = evt.target;
 
   cardsClicked++;
+
+  //cannot click a card that has already been matched
+  if (clickedCard.classList.contains('matched')) {
+    return;
+  }
+
+
+
 
   if (cardsClicked == 1) {
     startTimer();

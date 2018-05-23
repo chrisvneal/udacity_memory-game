@@ -170,6 +170,8 @@ function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTime
   // console.log(document.querySelector('.modal-message-header__title'));
   modalheader.classList.add('bounceInLeft');
   // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
+
+  disableCardClicking();
 }
 
 function gameWon() {
@@ -376,6 +378,11 @@ function flipCard(evt) {
   var clickedCard = evt.target;
 
   cardsClicked++;
+
+  //cannot click a card that has already been matched
+  if (clickedCard.classList.contains('matched')) {
+    return;
+  }
 
   if (cardsClicked == 1) {
     startTimer();
