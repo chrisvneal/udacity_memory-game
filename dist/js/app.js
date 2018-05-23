@@ -173,6 +173,8 @@ function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTime
 
 }
 
+function closeModal() {}
+
 function gameWon() {
   stopTimer();
   cardsClicked = 0;
