@@ -47,7 +47,7 @@ header h1 {
   margin-bottom: 20px;
 }
 
-header h1, .modal-message h3 {
+header h1, .modal-message .modal-message-header__title {
   font-family: "Luckiest Guy", Arial, sans-serif;
 }
 
@@ -187,10 +187,11 @@ header h1, .modal-message h3 {
   margin: 0;
 }
 
-.modal-content h3 {
+.modal-content .modal-message-header__title {
   margin-bottom: -.20em;
   font-weight: normal;
   font-size: 2em;
+  color: #00b300;
 }
 
 .modal-content .modal-header {
