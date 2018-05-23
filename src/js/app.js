@@ -157,7 +157,7 @@ function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTime
   modalheader.classList.add('bounceInLeft');
   // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
 
-  disableCardClicking();
+  
 }
 
 
