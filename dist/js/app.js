@@ -173,7 +173,10 @@ function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTime
 
 }
 
-function closeModal() {}
+function closeModal() {
+  modal.classList.add('zoomOutDown');
+  modal.classList.remove('show');
+}
 
 function gameWon() {
   stopTimer();
@@ -201,7 +204,8 @@ var gameScore = 0;
 // Modal ***************
 
 document.querySelector('.closeout').addEventListener("click", function () {
-  alert("Close out!");
+
+  closeModal();
 });
 
 /********************* Stars functionality *********************/

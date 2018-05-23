@@ -297,4 +297,8 @@ header h1, .modal-message .modal-message-header__title {
   border: 1px solid red;
 }
 
+.final-game-time {
+  letter-spacing: 2px;
+}
+
 /*# sourceMappingURL=maps/app.css.map */

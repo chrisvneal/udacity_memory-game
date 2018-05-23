@@ -161,7 +161,8 @@ function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTime
 }
 
 function closeModal() {
-  
+  modal.classList.add('zoomOutDown');
+  modal.classList.remove('show');  
 }
 
 
@@ -196,7 +197,8 @@ let gameScore = 0;
 // Modal ***************
 
 document.querySelector('.closeout').addEventListener("click", function() {
-  alert("Close out!");
+  
+  closeModal();
 });
 
 
