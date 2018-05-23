@@ -171,6 +171,7 @@ function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTime
   modalheader.classList.add('bounceInLeft');
   // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
 
+  document.body.addEventListener('click', closeModal);
 }
 
 function closeModal() {
@@ -228,7 +229,8 @@ function shadeStar(next) {
 
 // unshade a star
 function unshadeStar() {
-  console.log("unshade a star");
+  // console.log("unshade a star");
+  console.log('current star count: ' + starCount);
 
   var shadedStars = document.querySelectorAll('.fa-star.rating.shaded');
 
@@ -252,17 +254,17 @@ function addScore() {
 
   if (starCount < 4) {
 
-    if (movesMade == 1) {
-      gameScore += 10;
-      shadeStar(starCount);
-    }
-
     if (gameScore % 20 == 0 && movesMade > 1) {
 
       shadeStar(starCount);
     }
 
     if (gameScore >= 20 && gameScore - 10 > gameScore - 15) {
+      shadeStar(starCount);
+    }
+
+    if (movesMade == 1) {
+      gameScore += 10;
       shadeStar(starCount);
     }
 
