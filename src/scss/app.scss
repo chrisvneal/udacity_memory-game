@@ -1,3 +1,5 @@
+$modal-header-color: lighten(green, 10%);
+
 html {
   box-sizing: border-box;
 }
@@ -35,7 +37,7 @@ header h1 {
   margin-bottom: 20px;
 }
 
-header h1, .modal-message h3 {
+header h1, .modal-message .modal-message-header__title {
   font-family: "Luckiest Guy", Arial, sans-serif;
 }
 
@@ -161,14 +163,15 @@ header h1, .modal-message h3 {
     margin: 0;
   }
 
-  h3 {
+  .modal-message-header__title {
     margin-bottom: -.20em;
     font-weight: normal;
     font-size: 2em;
+    color: $modal-header-color;
   }
 
   .modal-header {
-    background: lighten(green, 10%);
+    background: $modal-header-color;
     color: white;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;   

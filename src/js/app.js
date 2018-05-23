@@ -140,10 +140,9 @@ function resetGame() {
 let resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetGame);
 
-// change score
-function changeScore() {
 
-}
+
+// console.log(document.querySelector('.modal-message-header__title').classList);
 
 function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTimeOutput) {
   document.querySelector('.final-score').innerHTML = finalScoreOutput;
@@ -153,6 +152,10 @@ function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTime
 
 
   modal.classList.add('show');
+  let modalheader = document.querySelector('.modal-message-header__title');
+  // console.log(document.querySelector('.modal-message-header__title'));
+  modalheader.classList.add('bounceInLeft');
+  // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
 }
 
 
