@@ -189,6 +189,10 @@ let gameScore = 0;
 
 // Modal ***************
 
+document.querySelector('.closeout').addEventListener("click", function() {
+  alert("Close out!");
+});
+
 
 
 
