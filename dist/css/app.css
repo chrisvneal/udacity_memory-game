@@ -192,6 +192,8 @@ header h1, .modal-message .modal-message-header__title {
   font-weight: normal;
   font-size: 2em;
   color: #00b300;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 .modal-content .modal-header {
@@ -210,11 +212,14 @@ header h1, .modal-message .modal-message-header__title {
   padding: 0;
   margin: 0;
   font-size: 1.6em;
+  color: #333333;
 }
 
 .modal-game-details span {
   float: right;
   margin-right: 1em;
+  font-weight: bold;
+  font-size: 1.3em;
 }
 
 .modal-game-details li {
