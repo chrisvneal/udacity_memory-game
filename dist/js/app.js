@@ -159,18 +159,7 @@ resetButton.addEventListener('click', resetGame);
 
 // console.log(document.querySelector('.modal-message-header__title').classList);
 
-function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTimeOutput) {
-  document.querySelector('.final-score').innerHTML = finalScoreOutput;
-  document.querySelector('.total-moves').innerHTML = totalMovesMade;
-  document.querySelector('.num-stars').innerHTML = numStarsOutput;
-  document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
 
-  modal.classList.add('show');
-  var modalheader = document.querySelector('.modal-message-header__title');
-  // console.log(document.querySelector('.modal-message-header__title'));
-  modalheader.classList.add('bounceInLeft');
-  // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
-}
 
 function gameWon() {
   stopTimer();
@@ -196,6 +185,23 @@ var scoreOutput = document.querySelector('.scoreOutput');
 var gameScore = 0;
 
 // Modal ***************
+
+function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTimeOutput) {
+  document.querySelector('.final-score').innerHTML = finalScoreOutput;
+  document.querySelector('.total-moves').innerHTML = totalMovesMade;
+  document.querySelector('.num-stars').innerHTML = numStarsOutput;
+  document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
+
+  modal.classList.add('show');
+  var modalheader = document.querySelector('.modal-message-header__title');
+  // console.log(document.querySelector('.modal-message-header__title'));
+  modalheader.classList.add('bounceInLeft');
+  // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
+}
+
+function closeModal() {
+  modal.classList.remove('show');
+}
 
 document.querySelector('.closeout').addEventListener("click", function () {
   alert("Close out!");
