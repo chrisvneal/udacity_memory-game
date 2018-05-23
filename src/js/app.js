@@ -290,6 +290,13 @@ function addScore() {
 
     }
 
+    if (gameScore >= 20 && (gameScore - 10) > (gameScore - 15)) {
+      shadeStar(starCount);
+    }
+
+
+
+
     // console.log(starCount);
 
   }
