@@ -159,9 +159,9 @@ resetButton.addEventListener('click', resetGame);
 
 // console.log(document.querySelector('.modal-message-header__title').classList);
 
-function displayModal(finalScoreOutput, totalMovesMade, numStarsOutput, gameTimeOutput) {
-  document.querySelector('.final-score').innerHTML = finalScoreOutput;
+function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTimeOutput) {
   document.querySelector('.total-moves').innerHTML = totalMovesMade;
+  document.querySelector('.final-score').innerHTML = finalScoreOutput + 'pts';
   document.querySelector('.num-stars').innerHTML = numStarsOutput;
   document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
 
@@ -277,10 +277,17 @@ function addScore() {
   scoreOutput.innerHTML = gameScore;
 }
 
+var matchesInARow = 0;
+
 // Invoke when match is good
 function goodMatch(cards) {
   badMatchesInARow = 0;
-  console.log("Number of bad matches: " + badMatchesInARow);
+  // console.log("Number of bad matches: " + badMatchesInARow);
+  matchesInARow++;
+
+  if (matchesInARow == 3) {
+    shadeStar(starCount);
+  }
 
   addScore();
 
