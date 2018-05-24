@@ -1,68 +1,25 @@
 $modal-header-color: lighten(green, 10%);
-
-
 @import 'partials/global_styles';
 
-
-
- @media screen and (min-width: 1180px) {
-  
- 
-  
-  
-  
-  
-  
+@media screen and (min-width: 1180px) {
   .smiley {
-    height:400px;
+    height: 400px;
   }
-  
   /***************** Card deck styles *****************/
-  
   .deck {
     width: 660px;
     min-height: 680px;
     margin: 0 0 3em;
   }
-
-
-
-
-
-
-
-
-
-  
   /*
   * Styles for the Score Panel
   */
-  
   .game-panel {
     width: 345px;
   }
-
-
-
-
-
-  
   .game-panel .stars {
     margin: 0 5px 0 0;
   }
-
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   /* modal styles */
   .modal {
     position: absolute;
@@ -70,21 +27,20 @@ $modal-header-color: lighten(green, 10%);
     top: 25%;
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 10px 10px lighten(rgba(20, 20, 20, 0.600), 15%);  
+    box-shadow: 0 2px 10px 10px lighten(rgba(20, 20, 20, 0.600), 15%);
     display: none;
     z-index: 100;
   }
-  
-   .modal-content {
-  
+  .modal-content {
     p {
       line-height: 2;
     }
-  
-    h1, h2, h3, p {
+    h1,
+    h2,
+    h3,
+    p {
       margin: 0;
     }
-  
     .modal-message-header__title {
       margin-bottom: -.20em;
       font-weight: normal;
@@ -93,98 +49,54 @@ $modal-header-color: lighten(green, 10%);
       letter-spacing: 2px;
       text-align: center;
     }
-  
     .modal-header {
       background: $modal-header-color;
       color: white;
       border-top-left-radius: 8px;
-      border-top-right-radius: 8px;  
+      border-top-right-radius: 8px;
       display: flex;
       justify-content: space-between;
       position: relative;
-      
       h2 {
         width: max-content;
-        
-  
       }
-  
       .modal-close-button {
         float: right;
         font-size: 1.4em;
         cursor: pointer;
-        // border: 1px solid blue;
         padding: 10px;
         margin-right: -10px;
         margin-top: -3px;
-  
-  
         &:hover {
           opacity: .65;
         }
       }
     }
-  
-    
-  
-    
-  
-     .modal-header, .modal-message {
+    .modal-header,
+    .modal-message {
       padding: 8px 1.2em 15px 10px;
     }
-   }
-  
-  
-   .modal-game-details {   
-     font-size: 1.6em;
-     color: lighten(black, 20%);
-  
-     span {
-       float: right;
+  }
+  .modal-game-details {
+    font-size: 1.6em;
+    color: lighten(black, 20%);
+    span {
+      float: right;
       //  margin-right: 1em;
-       font-weight: bold;
-       font-size: 1.3em;
-     }
-  
-     li {
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+    li {
       margin-bottom: 2rem;
     }
-  
-     
-   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-   
-  
-  
-  
-  
-   .game-bottom {
-     flex-direction: row;
-  
-     .rules {
-       margin-right: 5rem;
-  
-       ul {
-         padding-left: 15px;
-       }
-  
-     }     
-   }
-  
-   
- }
+  }
+  .game-bottom {
+    flex-direction: row;
+    .rules {
+      margin-right: 5rem;
+      ul {
+        padding-left: 15px;
+      }
+    }
+  }
+}

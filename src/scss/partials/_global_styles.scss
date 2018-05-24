@@ -18,12 +18,13 @@ body {
 
 ul {
   list-style: none;
-   padding: 0;
-   margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+  background: #ffffff url('../img/geometry2.png');
+  /* Background pattern from Subtle Patterns */
   font-family: 'Montserrat', Arial, sans-serif;
 }
 
@@ -41,11 +42,14 @@ header h1 {
   margin-bottom: 20px;
 }
 
-header h1, .modal-message .modal-message-header__title {
+header h1,
+.modal-message .modal-message-header__title {
   font-family: "Luckiest Guy", Arial, sans-serif;
 }
 
+
 /***************** Card deck styles *****************/
+
 .deck {
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
   padding: 32px;
@@ -57,7 +61,9 @@ header h1, .modal-message .modal-message-header__title {
   align-items: center;
 }
 
+
 /* card styles */
+
 .deck .card {
   height: 125px;
   width: 125px;
@@ -83,7 +89,9 @@ header h1, .modal-message .modal-message-header__title {
   font-size: 33px;
 }
 
+
 /* game panel styles */
+
 .game-panel {
   text-align: left;
   margin: 1em 0;
@@ -103,6 +111,7 @@ header h1, .modal-message .modal-message-header__title {
   cursor: pointer;
 }
 
+
 /* score panel styles */
 
 .score-panel {
@@ -114,7 +123,9 @@ header h1, .modal-message .modal-message-header__title {
   margin-left: .90em;
 }
 
+
 /* stars */
+
 .fa-star.rating {
   font-weight: normal;
 }
@@ -127,56 +138,49 @@ header h1, .modal-message .modal-message-header__title {
   display: block;
 }
 
+
 /* game bottom */
 
 
 /* rules section styling */
+
 .game-bottom {
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  .rules {
+    ul {
+      margin-bottom: 4em;
+      list-style-type: disc;
+    }
+    .highlight {
+      background: yellow;
+      padding: 4px;
+      font-weight: bold;
+    }
+    li {
+      margin-bottom: 2em;
+    }
+  }
+}
 
-   .rules {
-
-     ul {
-       margin-bottom: 4em;
-       list-style-type: disc;
-     }
-
-     .highlight {
-       background: yellow;
-       padding: 4px;
-       font-weight: bold;
-     }
-
-     li {
-       margin-bottom: 2em;
-     }  
-   }     
- }
-
- .rule-heading {
+.rule-heading {
   background: skyblue;
   padding: 7px 0 7px 5px;
-  border-radius: 4px;  
+  border-radius: 4px;
 }
 
 .rules .rule-heading:nth-child(2) {
- margin-top: 5em;
- border: 1px solid red;
+  margin-top: 5em;
+  border: 1px solid red;
 }
 
 .final-game-time {
- letter-spacing: 2px;
+  letter-spacing: 2px;
 }
 
 
-
-
-
-
-
-
 /* modal styles */
+
 .modal {
   display: none;
 }
