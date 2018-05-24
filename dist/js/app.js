@@ -220,6 +220,8 @@ function shadeStar(next) {
   var stars = document.querySelectorAll('.fa-star.rating');
   // console.log('parameter is ' + next);
 
+  console.log('star count before adding: ' + starCount);
+
   stars[next].classList.add('shaded');
 
   starCount++;
@@ -229,8 +231,8 @@ function shadeStar(next) {
 
 // unshade a star
 function unshadeStar() {
-  // console.log("unshade a star");
-  console.log('current star count: ' + starCount);
+  console.log("*****unshadeStar ran****");
+  console.log('Star count before removing: ' + starCount);
 
   var shadedStars = document.querySelectorAll('.fa-star.rating.shaded');
 
@@ -238,7 +240,7 @@ function unshadeStar() {
 
   // lower starCount
   starCount--;
-  console.log("star count is " + starCount);
+  console.log("Star count after removing: " + starCount);
 }
 
 /********************* Score functionality *********************/

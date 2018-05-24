@@ -151,6 +151,8 @@ header h1,
 
 .modal {
   max-width: 450px;
+  -webkit-transition: all .5s ease-in;
+  transition: all .5s ease-in;
   margin: 0 auto;
   position: absolute;
   background: #fff;

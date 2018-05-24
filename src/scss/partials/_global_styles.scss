@@ -139,6 +139,7 @@ header h1,
 
 .modal {
   max-width: 450px;
+  transition: all .5s ease-in;
   // width: 96%;
   margin: 0 auto;
   position: absolute;
