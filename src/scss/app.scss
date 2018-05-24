@@ -18,8 +18,9 @@ $container-margin: 10px;
   /***************** Card deck styles *****************/
   .deck {
     width: 660px;
+    max-width: 660;
     min-height: 680px;
-    margin: 0 0 3em;
+    margin: 0 auto 3em;
   }
   /*
   * Styles for the Score Panel
