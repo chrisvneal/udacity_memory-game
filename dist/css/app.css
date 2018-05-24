@@ -131,7 +131,7 @@ header h1,
 
 /* score panel styles */
 .score-panel {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .scoreOutput {
@@ -152,8 +152,7 @@ header h1,
   display: block;
 }
 
-/* game bottom */
-/* rules section styling */
+/* Rules section styling */
 .game-bottom {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -165,7 +164,7 @@ header h1,
 }
 
 .game-bottom .rules ul {
-  margin-bottom: 4em;
+  margin: 0 10px 4em;
   list-style-type: disc;
 }
 
@@ -182,7 +181,6 @@ header h1,
 .rule-heading {
   background: skyblue;
   padding: 7px 0 7px 5px;
-  border-radius: 4px;
 }
 
 .rules .rule-heading:nth-child(2) {
