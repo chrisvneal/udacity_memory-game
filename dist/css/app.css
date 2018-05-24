@@ -108,6 +108,11 @@ header h1, .modal-message .modal-message-header__title {
   font-size: 33px;
 }
 
+/* modal styles */
+.modal {
+  display: none;
+}
+
 @media screen and (min-width: 1180px) {
   .smiley {
     height: 400px;
