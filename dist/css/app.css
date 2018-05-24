@@ -1,59 +1,63 @@
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html,
 body {
-  background: red;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #ffffff url("../img/geometry2.png");
+  /* Background pattern from Subtle Patterns */
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+header h1 {
+  font-weight: 300;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+header h1, .modal-message .modal-message-header__title {
+  font-family: "Luckiest Guy", Arial, sans-serif;
 }
 
 @media screen and (min-width: 1180px) {
-  html {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-  *,
-  *::before,
-  *::after {
-    -webkit-box-sizing: inherit;
-            box-sizing: inherit;
-  }
-  html,
-  body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  body {
-    background: #ffffff url("../img/geometry2.png");
-    /* Background pattern from Subtle Patterns */
-    font-family: 'Montserrat', Arial, sans-serif;
-  }
-  .container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    position: relative;
-  }
-  header h1 {
-    font-weight: 300;
-    font-size: 3em;
-    margin-bottom: 20px;
-  }
-  header h1, .modal-message .modal-message-header__title {
-    font-family: "Luckiest Guy", Arial, sans-serif;
-  }
   .smiley {
     height: 400px;
   }
