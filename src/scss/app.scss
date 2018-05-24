@@ -3,9 +3,7 @@ $container-margin: 10px;
 
 @import 'partials/global_styles';
 
-@media screen and (min-width: 320px) {
-  
-}
+
 
 
 // min-width: 660
@@ -13,6 +11,10 @@ $container-margin: 10px;
   .deck {
     margin: 0 auto;
     border-radius: 10px;
+
+    .card {
+      margin-bottom: 0;
+    }
   }
 
   .smiley {

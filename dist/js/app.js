@@ -165,7 +165,7 @@ function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTime
   document.querySelector('.num-stars').innerHTML = numStarsOutput;
   document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
 
-  modal.classList.add('show');
+  modal.classList.add('show', 'flipInX');
   var modalheader = document.querySelector('.modal-message-header__title');
   // console.log(document.querySelector('.modal-message-header__title'));
   modalheader.classList.add('bounceInLeft');

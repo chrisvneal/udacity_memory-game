@@ -151,8 +151,6 @@ header h1,
 
 .modal {
   max-width: 450px;
-  -webkit-transition: all .5s ease-in;
-  transition: all .5s ease-in;
   margin: 0 auto;
   position: absolute;
   background: #fff;
@@ -291,6 +289,9 @@ header h1,
   .deck {
     margin: 0 auto;
     border-radius: 10px;
+  }
+  .deck .card {
+    margin-bottom: 0;
   }
   .smiley {
     top: 10%;
