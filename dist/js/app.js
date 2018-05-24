@@ -175,7 +175,7 @@ function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTime
 }
 
 function closeModal() {
-  modal.classList.add('zoomOutDown');
+  // modal.classList.add('slideOutUp'); // add feature back in if necessary
   modal.classList.remove('show');
 }
 
