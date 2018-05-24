@@ -208,6 +208,17 @@ header h1,
   }
 }
 
+@media screen and (min-width: 750px) {
+  .rules {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+}
+
 @media screen and (min-width: 1130px) {
   .smiley {
     height: 400px;
@@ -222,6 +233,9 @@ header h1,
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+  .rules {
+    display: block;
   }
   /*
   * Styles for the Score Panel
