@@ -261,9 +261,9 @@ function addScore() {
       shadeStar(starCount);
     }
 
-    if (gameScore >= 20 && gameScore - 10 > gameScore - 15) {
-      shadeStar(starCount);
-    }
+    // if (gameScore >= 20 && (gameScore - 10) > (gameScore - 15)) {
+    //   shadeStar(starCount);
+    // }
 
     if (movesMade == 1) {
       gameScore += 10;
@@ -289,6 +289,8 @@ function goodMatch(cards) {
 
   if (matchesInARow == 3) {
     shadeStar(starCount);
+    matchesInARow = 0;
+    console.log('You got 3 matches in a Row');
   }
 
   addScore();
@@ -341,6 +343,7 @@ function badMatch(cards) {
     // console.log("your score is now " + gameScore);
   }
   badMatchesInARow++;
+  matchesInARow = 0;
   // console.log("Number of bad matches: " + badMatchesInARow);
 
   if (badMatchesInARow == 3 && starCount > 0) {
