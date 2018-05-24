@@ -3,6 +3,14 @@ $container-margin: 10px;
 
 @import 'partials/global_styles';
 
+
+// min-width: 660
+@media screen and (min-width: 6660px) {
+  
+
+}
+
+// min-width: 1180
 @media screen and (min-width: 1180px) {
   .smiley {
     height: 400px;
