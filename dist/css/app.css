@@ -57,32 +57,34 @@ header h1, .modal-message .modal-message-header__title {
   font-family: "Luckiest Guy", Arial, sans-serif;
 }
 
+/***************** Card deck styles *****************/
+.deck {
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 32px;
+  border-radius: 10px;
+  -webkit-box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+          box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 @media screen and (min-width: 1180px) {
   .smiley {
     height: 400px;
   }
-  /*
-  * Styles for the deck of cards
-  */
+  /***************** Card deck styles *****************/
   .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
-    border-radius: 10px;
-    -webkit-box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-            box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     margin: 0 0 3em;
   }
   .deck .card {

@@ -44,3 +44,15 @@ header h1 {
 header h1, .modal-message .modal-message-header__title {
   font-family: "Luckiest Guy", Arial, sans-serif;
 }
+
+/***************** Card deck styles *****************/
+.deck {
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
