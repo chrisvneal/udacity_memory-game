@@ -28,9 +28,7 @@ $container-margin: 10px;
 
 // min-width: 1180
 @media screen and (min-width: 1130px) {
-  .smiley {
-    height: 400px;
-  }
+  
   /***************** Card deck styles *****************/
   .deck {
     width: 660px;
@@ -60,19 +58,7 @@ $container-margin: 10px;
 
 
 
-  .modal-game-details {
-    font-size: 1.6em;
-    color: lighten(black, 20%);
-    span {
-      float: right;
-      //  margin-right: 1em;
-      font-weight: bold;
-      font-size: 1.3em;
-    }
-    li {
-      margin-bottom: 2rem;
-    }
-  }
+  
 
 
 
