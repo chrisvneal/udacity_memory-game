@@ -41,27 +41,22 @@ $modal-header-color: lighten(green, 10%);
   .game-panel {
     width: 345px;
   }
+
+
+
+
+
   
   .game-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
     margin: 0 5px 0 0;
   }
+
+
+
   
-  .game-panel .stars li {
-    list-style: none;
-    display: inline-block;
-  }
   
-  .game-panel .reset {
-    // float: right;
-    cursor: pointer;
-  }
   
-  .score-panel {
-    margin-bottom: 2em;
-  }
+  
   
   .scoreOutput {
     font-size: 2em;

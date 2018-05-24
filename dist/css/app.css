@@ -37,9 +37,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -61,7 +58,6 @@ header h1, .modal-message .modal-message-header__title {
 .deck {
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
   padding: 32px;
-  border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -108,7 +104,7 @@ header h1, .modal-message .modal-message-header__title {
   font-size: 33px;
 }
 
-/* game panel */
+/* game panel styles */
 .game-panel {
   text-align: left;
   margin: 1em 0;
@@ -118,6 +114,23 @@ header h1, .modal-message .modal-message-header__title {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.game-panel .stars {
+  display: inline-block;
+}
+
+.game-panel .stars li {
+  display: inline-block;
+}
+
+.game-panel .reset {
+  cursor: pointer;
+}
+
+/* score panel styles */
+.score-panel {
+  margin-bottom: 2em;
 }
 
 /* modal styles */
@@ -142,20 +155,7 @@ header h1, .modal-message .modal-message-header__title {
     width: 345px;
   }
   .game-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
     margin: 0 5px 0 0;
-  }
-  .game-panel .stars li {
-    list-style: none;
-    display: inline-block;
-  }
-  .game-panel .reset {
-    cursor: pointer;
-  }
-  .score-panel {
-    margin-bottom: 2em;
   }
   .scoreOutput {
     font-size: 2em;
