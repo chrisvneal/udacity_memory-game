@@ -217,6 +217,9 @@ header h1,
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
   }
+  .rule-heading {
+    border-radius: 5px;
+  }
 }
 
 @media screen and (min-width: 1130px) {
@@ -233,9 +236,6 @@ header h1,
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-  }
-  .rules {
-    display: block;
   }
   /*
   * Styles for the Score Panel
@@ -325,17 +325,18 @@ header h1,
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    margin-top: 2em;
   }
   .game-bottom .rules {
     margin-right: 5rem;
+    display: block;
   }
   .game-bottom .rules ul {
     padding-left: 15px;
   }
-}
-
-.rule-heading {
-  border-radius: 5px;
+  .game-bottom .rule-heading {
+    margin-top: 0;
+  }
 }
 
 /*# sourceMappingURL=maps/app.css.map */
