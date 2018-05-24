@@ -5,22 +5,34 @@ $container-margin: 10px;
 
 
 // min-width: 660
-@media screen and (min-width: 6660px) {
-  
+@media screen and (min-width: 660px) {
+  .deck {
+    margin: 0 auto;
+    border-radius: 10px;
+  }
 
 }
 
+
+// min-width: 750px
+@media screen and (min-width: 750px) {
+  
+}
+
 // min-width: 1180
-@media screen and (min-width: 1180px) {
+@media screen and (min-width: 1130px) {
   .smiley {
     height: 400px;
   }
   /***************** Card deck styles *****************/
   .deck {
     width: 660px;
-    max-width: 660;
     min-height: 680px;
-    margin: 0 auto 3em;
+    margin: 0 0 3em;
+  }
+
+  .container {
+    align-items: center;
   }
   /*
   * Styles for the Score Panel
@@ -110,4 +122,8 @@ $container-margin: 10px;
       }
     }
   }
+}
+
+.rule-heading {
+  border-radius: 5px;
 }

@@ -34,6 +34,7 @@ body {
   // align-items: center;
   flex-direction: column;
   position: relative;
+  margin: 0 auto;
 }
 
 header h1 {
@@ -54,6 +55,7 @@ header h1,
 .deck {
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
   padding: 32px;
+  max-width: 660px;
   // border-radius: 10px;
   // box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
   display: flex;
