@@ -32,18 +32,14 @@ $modal-header-color: lighten(green, 10%);
 
 
 
-  
+
   
   /*
   * Styles for the Score Panel
   */
   
   .game-panel {
-    text-align: left;
     width: 345px;
-    margin: 1em 0;
-    display: flex;
-    justify-content: space-between;
   }
   
   .game-panel .stars {
