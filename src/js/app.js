@@ -198,7 +198,7 @@ let gameScore = 0;
 
 // Modal ***************
 
-document.querySelector('.closeout').addEventListener("click", function() {
+document.querySelector('.modal-close-button').addEventListener("click", function() {
   
   closeModal();
 });

@@ -58,18 +58,9 @@ $modal-header-color: lighten(green, 10%);
   
   
   
-  .scoreOutput {
-    font-size: 2em;
-    margin-left: .90em;
-  }
   
-  .fa-star.rating {
-    font-weight: normal;
-  }
   
-  .fa-star.shaded {
-    font-weight: 700;
-  }
+  
   
   
   /* modal styles */
@@ -118,7 +109,7 @@ $modal-header-color: lighten(green, 10%);
   
       }
   
-      .closeout {
+      .modal-close-button {
         float: right;
         font-size: 1.4em;
         cursor: pointer;
@@ -161,60 +152,39 @@ $modal-header-color: lighten(green, 10%);
   
      
    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-   .show {
-     display:block;
-   }
+   
   
   
   
   
    .game-bottom {
-     display: flex;
+     flex-direction: row;
   
      .rules {
        margin-right: 5rem;
   
        ul {
-         margin-bottom: 4em;
-         list-style-type: disc;
          padding-left: 15px;
        }
   
-       .highlight {
-         background: yellow;
-         padding: 4px;
-         font-weight: bold;
-        //  opacity: .30;
-       }
-  
-       li {
-         margin-bottom: 2em;
-       }
-  
-     }
-  
-     
+     }     
    }
   
-   .rule-heading {
-     background: skyblue;
-    //  margin-top: 0;
-     padding-top: 7px;
-     padding-bottom: 7px;
-     padding: 7px 0 7px 5px;
-     border-radius: 4px;
-  
-     
-  
-   }
-  
-   .rules .rule-heading:nth-child(2) {
-    margin-top: 5em;
-    border: 1px solid red;
-  }
-  
-  .final-game-time {
-    letter-spacing: 2px;
-  }
+   
  }
