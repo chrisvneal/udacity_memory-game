@@ -146,7 +146,7 @@ resetButton.addEventListener('click', resetGame);
 
 function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTimeOutput) {
   document.querySelector('.total-moves').innerHTML = totalMovesMade;
-  document.querySelector('.final-score').innerHTML = finalScoreOutput + 'pts';  
+  document.querySelector('.final-score').innerHTML = finalScoreOutput + ' pts';  
   document.querySelector('.num-stars').innerHTML = numStarsOutput;
   document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
 
