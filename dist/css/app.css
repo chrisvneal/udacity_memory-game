@@ -1,3 +1,4 @@
+/* Global Styling */
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -18,15 +19,8 @@ body {
   padding: 0;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 body {
   background: #ffffff url("../img/geometry2.png");
-  /* Background pattern from Subtle Patterns */
   font-family: 'Montserrat', Arial, sans-serif;
 }
 
@@ -57,7 +51,13 @@ header h1,
   font-family: "Luckiest Guy", Arial, sans-serif;
 }
 
-/***************** Card deck styles *****************/
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/***************** Card   & deck styles *****************/
 .deck {
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
   padding: 32px;
@@ -281,10 +281,12 @@ header h1,
   border: 1px solid red;
 }
 
+/* game detail section styling */
 .final-game-time {
   letter-spacing: 2px;
 }
 
+/* Media queries */
 @media screen and (min-width: 660px) {
   .deck {
     margin: 0 auto;
@@ -326,9 +328,7 @@ header h1,
         -ms-flex-align: center;
             align-items: center;
   }
-  /*
-  * Styles for the Score Panel
-  */
+  /* game panel styling */
   .game-panel {
     width: 345px;
   }

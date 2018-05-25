@@ -1,31 +1,20 @@
-$modal-header-color: lighten(green, 10%);
-$container-margin: 10px;
-
-@import 'partials/global_styles';
-
-
-
+/* Media queries */
 
 // min-width: 660
 @media screen and (min-width: 660px) {
   .deck {
     margin: 0 auto;
     border-radius: 10px;
-
     .card {
       margin-bottom: 0;
     }
   }
-
   .smiley {
-
-  top: 10%;
-  left: 10%;
-  right: 10%;
+    top: 10%;
+    left: 10%;
+    right: 10%;
   }
-
 }
-
 
 // min-width: 750px
 @media screen and (min-width: 750px) {
@@ -33,7 +22,6 @@ $container-margin: 10px;
     display: flex;
     justify-content: space-evenly;
   }
-
   .rule-heading {
     border-radius: 5px;
   }
@@ -41,47 +29,27 @@ $container-margin: 10px;
 
 // min-width: 1180
 @media screen and (min-width: 1130px) {
-  
   /***************** Card deck styles *****************/
   .deck {
     width: 660px;
     min-height: 680px;
     margin: 0 0 3em;
   }
-
   .container {
     align-items: center;
   }
-
   
-  /*
-  * Styles for the Score Panel
-  */
+  /* game panel styling */
+  
   .game-panel {
     width: 345px;
   }
   .game-panel .stars {
     margin: 0 5px 0 0;
   }
-
-
-
-
-
-
-
-
-
-
-
   .game-bottom {
     flex-direction: row;
     margin-top: 2em;
-
-
-
-
-
     .rules {
       margin-right: 5rem;
       display: block;
@@ -89,18 +57,8 @@ $container-margin: 10px;
         padding-left: 15px;
       }
     }
-
-  
     .rule-heading {
       margin-top: 0;
     }
-
-
-
-
-
   }
-
-  
 } // end of media queries
-
