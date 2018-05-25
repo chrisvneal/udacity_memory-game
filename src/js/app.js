@@ -26,6 +26,11 @@ let badMatchesInARow = 0;
 
 let starCount = 0;
 
+const scoreOutput = document.querySelector('.scoreOutput');
+let gameScore = 0;
+
+
+let resetButton = document.querySelector('.reset');
 
 
 
@@ -140,8 +145,7 @@ function layoutCards(cards) {
 // compare the selected cards
 function compareCards(cards) {
 
-  movesMade++;
-
+  
 
   if (movesMade > 1) {
     document.querySelector('span.moves').innerHTML = movesMade + " Moves";
@@ -164,6 +168,29 @@ function resetTimer() {
   timeOutput.innerHTML = "00:00";
 }
 
+// game won function
+function gameWon() {
+  stopTimer();
+
+  // display modal after winning
+  let time = document.querySelector('.timeOutput').textContent;
+  displayModal(movesMade, gameScore, starCount, time);
+}
+
+// after every match, check if won game
+function checkIfWon() {
+  let matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
+
+  if (matchedCardsLength == 16) {
+    gameWon();
+  } else {
+    enableCardClicks();
+  }
+}
+
+
+
+
 // reset the game
 function resetGame() {
   let shadedStars = document.querySelectorAll('.shaded');
@@ -173,8 +200,6 @@ function resetGame() {
 
   // shuffle cards
   shuffledImages = shuffle(shuffledImages);
-
-
 
   // layout cards
   layoutCards(shuffledImages);
@@ -186,16 +211,12 @@ function resetGame() {
   cardsClicked = 0;
 
   // reset selected cards array
-
   selectedCards.length = 0;
-  // console.log(selectedCards);
-
 
   // reset stars
   for (let star of shadedStars) {
     star.classList.remove('shaded');
   }
-
 
   // reset moves made
   movesMade = 0;
@@ -205,13 +226,15 @@ function resetGame() {
   gameScore = 0;
   scoreOutput.innerHTML = gameScore;
 }
-
-let resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetGame);
 
 
 
-// console.log(document.querySelector('.modal-message-header__title').classList);
+
+
+
+
+/************************ Modal functionality ************************/
 
 function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTimeOutput) {
   document.querySelector('.total-moves').innerHTML = totalMovesMade;
@@ -219,61 +242,21 @@ function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTime
   document.querySelector('.num-stars').innerHTML = numStarsOutput;
   document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
 
-
   modal.classList.add('show', 'flipInX');
   let modalheader = document.querySelector('.modal-message-header__title');
-  // console.log(document.querySelector('.modal-message-header__title'));
+
   modalheader.classList.add('bounceInLeft');
-  // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
 
   document.body.addEventListener('click', closeModal);
 }
 
+// close modal function, to be attached to 'x'
 function closeModal() {
   // modal.classList.add('slideOutUp'); // add feature back in if necessary
   modal.classList.remove('show');
 }
 
-
-
-
-
-function gameWon() {
-  stopTimer();
-  cardsClicked = 0;
-
-
-  let time = document.querySelector('.timeOutput').textContent;
-
-  displayModal(movesMade, gameScore, starCount, time);
-
-
-
-}
-
-// check if won game
-function checkIfWon() {
-  let matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
-
-  if (matchedCardsLength == 16) {
-    gameWon();
-  } else {
-    enableCardClicks();
-  }
-}
-
-const scoreOutput = document.querySelector('.scoreOutput');
-let gameScore = 0;
-
-// Modal ***************
-
-document.querySelector('.modal-close-button').addEventListener("click", function() {
-
-  closeModal();
-});
-
-
-
+document.querySelector('.modal-close-button').addEventListener("click", closeModal);
 
 
 /********************* Scoring functionality *********************/
@@ -417,6 +400,8 @@ function flipCard(evt) {
     // If the selectedCard's array length hits 2, lock clicking functionality and compare the 2 values
     if (selectedCards.length == 2) {
       disableCardClicking();
+
+      movesMade++;
 
       compareCards(selectedCards);
     }
