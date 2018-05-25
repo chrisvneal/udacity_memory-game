@@ -109,6 +109,10 @@ ul {
   font-size: 33px;
 }
 
+.deck .card.matched {
+  background: #32b85a;
+}
+
 /* game panel styles */
 .game-panel {
   text-align: left;
