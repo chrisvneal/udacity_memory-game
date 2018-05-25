@@ -318,7 +318,7 @@ function goodMatch(cards) {
 
       if (card.getAttribute('data-image') == cardValue) {
         card.classList.remove('flipped');
-        card.classList.add('matched');
+        card.classList.add('matched', 'tada');
       }
     }
 
