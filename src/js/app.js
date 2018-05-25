@@ -35,6 +35,8 @@ function checkIfWon() {
   matchedCardsLength == 16 ? gameWon() : enableCardClicks();
 }
 
+
+
 /********* Timer functions *********/
 
 let gameTimer;
@@ -147,11 +149,12 @@ function flipCard(evt) {
   // cannot click a card that has already been matched or flipped
   if (clickedCard.classList.contains('matched') || clickedCard.classList.contains('flipped')) { return; }
 
-
   // start timer as soon as the first card is clicked
   if (cardsClicked == 1) {
     startTimer();
   }
+
+
 
   // if the target ckicked is an 'LI' element...
   if (clickedCard.nodeName == 'LI') {
@@ -268,6 +271,14 @@ function addScore() {
   scoreOutput.innerHTML = gameScore;
 }
 
+function removeBadEffect() {
+  let flippedCards = cardDeck.querySelectorAll('.flipped');
+  for (let card of flippedCards) {
+    card.classList.remove('shake');
+  }
+}
+
+
 // When a good match hits
 function goodMatch(cards) {
   badMatchesInARow = 0;
@@ -323,6 +334,7 @@ function badMatch(cards, evt) {
 
   for (let card of flippedCards) {
     card.classList.add('shake');
+    setTimeout(removeBadEffect, 900);
   }
 
   // Turn the card around if the values do not match
