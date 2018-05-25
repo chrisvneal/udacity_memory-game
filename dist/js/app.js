@@ -1,36 +1,38 @@
 "use strict";
 
 var cardDeck = document.querySelector('.deck');
+var modal = document.querySelector('.modal');
+var scoreOutput = document.querySelector('.scoreOutput');
+var movesMade = 0;
+var cardsClicked = 0;
+var matchesInARow = 0;
+var badMatchesInARow = 0;
+var starCount = 0;
+var gameScore = 0;
+var resetButton = document.querySelector('.reset');
+var selectedCards = [];
 
 // Array of 8 images for cards
 var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
-
-// Shuffle images
 var shuffledImages = shuffle(images);
 
-// Initiate variable for selected cards
-var selectedCards = [];
-
-// modal
-var modal = document.querySelector('.modal');
-
-// Establish initial moves made message
-var movesMade = 0;
-document.querySelector('span.moves').innerHTML = movesMade + " Moves";
-
-var cardsClicked = 0;
-
-var matchesInARow = 0;
-var badMatchesInARow = 0;
-
-var starCount = 0;
-
-var scoreOutput = document.querySelector('.scoreOutput');
-var gameScore = 0;
-
-var resetButton = document.querySelector('.reset');
-
 /**************************** Functions ****************************/
+
+// game won function
+function gameWon() {
+  stopTimer();
+
+  // display modal after winning
+  var time = document.querySelector('.timeOutput').textContent;
+  displayModal(movesMade, gameScore, starCount, time);
+}
+
+// after every match, check if game won
+function checkIfWon() {
+  var matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
+
+  matchedCardsLength == 16 ? gameWon() : enableCardClicks();
+}
 
 /********* Timer functions *********/
 
@@ -68,8 +70,9 @@ function insertRunningTime() {
   timeOutput.innerHTML = '0' + minutes + ':' + seconds;
 }
 
-/********* Shuffle function (http://stackoverflow.com/a/2450976) *********/
+/* Game setup functions (shuffle cards and layout) */
 
+// shuffle cards (http://stackoverflow.com/a/2450976)
 function shuffle(array) {
   var currentIndex = array.length,
       temporaryValue,
@@ -84,16 +87,6 @@ function shuffle(array) {
   }
 
   return array;
-}
-
-/********* Card clicking functions *********/
-
-function disableCardClicking() {
-  cardDeck.removeEventListener('mousedown', flipCard);
-}
-
-function enableCardClicks() {
-  cardDeck.addEventListener('mousedown', flipCard);
 }
 
 // Layout 16 cards in the deck
@@ -119,6 +112,16 @@ function layoutCards(cards) {
   enableCardClicks();
 }
 
+/********* Card functions *********/
+
+function disableCardClicking() {
+  cardDeck.removeEventListener('mousedown', flipCard);
+}
+
+function enableCardClicks() {
+  cardDeck.addEventListener('mousedown', flipCard);
+}
+
 // compare the selected cards
 function compareCards(cards) {
 
@@ -136,26 +139,47 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
-// reset timer
+function flipCard(evt) {
+  var clickedCard = evt.target;
+
+  cardsClicked++;
+
+  // cannot click a card that has already been matched
+  if (clickedCard.classList.contains('matched')) {
+    return;
+  }
+
+  // start timer as soon as the first card is clicked
+  if (cardsClicked == 1) {
+    startTimer();
+  }
+
+  // if the target ckicked is an 'LI' element...
+  if (clickedCard.nodeName == 'LI') {
+
+    // ...flip card and show symbol
+    clickedCard.classList.add('open', 'show', 'flipped');
+
+    // ..put the card's value in the selected card's array
+    var cardAttribute = clickedCard.getAttribute('data-image');
+    selectedCards.push(cardAttribute);
+
+    // If the selectedCard's array length hits 2, lock clicking functionality and compare the 2 values
+    if (selectedCards.length == 2) {
+      disableCardClicking();
+
+      movesMade++;
+
+      compareCards(selectedCards);
+    }
+  }
+}
+
+/******* Reset functions ***********/
+
 function resetTimer() {
   stopTimer();
   timeOutput.innerHTML = "00:00";
-}
-
-// game won function
-function gameWon() {
-  stopTimer();
-
-  // display modal after winning
-  var time = document.querySelector('.timeOutput').textContent;
-  displayModal(movesMade, gameScore, starCount, time);
-}
-
-// after every match, check if won game
-function checkIfWon() {
-  var matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
-
-  matchedCardsLength == 16 ? gameWon() : enableCardClicks();
 }
 
 // reset the game
@@ -217,7 +241,7 @@ function resetGame() {
 }
 resetButton.addEventListener('click', resetGame);
 
-/************************ Modal functionality ************************/
+/******* Modal functions ***********/
 
 function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTimeOutput) {
   document.querySelector('.total-moves').innerHTML = totalMovesMade;
@@ -241,7 +265,7 @@ function closeModal() {
 
 document.querySelector('.modal-close-button').addEventListener("click", closeModal);
 
-/********************* Scoring functionality *********************/
+/******* Scoring functions ***********/
 
 // add score when a match is hit
 function addScore() {
@@ -396,43 +420,7 @@ function unshadeStar() {
   starCount--;
 }
 
-/********************* Card flipping functionality *********************/
+document.querySelector('span.moves').innerHTML = movesMade + " Moves";
 
-function flipCard(evt) {
-  var clickedCard = evt.target;
-
-  cardsClicked++;
-
-  // cannot click a card that has already been matched
-  if (clickedCard.classList.contains('matched')) {
-    return;
-  }
-
-  // start timer as soon as the first card is clicked
-  if (cardsClicked == 1) {
-    startTimer();
-  }
-
-  // if the target ckicked is an 'LI' element...
-  if (clickedCard.nodeName == 'LI') {
-
-    // ...flip card and show symbol
-    clickedCard.classList.add('open', 'show', 'flipped');
-
-    // ..put the card's value in the selected card's array
-    var cardAttribute = clickedCard.getAttribute('data-image');
-    selectedCards.push(cardAttribute);
-
-    // If the selectedCard's array length hits 2, lock clicking functionality and compare the 2 values
-    if (selectedCards.length == 2) {
-      disableCardClicking();
-
-      movesMade++;
-
-      compareCards(selectedCards);
-    }
-  }
-}
-
-/************** Start of Memory Game **************/
+/* Memory Game start */
 window.onload = layoutCards(shuffledImages);

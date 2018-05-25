@@ -1,52 +1,39 @@
 "use strict";
 
 const cardDeck = document.querySelector('.deck');
+const modal = document.querySelector('.modal');
+const scoreOutput = document.querySelector('.scoreOutput');
+let movesMade = 0;
+let cardsClicked = 0;
+let matchesInARow = 0;
+let badMatchesInARow = 0;
+let starCount = 0;
+let gameScore = 0;
+let resetButton = document.querySelector('.reset');
+let selectedCards = [];
 
 // Array of 8 images for cards
 let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
-
-// Shuffle images
 let shuffledImages = shuffle(images);
-
-// Initiate variable for selected cards
-let selectedCards = [];
-
-// modal
-const modal = document.querySelector('.modal');
-
-// Establish initial moves made message
-let movesMade = 0;
-document.querySelector('span.moves').innerHTML = movesMade + " Moves";
-
-let cardsClicked = 0;
-
-let matchesInARow = 0;
-let badMatchesInARow = 0;
-
-
-let starCount = 0;
-
-const scoreOutput = document.querySelector('.scoreOutput');
-let gameScore = 0;
-
-
-let resetButton = document.querySelector('.reset');
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**************************** Functions ****************************/
+
+// game won function
+function gameWon() {
+  stopTimer();
+
+  // display modal after winning
+  let time = document.querySelector('.timeOutput').textContent;
+  displayModal(movesMade, gameScore, starCount, time);
+}
+
+// after every match, check if game won
+function checkIfWon() {
+  let matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
+
+  matchedCardsLength == 16 ? gameWon() : enableCardClicks();
+}
 
 /********* Timer functions *********/
 
@@ -84,11 +71,9 @@ function insertRunningTime() {
   timeOutput.innerHTML = `0${minutes}:${seconds}`;
 }
 
+/* Game setup functions (shuffle cards and layout) */ 
 
-
-
-/********* Shuffle function (http://stackoverflow.com/a/2450976) *********/
-
+// shuffle cards (http://stackoverflow.com/a/2450976)
 function shuffle(array) {
   var currentIndex = array.length,
     temporaryValue, randomIndex;
@@ -102,21 +87,6 @@ function shuffle(array) {
   }
 
   return array;
-}
-
-
-
-
-
-/********* Card clicking functions *********/
-
-
-function disableCardClicking() {
-  cardDeck.removeEventListener('mousedown', flipCard);
-}
-
-function enableCardClicks() {
-  cardDeck.addEventListener('mousedown', flipCard);
 }
 
 // Layout 16 cards in the deck
@@ -142,10 +112,18 @@ function layoutCards(cards) {
   enableCardClicks();
 }
 
-// compare the selected cards
-function compareCards(cards) {
+/********* Card functions *********/
 
-  
+function disableCardClicking() {
+  cardDeck.removeEventListener('mousedown', flipCard);
+}
+
+function enableCardClicks() {
+  cardDeck.addEventListener('mousedown', flipCard);
+}
+
+// compare the selected cards
+function compareCards(cards) {  
 
   if (movesMade > 1) {
     document.querySelector('span.moves').innerHTML = movesMade + " Moves";
@@ -161,33 +139,48 @@ function compareCards(cards) {
   selectedCards.length = 0;
 }
 
+function flipCard(evt) {
+  let clickedCard = evt.target;
 
-// reset timer
+  cardsClicked++;
+
+  // cannot click a card that has already been matched
+  if (clickedCard.classList.contains('matched')) {
+    return;
+  }
+
+  // start timer as soon as the first card is clicked
+  if (cardsClicked == 1) {
+    startTimer();
+  }
+
+  // if the target ckicked is an 'LI' element...
+  if (clickedCard.nodeName == 'LI') {
+
+    // ...flip card and show symbol
+    clickedCard.classList.add('open', 'show', 'flipped');
+
+    // ..put the card's value in the selected card's array
+    let cardAttribute = clickedCard.getAttribute('data-image');
+    selectedCards.push(cardAttribute);
+
+    // If the selectedCard's array length hits 2, lock clicking functionality and compare the 2 values
+    if (selectedCards.length == 2) {
+      disableCardClicking();
+
+      movesMade++;
+
+      compareCards(selectedCards);
+    }
+  }
+}
+
+/******* Reset functions ***********/
+
 function resetTimer() {
   stopTimer();
   timeOutput.innerHTML = "00:00";
 }
-
-// game won function
-function gameWon() {
-  stopTimer();
-
-  // display modal after winning
-  let time = document.querySelector('.timeOutput').textContent;
-  displayModal(movesMade, gameScore, starCount, time);
-}
-
-// after every match, check if won game
-function checkIfWon() {
-  let matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
-
-  matchedCardsLength == 16 ? gameWon() : enableCardClicks();
-}
-
-
-
-
-
 
 // reset the game
 function resetGame() {
@@ -226,13 +219,7 @@ function resetGame() {
 }
 resetButton.addEventListener('click', resetGame);
 
-
-
-
-
-
-
-/************************ Modal functionality ************************/
+/******* Modal functions ***********/
 
 function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTimeOutput) {
   document.querySelector('.total-moves').innerHTML = totalMovesMade;
@@ -257,7 +244,7 @@ function closeModal() {
 document.querySelector('.modal-close-button').addEventListener("click", closeModal);
 
 
-/********************* Scoring functionality *********************/
+/******* Scoring functions ***********/
 
 // add score when a match is hit
 function addScore() {
@@ -368,43 +355,7 @@ function unshadeStar() {
   starCount--;
 }
 
-/********************* Card flipping functionality *********************/
+document.querySelector('span.moves').innerHTML = movesMade + " Moves";
 
-function flipCard(evt) {
-  let clickedCard = evt.target;
-
-  cardsClicked++;
-
-  // cannot click a card that has already been matched
-  if (clickedCard.classList.contains('matched')) {
-    return;
-  }
-
-  // start timer as soon as the first card is clicked
-  if (cardsClicked == 1) {
-    startTimer();
-  }
-
-  // if the target ckicked is an 'LI' element...
-  if (clickedCard.nodeName == 'LI') {
-
-    // ...flip card and show symbol
-    clickedCard.classList.add('open', 'show', 'flipped');
-
-    // ..put the card's value in the selected card's array
-    let cardAttribute = clickedCard.getAttribute('data-image');
-    selectedCards.push(cardAttribute);
-
-    // If the selectedCard's array length hits 2, lock clicking functionality and compare the 2 values
-    if (selectedCards.length == 2) {
-      disableCardClicking();
-
-      movesMade++;
-
-      compareCards(selectedCards);
-    }
-  }
-}
-
-/************** Start of Memory Game **************/
+/* Memory Game start */
 window.onload = layoutCards(shuffledImages);
