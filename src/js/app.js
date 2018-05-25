@@ -98,7 +98,7 @@ function layoutCards(cards) {
     // Create a card (li) with a class of 'card'
     const card = document.createElement('li');
     card.setAttribute('data-image', cards[i]);
-    card.classList.add('card');
+    card.classList.add('card', 'animated');
 
     // Insert shuffled image in card
     let cardImage = document.createElement('i');
