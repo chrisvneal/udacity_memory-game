@@ -71,7 +71,7 @@ function insertRunningTime() {
   timeOutput.innerHTML = `0${minutes}:${seconds}`;
 }
 
-/* Game setup functions (shuffle cards and layout) */ 
+/* Game setup functions (shuffle cards and layout) */
 
 // shuffle cards (http://stackoverflow.com/a/2450976)
 function shuffle(array) {
@@ -123,7 +123,7 @@ function enableCardClicks() {
 }
 
 // compare the selected cards
-function compareCards(cards) {  
+function compareCards(cards) {
 
   if (movesMade > 1) {
     document.querySelector('span.moves').innerHTML = movesMade + " Moves";
@@ -298,7 +298,7 @@ function goodMatch(cards) {
 }
 
 // When a bad match hits
-function badMatch(cards) {
+function badMatch(cards, evt) {
   if (gameScore % 5 == 0 && gameScore >= 5) {
     gameScore -= 5;
     scoreOutput.innerHTML = gameScore;
@@ -319,10 +319,14 @@ function badMatch(cards) {
   let cardValue1 = cards[0];
   let cardValue2 = cards[1];
 
+  let flippedCards = cardDeck.querySelectorAll('.flipped');
+
+  for (let card of flippedCards) {
+    card.classList.add('shake');
+  }
+
   // Turn the card around if the values do not match
   setTimeout(function() {
-    let flippedCards = cardDeck.querySelectorAll('.flipped');
-
     for (let card of flippedCards) {
       if (card.getAttribute('data-image') == cardValue1 || card.getAttribute('data-image') == cardValue2) {
         card.classList.remove('open', 'show', 'flipped');
@@ -331,7 +335,7 @@ function badMatch(cards) {
 
     // enable clicking on cards
     enableCardClicks();
-  }, 800);
+  }, 1000);
 }
 
 // shade a star

@@ -342,7 +342,7 @@ function goodMatch(cards) {
 }
 
 // When a bad match hits
-function badMatch(cards) {
+function badMatch(cards, evt) {
   if (gameScore % 5 == 0 && gameScore >= 5) {
     gameScore -= 5;
     scoreOutput.innerHTML = gameScore;
@@ -363,41 +363,67 @@ function badMatch(cards) {
   var cardValue1 = cards[0];
   var cardValue2 = cards[1];
 
-  // Turn the card around if the values do not match
-  setTimeout(function () {
-    var flippedCards = cardDeck.querySelectorAll('.flipped');
+  var flippedCards = cardDeck.querySelectorAll('.flipped');
 
-    var _iteratorNormalCompletion3 = true;
-    var _didIteratorError3 = false;
-    var _iteratorError3 = undefined;
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = flippedCards[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var card = _step3.value;
+
+      card.classList.add('shake');
+    }
+
+    // Turn the card around if the values do not match
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3.return) {
+        _iterator3.return();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+
+  setTimeout(function () {
+    var _iteratorNormalCompletion4 = true;
+    var _didIteratorError4 = false;
+    var _iteratorError4 = undefined;
 
     try {
-      for (var _iterator3 = flippedCards[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-        var card = _step3.value;
+      for (var _iterator4 = flippedCards[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+        var _card = _step4.value;
 
-        if (card.getAttribute('data-image') == cardValue1 || card.getAttribute('data-image') == cardValue2) {
-          card.classList.remove('open', 'show', 'flipped');
+        if (_card.getAttribute('data-image') == cardValue1 || _card.getAttribute('data-image') == cardValue2) {
+          _card.classList.remove('open', 'show', 'flipped');
         }
       }
 
       // enable clicking on cards
     } catch (err) {
-      _didIteratorError3 = true;
-      _iteratorError3 = err;
+      _didIteratorError4 = true;
+      _iteratorError4 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion3 && _iterator3.return) {
-          _iterator3.return();
+        if (!_iteratorNormalCompletion4 && _iterator4.return) {
+          _iterator4.return();
         }
       } finally {
-        if (_didIteratorError3) {
-          throw _iteratorError3;
+        if (_didIteratorError4) {
+          throw _iteratorError4;
         }
       }
     }
 
     enableCardClicks();
-  }, 800);
+  }, 1000);
 }
 
 // shade a star
