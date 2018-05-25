@@ -144,10 +144,9 @@ function flipCard(evt) {
 
   cardsClicked++;
 
-  // cannot click a card that has already been matched
-  if (clickedCard.classList.contains('matched')) {
-    return;
-  }
+  // cannot click a card that has already been matched or flipped
+  if (clickedCard.classList.contains('matched') || clickedCard.classList.contains('flipped')) { return; }
+
 
   // start timer as soon as the first card is clicked
   if (cardsClicked == 1) {

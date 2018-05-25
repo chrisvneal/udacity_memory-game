@@ -144,8 +144,8 @@ function flipCard(evt) {
 
   cardsClicked++;
 
-  // cannot click a card that has already been matched
-  if (clickedCard.classList.contains('matched')) {
+  // cannot click a card that has already been matched or flipped
+  if (clickedCard.classList.contains('matched') || clickedCard.classList.contains('flipped')) {
     return;
   }
 
