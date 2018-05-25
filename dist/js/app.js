@@ -155,11 +155,7 @@ function gameWon() {
 function checkIfWon() {
   var matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
 
-  if (matchedCardsLength == 16) {
-    gameWon();
-  } else {
-    enableCardClicks();
-  }
+  matchedCardsLength == 16 ? gameWon() : enableCardClicks();
 }
 
 // reset the game
