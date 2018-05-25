@@ -18,6 +18,8 @@ const modal = document.querySelector('.modal');
 let movesMade = 0;
 document.querySelector('span.moves').innerHTML = movesMade + " Moves";
 
+let cardsClicked = 0;
+
 
 
 
@@ -35,6 +37,7 @@ document.querySelector('span.moves').innerHTML = movesMade + " Moves";
 
 
 /**************************** Functions ****************************/
+
 /********* Timer functions *********/
 
 let gameTimer;
@@ -74,11 +77,8 @@ function insertRunningTime() {
 
 
 
+/********* Shuffle function (http://stackoverflow.com/a/2450976) *********/
 
-
-
-
-// Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
   var currentIndex = array.length,
     temporaryValue, randomIndex;
@@ -93,6 +93,13 @@ function shuffle(array) {
 
   return array;
 }
+
+
+
+
+
+/********* Card clicking functions *********/
+
 
 function disableCardClicking() {
   cardDeck.removeEventListener('mousedown', flipCard);
@@ -203,7 +210,7 @@ resetButton.addEventListener('click', resetGame);
 
 function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTimeOutput) {
   document.querySelector('.total-moves').innerHTML = totalMovesMade;
-  document.querySelector('.final-score').innerHTML = finalScoreOutput + ' pts';  
+  document.querySelector('.final-score').innerHTML = finalScoreOutput + ' pts';
   document.querySelector('.num-stars').innerHTML = numStarsOutput;
   document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
 
@@ -214,12 +221,12 @@ function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTime
   modalheader.classList.add('bounceInLeft');
   // document.querySelector('.modal-message-header__title').classList.add('bounceInLeft');
 
-  document.body.addEventListener('click', closeModal);  
+  document.body.addEventListener('click', closeModal);
 }
 
 function closeModal() {
   // modal.classList.add('slideOutUp'); // add feature back in if necessary
-  modal.classList.remove('show');  
+  modal.classList.remove('show');
 }
 
 
@@ -231,10 +238,10 @@ function gameWon() {
   cardsClicked = 0;
 
 
-let time = document.querySelector('.timeOutput').textContent;
+  let time = document.querySelector('.timeOutput').textContent;
 
   displayModal(movesMade, gameScore, starCount, time);
-  
+
 
 
 }
@@ -256,7 +263,7 @@ let gameScore = 0;
 // Modal ***************
 
 document.querySelector('.modal-close-button').addEventListener("click", function() {
-  
+
   closeModal();
 });
 
@@ -340,7 +347,7 @@ function addScore() {
   let time = document.querySelector('.timeOutput').textContent;
 
 
-  
+
 
 
 
@@ -351,7 +358,7 @@ function addScore() {
 
   if (starCount < 4) {
 
-    
+
 
     if (gameScore % 20 == 0 && movesMade > 1) {
 
@@ -470,36 +477,60 @@ function badMatch(cards) {
 }
 
 
-let cardsClicked = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Function to flip card when clicked
 function flipCard(evt) {
   let clickedCard = evt.target;
 
   cardsClicked++;
 
-  //cannot click a card that has already been matched
+  // cannot click a card that has already been matched
   if (clickedCard.classList.contains('matched')) {
     return;
   }
 
-
-
-
+  // start timer as soon as the first card is clicked
   if (cardsClicked == 1) {
     startTimer();
   }
 
+  // if the target ckicked is an 'LI' element...
+  if (clickedCard.nodeName == 'LI') {
 
-  if (clickedCard.nodeName.toLowerCase() == 'li') {
-
-    // Flip card and show symbol
+    // ...flip card and show symbol
     clickedCard.classList.add('open', 'show', 'flipped');
 
-    // Put the card's value in the selected card's array
+    // ..put the card's value in the selected card's array
     let cardAttribute = clickedCard.getAttribute('data-image');
     selectedCards.push(cardAttribute);
 
-    // If the selectedCard 's array length hits 2, lock clicking functionality and compare the 2 values
+    // If the selectedCard's array length hits 2, lock clicking functionality and compare the 2 values
     if (selectedCards.length == 2) {
       disableCardClicking();
 
@@ -519,5 +550,5 @@ function flipCard(evt) {
 
 
 
-// Start of Memory Game ***************
+/************** Start of Memory Game **************/
 window.onload = layoutCards(shuffledImages);

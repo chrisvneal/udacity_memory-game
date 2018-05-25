@@ -18,7 +18,10 @@ var modal = document.querySelector('.modal');
 var movesMade = 0;
 document.querySelector('span.moves').innerHTML = movesMade + " Moves";
 
+var cardsClicked = 0;
+
 /**************************** Functions ****************************/
+
 /********* Timer functions *********/
 
 var gameTimer = void 0;
@@ -55,7 +58,8 @@ function insertRunningTime() {
   timeOutput.innerHTML = '0' + minutes + ':' + seconds;
 }
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+/********* Shuffle function (http://stackoverflow.com/a/2450976) *********/
+
 function shuffle(array) {
   var currentIndex = array.length,
       temporaryValue,
@@ -71,6 +75,8 @@ function shuffle(array) {
 
   return array;
 }
+
+/********* Card clicking functions *********/
 
 function disableCardClicking() {
   cardDeck.removeEventListener('mousedown', flipCard);
@@ -426,32 +432,33 @@ function badMatch(cards) {
   }, 800);
 }
 
-var cardsClicked = 0;
 // Function to flip card when clicked
 function flipCard(evt) {
   var clickedCard = evt.target;
 
   cardsClicked++;
 
-  //cannot click a card that has already been matched
+  // cannot click a card that has already been matched
   if (clickedCard.classList.contains('matched')) {
     return;
   }
 
+  // start timer as soon as the first card is clicked
   if (cardsClicked == 1) {
     startTimer();
   }
 
-  if (clickedCard.nodeName.toLowerCase() == 'li') {
+  // if the target ckicked is an 'LI' element...
+  if (clickedCard.nodeName == 'LI') {
 
-    // Flip card and show symbol
+    // ...flip card and show symbol
     clickedCard.classList.add('open', 'show', 'flipped');
 
-    // Put the card's value in the selected card's array
+    // ..put the card's value in the selected card's array
     var cardAttribute = clickedCard.getAttribute('data-image');
     selectedCards.push(cardAttribute);
 
-    // If the selectedCard 's array length hits 2, lock clicking functionality and compare the 2 values
+    // If the selectedCard's array length hits 2, lock clicking functionality and compare the 2 values
     if (selectedCards.length == 2) {
       disableCardClicking();
 
@@ -460,5 +467,5 @@ function flipCard(evt) {
   }
 }
 
-// Start of Memory Game ***************
+/************** Start of Memory Game **************/
 window.onload = layoutCards(shuffledImages);
