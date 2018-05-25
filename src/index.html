@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Matching Game</title>
-  <meta name="description" content="">
-  <!-- <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
+  <meta name="description" content="Chris Neal Memory Game project for Udacity FEND course">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
@@ -20,7 +19,7 @@
       <h1>Matching Game</h1>
     </header>
 
-
+    <!-- Game winnig modal to display when game won! -->
     <div class="modal animated">
       <div class="modal-content">
         <div class="modal-header">
@@ -40,11 +39,8 @@
       </div>
     </div>
 
+    <!-- Game panel -->
     <section class="game-panel">
-
-
-
-
       <ul class="stars">
         <li><i class="fas fa-star rating"></i></li>
         <li><i class="fas fa-star rating"></i></li>
@@ -52,43 +48,26 @@
         <li><i class="fas fa-star rating"></i></li>
       </ul>
 
-
-
-
       <span class="moves">0 Moves</span>
 
-
-
-
-
-
       <span class="timeOutput">0:00</span>
-
-
-
 
       <div class="reset">
         <i class="fas fa-redo"></i>
       </div>
 
-
-
-
-
     </section>
 
+    <!-- Score panel -->
     <section class="score-panel">
       Score: <span class="scoreOutput">0</span>
     </section>
 
+    <!-- Game bottom (rules and game) -->
     <section class="game-bottom">
 
-
-
-
+      <!-- Rules of the game -->
       <div class="rules">
-
-
         <div class="stars-rules">
           <h2 class="rule-heading">Stars</h2>
           <ul>
@@ -107,12 +86,10 @@
             <li>For every <span class="highlight">20 points</span>, win a <span class="fas fa-star fa-fw"></span></li>
           </ul>
         </div>
-
-
       </div>
 
-      <ul class="deck">
-      </ul>
+      <!-- The main deck of cards for the Memory Game -->
+      <ul class="deck"></ul>
     </section>
   </div>
 

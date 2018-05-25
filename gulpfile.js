@@ -5,8 +5,9 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
-        require('babel-core');
-        require('babel-preset-env');
+require('babel-core');
+require('babel-preset-env');
+var witespace = require('gulp-whitespace');
 var browserSync = require('browser-sync').create();
 
 // Directories
@@ -28,6 +29,10 @@ gulp.task('scss', function() {
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     }))
+    .pipe(whitsespace({
+      spacesToTabs: 2,
+      removeTrailing: true
+    }))
     .pipe(sourcemaps.write(sourcmapFolder))
     .pipe(gulp.dest(cssFolder))
     .pipe(browserSync.stream())
@@ -36,6 +41,10 @@ gulp.task('scss', function() {
 // copy all html files to 'dist' once file saved
 gulp.task('copy-html', function() {
   return gulp.src(htmlSource)
+    .pipe(whitsespace({
+      spacesToTabs: 4,
+      removeTrailing: true
+    }))
     .pipe(gulp.dest(htmlDist))
     .pipe(browserSync.stream())
 });
@@ -43,9 +52,13 @@ gulp.task('copy-html', function() {
 // copy all javascript files to 'dist' once file saved
 gulp.task('copy-js', function() {
   return gulp.src(jsSource)
-  .pipe(plumber())
+    .pipe(plumber())
     .pipe(babel({
       presets: ['env']
+    }))
+    .pipe(whitsespace({
+      spacesToTabs: 2,
+      removeTrailing: true
     }))
     .pipe(gulp.dest(jsDist))
     .pipe(browserSync.stream())
