@@ -20,6 +20,11 @@ document.querySelector('span.moves').innerHTML = movesMade + " Moves";
 
 var cardsClicked = 0;
 
+var matchesInARow = 0;
+var badMatchesInARow = 0;
+
+var starCount = 0;
+
 /**************************** Functions ****************************/
 
 /********* Timer functions *********/
@@ -250,88 +255,41 @@ document.querySelector('.modal-close-button').addEventListener("click", function
   closeModal();
 });
 
-/********************* Stars functionality *********************/
+/********************* Scoring functionality *********************/
 
-// let unshadedStars = document.querySelectorAll('.fa-star:not(.shaded)');
-
-
-// shade a star
-function shadeStar(next) {
-  // console.log("The variable 'next' read: " + next + ", your next should be: " + (next + 1));
-  var stars = document.querySelectorAll('.fa-star.rating');
-  // console.log('parameter is ' + next);
-
-  console.log('star count before adding: ' + starCount);
-
-  stars[next].classList.add('shaded');
-
-  starCount++;
-
-  console.log("star count is: " + starCount);
-}
-
-// unshade a star
-function unshadeStar() {
-  console.log("*****unshadeStar ran****");
-  console.log('Star count before removing: ' + starCount);
-
-  var shadedStars = document.querySelectorAll('.fa-star.rating.shaded');
-
-  shadedStars[starCount - 1].classList.remove('shaded');
-
-  // lower starCount
-  starCount--;
-  console.log("Star count after removing: " + starCount);
-}
-
-/********************* Score functionality *********************/
-
-var starCount = 0;
-
+// add score when a match is hit
 function addScore() {
 
   // Add 10 points
   gameScore += 10;
 
-  var time = document.querySelector('.timeOutput').textContent;
-
+  // If the star count is lower than 4 (0-3), apply a star in certain scenarios
   if (starCount < 4) {
 
     if (gameScore % 20 == 0 && movesMade > 1) {
-
       shadeStar(starCount);
     }
-
-    // if (gameScore >= 20 && (gameScore - 10) > (gameScore - 15)) {
-    //   shadeStar(starCount);
-    // }
 
     if (movesMade == 1) {
       gameScore += 10;
       shadeStar(starCount);
     }
-
-    // console.log(starCount);
   }
 
-  // delete; for testing!!
-
-
+  // output current game score
   scoreOutput.innerHTML = gameScore;
 }
 
-var matchesInARow = 0;
-
-// Invoke when match is good
+// When a good match hits
 function goodMatch(cards) {
   badMatchesInARow = 0;
-  // console.log("Number of bad matches: " + badMatchesInARow);
+
   matchesInARow++;
 
+  // If made 3 matches ina row, get a star; reset matches made in a row to 0
   if (matchesInARow == 3) {
     shadeStar(starCount);
     matchesInARow = 0;
-    console.log('You got 3 matches in a Row');
   }
 
   addScore();
@@ -354,7 +312,7 @@ function goodMatch(cards) {
       }
     }
 
-    //enable clicking on cards again
+    // after a good match, check to see if all 16 cards were matched
   } catch (err) {
     _didIteratorError2 = true;
     _iteratorError2 = err;
@@ -370,23 +328,23 @@ function goodMatch(cards) {
     }
   }
 
-  setTimeout(function () {
-    checkIfWon();
-  }, 100);
+  setTimeout(checkIfWon, 100);
 }
 
-var badMatchesInARow = 0;
-// Invoke when match is bad
+// When a bad match hits
 function badMatch(cards) {
   if (gameScore % 5 == 0 && gameScore >= 5) {
     gameScore -= 5;
     scoreOutput.innerHTML = gameScore;
-    // console.log("your score is now " + gameScore);
   }
-  badMatchesInARow++;
-  matchesInARow = 0;
-  // console.log("Number of bad matches: " + badMatchesInARow);
 
+  // increase bad match count
+  badMatchesInARow++; // increase bad match
+
+  // reset good matches
+  matchesInARow = 0;
+
+  // reset bad matches after all 3 consecutive bad matches
   if (badMatchesInARow == 3 && starCount > 0) {
     unshadeStar();
     badMatchesInARow = 0;
@@ -432,7 +390,28 @@ function badMatch(cards) {
   }, 800);
 }
 
-// Function to flip card when clicked
+// shade a star
+function shadeStar(next) {
+  var stars = document.querySelectorAll('.fa-star.rating');
+
+  stars[next].classList.add('shaded');
+
+  // increase star count
+  starCount++;
+}
+
+// unshade a star
+function unshadeStar() {
+  var shadedStars = document.querySelectorAll('.fa-star.rating.shaded');
+
+  shadedStars[starCount - 1].classList.remove('shaded');
+
+  // lower starCount
+  starCount--;
+}
+
+/********************* Card flipping functionality *********************/
+
 function flipCard(evt) {
   var clickedCard = evt.target;
 
