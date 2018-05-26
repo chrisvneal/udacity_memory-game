@@ -7,7 +7,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
 require('babel-core');
 require('babel-preset-env');
-var witespace = require('gulp-whitespace');
+var whitespace = require('gulp-whitespace');
 var browserSync = require('browser-sync').create();
 
 // Directories
