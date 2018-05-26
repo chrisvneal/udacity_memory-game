@@ -154,7 +154,7 @@ ul {
   margin: 0 auto;
   position: absolute;
   top: 222%;
-  background: transparent url(http://www.transparentpng.com/download/scroll/pink-old-scroll-paper-png-13.png);
+  background: transparent url(img/scroll.png);
   background-position: -100px 0;
   display: none;
   z-index: 100;
