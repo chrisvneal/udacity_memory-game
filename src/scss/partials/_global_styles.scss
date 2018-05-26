@@ -19,7 +19,6 @@ body {
 }
 
 body {
-  // background: #ffffff url('../img/geometry2.png');
   background: #fff;
   font-family: Cinzel, serif;
 }
@@ -30,6 +29,7 @@ body {
   flex-direction: column;
   position: relative;
   margin: 0 auto;
+  background: url(http://withoutborderschefs.com/wp-content/uploads/2014/03/backgroung-22.jpg) no-repeat 50% 90%;
 }
 
 header h1 {
@@ -64,11 +64,8 @@ ul {
 .deck .card {
   height: 125px;
   width: 125px;
-  // background: #2e3d49;
   background: #2e3d49 url(../img/cardback.png) no-repeat center center;
-  // background-size: 50% 50%;
   background-size: 100% 100%;
-  
   font-size: 0;
   margin-bottom: 2rem;
   color: lighten(black, 26%);
@@ -91,8 +88,7 @@ ul {
 }
 
 .deck .card.matched {
-  // background: rgb(50, 184, 90);
-  background: url(https://images.template.net/wp-content/uploads/2015/04/Old-Paper-Texture-117552813.jpg);
+  background: url(../img/matched_card.jpg);
   color: rgb(226, 208, 169);
 }
 
@@ -146,8 +142,7 @@ ul {
   top: 22%;
   background: transparent url(../img/scroll.png);
   background-position: -100px 0;
-  // box-shadow: 0 2px 10px 10px lighten(rgba(20, 20, 20, 0.600), 15%);
-  // display: none;
+  display: none;
   z-index: 100;
 }
 
@@ -166,7 +161,6 @@ ul {
     color: lighten(black, 20%);
     span {
       float: right;
-      //  margin-right: 1em;
       font-weight: bold;
       font-size: 1.3em;
     }
@@ -183,10 +177,8 @@ ul {
     text-align: center;
   }
   .modal-header {
-    // background: lighten($modal-header-color, 5%);
-    background: #fff;
-    // color: white;
-    color: black;
+    background: transparent;
+    color: #fff;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -246,11 +238,6 @@ ul {
       margin-bottom: 2em;
     }
   }
-}
-
-.rule-heading {
-  // background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%); 
-  // padding: 7px 0 7px $container-margin;  
 }
 
 .rules .rule-heading:nth-child(2) {

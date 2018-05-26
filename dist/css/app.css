@@ -37,6 +37,7 @@ body {
           flex-direction: column;
   position: relative;
   margin: 0 auto;
+  background: url(http://withoutborderschefs.com/wp-content/uploads/2014/03/backgroung-22.jpg) no-repeat 50% 90%;
 }
 
 header h1 {
@@ -105,7 +106,7 @@ ul {
 }
 
 .deck .card.matched {
-  background: url(https://images.template.net/wp-content/uploads/2015/04/Old-Paper-Texture-117552813.jpg);
+  background: url(../img/matched_card.jpg);
   color: #e2d0a9;
 }
 
@@ -156,6 +157,7 @@ ul {
   top: 22%;
   background: transparent url(../img/scroll.png);
   background-position: -100px 0;
+  display: none;
   z-index: 100;
 }
 
@@ -195,8 +197,8 @@ ul {
 }
 
 .modal-content .modal-header {
-  background: #fff;
-  color: black;
+  background: transparent;
+  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
