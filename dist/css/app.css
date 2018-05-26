@@ -20,8 +20,8 @@ body {
 }
 
 body {
-  background: #ffffff url("../img/geometry2.png");
-  font-family: 'Montserrat', Arial, sans-serif;
+  background: #fff;
+  font-family: Cinzel, serif;
 }
 
 .container {
@@ -44,11 +44,6 @@ header h1 {
   font-size: 3em;
   margin-bottom: 20px;
   text-align: center;
-}
-
-header h1,
-.modal-message .modal-message-header__title {
-  font-family: "Luckiest Guy", Arial, sans-serif;
 }
 
 ul {
@@ -110,7 +105,8 @@ ul {
 }
 
 .deck .card.matched {
-  background: #32b85a;
+  background: url(https://images.template.net/wp-content/uploads/2015/04/Old-Paper-Texture-117552813.jpg);
+  color: #e2d0a9;
 }
 
 /* game panel styles */
@@ -273,11 +269,6 @@ ul {
 
 .game-bottom .rules li {
   margin-bottom: 2em;
-}
-
-.rule-heading {
-  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-  padding: 7px 0 7px 10px;
 }
 
 .rules .rule-heading:nth-child(2) {
