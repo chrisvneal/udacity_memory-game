@@ -154,7 +154,7 @@ ul {
   margin: 0 auto;
   position: absolute;
   top: 22%;
-  background: transparent url(img/scroll.png);
+  background: transparent url(../img/scroll.png);
   background-position: -100px 0;
   display: none;
   z-index: 100;
