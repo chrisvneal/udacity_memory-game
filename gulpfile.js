@@ -7,7 +7,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
 require('babel-core');
 require('babel-preset-env');
-var whitespace = require('gulp-whitespace');
 var browserSync = require('browser-sync').create();
 
 // Directories
@@ -29,10 +28,6 @@ gulp.task('scss', function() {
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     }))
-    .pipe(whitespace({
-      spacesToTabs: 2,
-      removeTrailing: true
-    }))
     .pipe(sourcemaps.write(sourcmapFolder))
     .pipe(gulp.dest(cssFolder))
     .pipe(browserSync.stream())
@@ -41,10 +36,6 @@ gulp.task('scss', function() {
 // copy all html files to 'dist' once file saved
 gulp.task('copy-html', function() {
   return gulp.src(htmlSource)
-    .pipe(whitespace({
-      spacesToTabs: 4,
-      removeTrailing: true
-    }))
     .pipe(gulp.dest(htmlDist))
     .pipe(browserSync.stream())
 });
@@ -55,10 +46,6 @@ gulp.task('copy-js', function() {
     .pipe(plumber())
     .pipe(babel({
       presets: ['env']
-    }))
-    .pipe(whitsespace({
-      spacesToTabs: 2,
-      removeTrailing: true
     }))
     .pipe(gulp.dest(jsDist))
     .pipe(browserSync.stream())
