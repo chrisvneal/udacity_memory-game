@@ -142,7 +142,7 @@ ul {
   top: 22%;
   background: transparent url(../img/scroll.png);
   background-position: -100px 0;
-  display: none;
+  // display: none;
   z-index: 100;
 }
 
@@ -177,13 +177,18 @@ ul {
     text-align: center;
   }
   .modal-header {
-    background: transparent;
+    background: brown;
     color: #fff;
     display: flex;
     justify-content: space-between;
     position: relative;
     h2 {
       width: max-content;
+    }
+
+    .reset {
+      font-size: 3em;
+      cursor: pointer;
     }
     .modal-close-button {
       float: right;
