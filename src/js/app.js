@@ -10,6 +10,7 @@ let badMatchesInARow = 0;
 let starCount = 0;
 let gameScore = 0;
 let resetButton = document.querySelector('.reset');
+let modalResetButton = document.querySelector('.modal-reset');
 let selectedCards = [];
 
 // Array of 8 images for cards
@@ -220,6 +221,7 @@ function resetGame() {
   scoreOutput.innerHTML = gameScore;
 }
 resetButton.addEventListener('click', resetGame);
+modalResetButton.addEventListener('click', resetGame);
 
 /******* Modal functions ***********/
 
