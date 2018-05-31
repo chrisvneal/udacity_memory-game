@@ -1,20 +1,21 @@
 "use strict";
 
-var cardDeck = document.querySelector('.deck');
-var modal = document.querySelector('.modal');
-var scoreOutput = document.querySelector('.scoreOutput');
-var movesMade = 0;
-var cardsClicked = 0;
-var matchesInARow = 0;
-var badMatchesInARow = 0;
-var starCount = 0;
-var gameScore = 0;
-var resetButton = document.querySelector('.reset');
-var selectedCards = [];
+const cardDeck = document.querySelector('.deck');
+const modal = document.querySelector('.modal');
+const scoreOutput = document.querySelector('.scoreOutput');
+let movesMade = 0;
+let cardsClicked = 0;
+let matchesInARow = 0;
+let badMatchesInARow = 0;
+let starCount = 0;
+let gameScore = 0;
+let resetButton = document.querySelector('.reset');
+let selectedCards = [];
 
 // Array of 8 images for cards
-var images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
-var shuffledImages = shuffle(images);
+let images = ['robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb', 'robot', 'piggy-bank', 'lightbulb', 'hands-helping', 'crown', 'chess-knight', 'bullhorn', 'bomb'];
+let shuffledImages = shuffle(images);
+
 
 /**************************** Functions ****************************/
 
@@ -23,23 +24,25 @@ function gameWon() {
   stopTimer();
 
   // display modal after winning
-  var time = document.querySelector('.timeOutput').textContent;
+  let time = document.querySelector('.timeOutput').textContent;
   displayModal(movesMade, gameScore, starCount, time);
 }
 
 // after every match, check if game won
 function checkIfWon() {
-  var matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
+  let matchedCardsLength = document.querySelectorAll('.deck li.matched').length;
 
   matchedCardsLength == 16 ? gameWon() : enableCardClicks();
 }
 
+
+
 /********* Timer functions *********/
 
-var gameTimer = void 0;
-var seconds = 0;
-var minutes = 0;
-var timeOutput = document.querySelector(".timeOutput");
+let gameTimer;
+let seconds = 0;
+let minutes = 0;
+const timeOutput = document.querySelector(".timeOutput");
 
 // startTimer()
 function startTimer() {
@@ -58,7 +61,7 @@ function insertRunningTime() {
   seconds++;
 
   if (seconds < 10) {
-    seconds = '0' + seconds;
+    seconds = `0${seconds}`;
   }
 
   if (seconds >= 60) {
@@ -67,7 +70,7 @@ function insertRunningTime() {
   }
 
   // output the time
-  timeOutput.innerHTML = '0' + minutes + ':' + seconds;
+  timeOutput.innerHTML = `0${minutes}:${seconds}`;
 }
 
 /* Game setup functions (shuffle cards and layout) */
@@ -75,8 +78,7 @@ function insertRunningTime() {
 // shuffle cards (http://stackoverflow.com/a/2450976)
 function shuffle(array) {
   var currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
+    temporaryValue, randomIndex;
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
@@ -93,15 +95,15 @@ function shuffle(array) {
 function layoutCards(cards) {
 
   // Place cards inside "the deck"
-  for (var i = 0; i < images.length; i++) {
+  for (let i = 0; i < images.length; i++) {
 
     // Create a card (li) with a class of 'card'
-    var card = document.createElement('li');
+    const card = document.createElement('li');
     card.setAttribute('data-image', cards[i]);
     card.classList.add('card', 'animated');
 
     // Insert shuffled image in card
-    var cardImage = document.createElement('i');
+    let cardImage = document.createElement('i');
     cardImage.classList.add('fas', 'fa-' + cards[i]);
     card.appendChild(cardImage);
 
@@ -131,8 +133,8 @@ function compareCards(cards) {
     document.querySelector('span.moves').innerHTML = movesMade + " Move";
   }
 
-  var cardValue1 = cards[0];
-  var cardValue2 = cards[1];
+  let cardValue1 = cards[0];
+  let cardValue2 = cards[1];
 
   cardValue1 == cardValue2 ? goodMatch(cards) : badMatch(cards);
 
@@ -140,19 +142,19 @@ function compareCards(cards) {
 }
 
 function flipCard(evt) {
-  var clickedCard = evt.target;
+  let clickedCard = evt.target;
 
   cardsClicked++;
 
   // cannot click a card that has already been matched or flipped
-  if (clickedCard.classList.contains('matched') || clickedCard.classList.contains('flipped')) {
-    return;
-  }
+  if (clickedCard.classList.contains('matched') || clickedCard.classList.contains('flipped')) { return; }
 
   // start timer as soon as the first card is clicked
   if (cardsClicked == 1) {
     startTimer();
   }
+
+
 
   // if the target ckicked is an 'LI' element...
   if (clickedCard.nodeName == 'LI') {
@@ -161,7 +163,7 @@ function flipCard(evt) {
     clickedCard.classList.add('open', 'show', 'flipped');
 
     // ..put the card's value in the selected card's array
-    var cardAttribute = clickedCard.getAttribute('data-image');
+    let cardAttribute = clickedCard.getAttribute('data-image');
     selectedCards.push(cardAttribute);
 
     // If the selectedCard's array length hits 2, lock clicking functionality and compare the 2 values
@@ -184,7 +186,7 @@ function resetTimer() {
 
 // reset the game
 function resetGame() {
-  var shadedStars = document.querySelectorAll('.shaded');
+  let shadedStars = document.querySelectorAll('.shaded');
 
   // reset board
   cardDeck.innerHTML = "";
@@ -205,33 +207,11 @@ function resetGame() {
   selectedCards.length = 0;
 
   // reset stars
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = shadedStars[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var star = _step.value;
-
-      star.classList.remove('shaded');
-    }
-
-    // reset moves made
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator.return) {
-        _iterator.return();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
+  for (let star of shadedStars) {
+    star.classList.remove('shaded');
   }
 
+  // reset moves made
   movesMade = 0;
   document.querySelector('span.moves').innerHTML = "0 Moves";
 
@@ -250,7 +230,7 @@ function displayModal(totalMovesMade, finalScoreOutput, numStarsOutput, gameTime
   document.querySelector('.final-game-time').innerHTML = gameTimeOutput;
 
   modal.classList.add('show', 'flipInX');
-  var modalheader = document.querySelector('.modal-message-header__title');
+  let modalheader = document.querySelector('.modal-message-header__title');
 
   modalheader.classList.add('bounceInLeft');
 
@@ -264,6 +244,7 @@ function closeModal() {
 }
 
 document.querySelector('.modal-close-button').addEventListener("click", closeModal);
+
 
 /******* Scoring functions ***********/
 
@@ -291,32 +272,12 @@ function addScore() {
 }
 
 function removeBadEffect() {
-  var flippedCards = cardDeck.querySelectorAll('.flipped');
-  var _iteratorNormalCompletion2 = true;
-  var _didIteratorError2 = false;
-  var _iteratorError2 = undefined;
-
-  try {
-    for (var _iterator2 = flippedCards[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      var card = _step2.value;
-
-      card.classList.remove('shake');
-    }
-  } catch (err) {
-    _didIteratorError2 = true;
-    _iteratorError2 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion2 && _iterator2.return) {
-        _iterator2.return();
-      }
-    } finally {
-      if (_didIteratorError2) {
-        throw _iteratorError2;
-      }
-    }
+  let flippedCards = cardDeck.querySelectorAll('.flipped');
+  for (let card of flippedCards) {
+    card.classList.remove('shake');
   }
 }
+
 
 // When a good match hits
 function goodMatch(cards) {
@@ -332,40 +293,18 @@ function goodMatch(cards) {
 
   addScore();
 
-  var cardValue = cards[0];
+  let cardValue = cards[0];
 
-  var flippedCards = cardDeck.querySelectorAll('.flipped');
+  let flippedCards = cardDeck.querySelectorAll('.flipped');
 
-  var _iteratorNormalCompletion3 = true;
-  var _didIteratorError3 = false;
-  var _iteratorError3 = undefined;
-
-  try {
-    for (var _iterator3 = flippedCards[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-      var card = _step3.value;
-
-      if (card.getAttribute('data-image') == cardValue) {
-        card.classList.remove('flipped');
-        card.classList.add('matched', 'tada');
-      }
-    }
-
-    // after a good match, check to see if all 16 cards were matched
-  } catch (err) {
-    _didIteratorError3 = true;
-    _iteratorError3 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion3 && _iterator3.return) {
-        _iterator3.return();
-      }
-    } finally {
-      if (_didIteratorError3) {
-        throw _iteratorError3;
-      }
+  for (let card of flippedCards) {
+    if (card.getAttribute('data-image') == cardValue) {
+      card.classList.remove('flipped');
+      card.classList.add('matched', 'tada');
     }
   }
 
+  // after a good match, check to see if all 16 cards were matched
   setTimeout(checkIfWon, 100);
 }
 
@@ -388,76 +327,32 @@ function badMatch(cards, evt) {
     badMatchesInARow = 0;
   }
 
-  var cardValue1 = cards[0];
-  var cardValue2 = cards[1];
+  let cardValue1 = cards[0];
+  let cardValue2 = cards[1];
 
-  var flippedCards = cardDeck.querySelectorAll('.flipped');
+  let flippedCards = cardDeck.querySelectorAll('.flipped');
 
-  var _iteratorNormalCompletion4 = true;
-  var _didIteratorError4 = false;
-  var _iteratorError4 = undefined;
-
-  try {
-    for (var _iterator4 = flippedCards[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-      var card = _step4.value;
-
-      card.classList.add('shake');
-      setTimeout(removeBadEffect, 900);
-    }
-
-    // Turn the card around if the values do not match
-  } catch (err) {
-    _didIteratorError4 = true;
-    _iteratorError4 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion4 && _iterator4.return) {
-        _iterator4.return();
-      }
-    } finally {
-      if (_didIteratorError4) {
-        throw _iteratorError4;
-      }
-    }
+  for (let card of flippedCards) {
+    card.classList.add('shake');
+    setTimeout(removeBadEffect, 900);
   }
 
-  setTimeout(function () {
-    var _iteratorNormalCompletion5 = true;
-    var _didIteratorError5 = false;
-    var _iteratorError5 = undefined;
-
-    try {
-      for (var _iterator5 = flippedCards[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-        var _card = _step5.value;
-
-        if (_card.getAttribute('data-image') == cardValue1 || _card.getAttribute('data-image') == cardValue2) {
-          _card.classList.remove('open', 'show', 'flipped');
-        }
-      }
-
-      // enable clicking on cards
-    } catch (err) {
-      _didIteratorError5 = true;
-      _iteratorError5 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion5 && _iterator5.return) {
-          _iterator5.return();
-        }
-      } finally {
-        if (_didIteratorError5) {
-          throw _iteratorError5;
-        }
+  // Turn the card around if the values do not match
+  setTimeout(function() {
+    for (let card of flippedCards) {
+      if (card.getAttribute('data-image') == cardValue1 || card.getAttribute('data-image') == cardValue2) {
+        card.classList.remove('open', 'show', 'flipped');
       }
     }
 
+    // enable clicking on cards
     enableCardClicks();
   }, 1000);
 }
 
 // shade a star
 function shadeStar(next) {
-  var stars = document.querySelectorAll('.fa-star.rating');
+  let stars = document.querySelectorAll('.fa-star.rating');
 
   stars[next].classList.add('shaded');
 
@@ -467,9 +362,9 @@ function shadeStar(next) {
 
 // unshade a star
 function unshadeStar() {
-  var shadedStars = document.querySelectorAll('.fa-star.rating.shaded');
+  let shadedStars = document.querySelectorAll('.fa-star.rating.shaded');
 
-  shadedStars[starCount - 1].classList.remove('shaded');
+  shadedStars[(starCount - 1)].classList.remove('shaded');
 
   // lower starCount
   starCount--;
